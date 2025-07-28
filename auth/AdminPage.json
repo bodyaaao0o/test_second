@@ -1,0 +1,115 @@
+{
+  "cookies": [
+    {
+      "name": "AWSALBTGCORS",
+      "value": "UCgnRC0QntVb9kKtTisFv3E7VHVWl+cHWuRvTgtpnzRV2mags+ALDRkdulLhprv4zJx9u3B1b4wB1zAKR5v8qJzvkUXjEMTgvFRnLmOZAJxQrfi+sX31gBKRTMklE2oGM0xS+aOpqeUw7NMY1dSmBX4y6IJqEooW+bCRDN8GfaqB",
+      "domain": "session.web3auth.io",
+      "path": "/",
+      "expires": 1746447830.01838,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "W64r/VJObRpZWZ5yEgX8EYZKcY8kGJ3x+MsFWlQpiwXLEel6gc5q9jHncjWhLUkII1KrIQ0flsO3tNZsfuI3pCQtB0506S010kwcfr2UqigxHGFv7jeiygbYc6eb",
+      "domain": "session.web3auth.io",
+      "path": "/",
+      "expires": 1746447830.018435,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "savedEmail",
+      "value": "skalastr1918@gmail.com",
+      "domain": "www.staging.admin.penomo.com",
+      "path": "/",
+      "expires": 1777379049,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.staging.admin.penomo.com",
+      "localStorage": [
+        {
+          "name": "loglevel:SecurePubSub",
+          "value": "SILENT"
+        },
+        {
+          "name": "web3AuthToken",
+          "value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRZT2dnXy01RU9FYmxhWS1WVlJZcVZhREFncHRuZktWNDUzNU1aUEMwdzAifQ.eyJpYXQiOjE3NDU4NDMwNDIsImF1ZCI6IkJJeG9pSDBYSDV6NkJDNGNVYTVlWVpNbGZ5d0hkLVUzZ3BZT1daTzJqaTRHNzVfbXlQamhSYTdGaTJUOWw5QW5sbkVnYnFPeTR6U2h1ZVNieTFGRlU3NCIsIm5vbmNlIjoiMDJiYTM2ODIwOGM1MzkxOGExZDk3YmI5NGI4MzFjMzU4MjFkYjY3MGFhNTE1MDg4ZGIzOTczNTYyZWRjMDI3NWYxIiwiaXNzIjoiaHR0cHM6Ly9hcGktYXV0aC53ZWIzYXV0aC5pbyIsIndhbGxldHMiOlt7InB1YmxpY19rZXkiOiIwMzBhY2RhYTZjMGU3MTYwYmQ5NTVhN2U2YTc2OTljYjRjM2I1OWVmZmRjNjk0YmYyMWMwNmU5OTBmN2RlMjM5ZDIiLCJ0eXBlIjoid2ViM2F1dGhfYXBwX2tleSIsImN1cnZlIjoic2VjcDI1NmsxIn0seyJwdWJsaWNfa2V5IjoiMDM5OGE1NzYxZDY2MTUwNmE0ODdmNDkwZjJjMTYyZGNmMDBhNmJhY2I2OGFlYjM1ODRkNmZlNmQxNTEyZjZkMDk2IiwidHlwZSI6IndlYjNhdXRoX3RocmVzaG9sZF9rZXkiLCJjdXJ2ZSI6InNlY3AyNTZrMSJ9XSwiZW1haWwiOiJza2FsYXN0cjE5MThAZ21haWwuY29tIiwibmFtZSI6InNrYWxhc3RyMTkxOEBnbWFpbC5jb20iLCJ2ZXJpZmllciI6Im5vX21vZGFsX29ubHlfZW1haWxfdmVyaWZpZXIiLCJ2ZXJpZmllcklkIjoic2thbGFzdHIxOTE4QGdtYWlsLmNvbSIsImFnZ3JlZ2F0ZVZlcmlmaWVyIjoibm9fbW9kYWxfb25seV9lbWFpbF92ZXJpZmllciIsImV4cCI6MTc0NTkyOTQ0Mn0.iMbyxDMbkSonD0DCJfFKyadOrPef2u_jVklFNxDVihkybF8Nhjojw37xhVtUfUDsvcuoIFW9OporEu1y0XlMGw"
+        },
+        {
+          "name": "auth_store",
+          "value": "{\"sessionId\":\"876fe0dc91b2b08c7aebc90489c166ae6c9619bb0386df0c920d8678b63de665\"}"
+        },
+        {
+          "name": "Web3Auth-cachedAdapter",
+          "value": "auth"
+        },
+        {
+          "name": "authToken",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODAyMjI3NWJlODZjZWI5MWUzMjA0YjAiLCJ1c2VyRW1haWwiOiJza2FsYXN0cjE5MThAZ21haWwuY29tIiwiYWRtaW5JZCI6IjY4MDIyMjc1YmU4NmNlYjkxZTMyMDRiMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0NTg0MzA0NCwiZXhwIjoxNzQ1ODQ2NjQ0fQ.odhMivO1IMyz7jC1V84DKYG0Pu7zXLKKcmysILCYJW8"
+        },
+        {
+          "name": "loglevel:auth",
+          "value": "ERROR"
+        },
+        {
+          "name": "loglevel:http-helpers",
+          "value": "INFO"
+        },
+        {
+          "name": "loglevel:web3auth-logger",
+          "value": "ERROR"
+        }
+      ]
+    },
+    {
+      "origin": "https://staging-auth.web3auth.io",
+      "localStorage": [
+        {
+          "name": "loglevel:torus.js",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel:SecurePubSub",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel:fnd",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel",
+          "value": "DEBUG"
+        },
+        {
+          "name": "loglevel:http-helpers",
+          "value": "INFO"
+        },
+        {
+          "name": "loglevel:customauth",
+          "value": "TRACE"
+        }
+      ]
+    },
+    {
+      "origin": "https://staging-passwordless.web3auth.io",
+      "localStorage": [
+        {
+          "name": "loglevel",
+          "value": "ERROR"
+        },
+        {
+          "name": "loglevel:http-helpers",
+          "value": "INFO"
+        }
+      ]
+    }
+  ]
+}

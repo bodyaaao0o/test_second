@@ -1,0 +1,123 @@
+{
+  "cookies": [
+    {
+      "name": "AWSALBTGCORS",
+      "value": "DY1MreywEJTOjOOmHW/sk3i/WEH4Dttj17RZkzM/SBMsGCusjPF/VMuIAIQ1Rm/GqeW4QxZhb+7CLdqJ9+r1wKtbi+2czwTtCIsAPZ716jXDAznbFlCrcsmzq10/DvpSi+n/vd7VqNAFKHMgQfQWMoLlpuy6CyLpWAjpNXSjIoV1",
+      "domain": "session.web3auth.io",
+      "path": "/",
+      "expires": 1754300057.247011,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "vQ5+8BT02XPjhApl/r8cEjydNixbXX34pxFy2ExzQA/E71Odp5YGizspUEg01jTf7Eyuj2PLRhhTyQp1z+K8W4GhVKPexhRm0VZ/jbmDa0NiW8RttwyIuJ6DE74/",
+      "domain": "session.web3auth.io",
+      "path": "/",
+      "expires": 1754300057.247074,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "savedEmail",
+      "value": "penomo-admin-at@sbmchbly.mailosaur.net",
+      "domain": "www.staging.admin.penomo.com",
+      "path": "/",
+      "expires": 1785231274,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.staging.admin.penomo.com",
+      "localStorage": [
+        {
+          "name": "loglevel:SecurePubSub",
+          "value": "SILENT"
+        },
+        {
+          "name": "web3AuthToken",
+          "value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRZT2dnXy01RU9FYmxhWS1WVlJZcVZhREFncHRuZktWNDUzNU1aUEMwdzAifQ.eyJpYXQiOjE3NTM2OTUyNzEsImF1ZCI6IkJJeG9pSDBYSDV6NkJDNGNVYTVlWVpNbGZ5d0hkLVUzZ3BZT1daTzJqaTRHNzVfbXlQamhSYTdGaTJUOWw5QW5sbkVnYnFPeTR6U2h1ZVNieTFGRlU3NCIsIm5vbmNlIjoiMDM5ZjFmYjJkNmY3YTlmYWJmZjIzOTIzNWQ5YjliYmMxOGU4NTM3N2QwYjVlNzM1NzYwMWQxZTg5MjA0N2YyMzViIiwiaXNzIjoiaHR0cHM6Ly9hcGktYXV0aC53ZWIzYXV0aC5pbyIsIndhbGxldHMiOlt7InB1YmxpY19rZXkiOiIwMjQwYTRiNDJiZjU3NTQ1MTZmOGZjNGQ3ZjcxMTMzM2Q2ZTg5ZWUzOTI4MDUwYzI3MzYzMjU0ZTBkMzk4OWU1YTQiLCJ0eXBlIjoid2ViM2F1dGhfYXBwX2tleSIsImN1cnZlIjoic2VjcDI1NmsxIn0seyJwdWJsaWNfa2V5IjoiMDI4MjVjZGU4ZTRmN2VhZjJiOWZiMWU5Y2NjY2U3ZGZlNjM2MzQ4ZDNkNDg5ZDIwNDM1OWQ0MTU4MDRmZWRlZmNlIiwidHlwZSI6IndlYjNhdXRoX3RocmVzaG9sZF9rZXkiLCJjdXJ2ZSI6InNlY3AyNTZrMSJ9XSwiZW1haWwiOiJwZW5vbW8tYWRtaW4tYXRAc2JtY2hibHkubWFpbG9zYXVyLm5ldCIsIm5hbWUiOiJwZW5vbW8tYWRtaW4tYXRAc2JtY2hibHkubWFpbG9zYXVyLm5ldCIsInZlcmlmaWVyIjoibm9fbW9kYWxfb25seV9lbWFpbF92ZXJpZmllciIsImF1dGhDb25uZWN0aW9uSWQiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwidmVyaWZpZXJJZCI6InBlbm9tby1hZG1pbi1hdEBzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwidXNlcklkIjoicGVub21vLWFkbWluLWF0QHNibWNoYmx5Lm1haWxvc2F1ci5uZXQiLCJhZ2dyZWdhdGVWZXJpZmllciI6Im5vX21vZGFsX29ubHlfZW1haWxfdmVyaWZpZXIiLCJncm91cGVkQXV0aENvbm5lY3Rpb25JZCI6Im5vX21vZGFsX29ubHlfZW1haWxfdmVyaWZpZXIiLCJleHAiOjE3NTM3ODE2NzF9.xNm4ES7nn3hPAsiF78_tbXqNn78_YIljB3sk-5lusVf8bPSVgyC1RMUB-zQCsE-AnjcxA3fOFmEYcgMs0cmD5w"
+        },
+        {
+          "name": "auth_store",
+          "value": "{\"sessionId\":\"c9a197deee8996f4f40610dd614a5b3ed3ee63690bff9b40b7c00469350d5426\"}"
+        },
+        {
+          "name": "Web3Auth-cachedAdapter",
+          "value": "auth"
+        },
+        {
+          "name": "loginTime",
+          "value": "1753695274441"
+        },
+        {
+          "name": "authToken",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODExY2Y0ZTU3Mzk5ZGI2MGEwNDUxYmQiLCJ1c2VyRW1haWwiOiJwZW5vbW8tYWRtaW4tYXRAc2JtY2hibHkubWFpbG9zYXVyLm5ldCIsImFkbWluSWQiOiI2ODExY2Y0ZTU3Mzk5ZGI2MGEwNDUxYmYiLCJyb2xlIjoiYWRtaW4iLCJqdGkiOiJmY2NiYzNkYy0xODI4LTQ0YjQtOGI2Yi01ZDRiN2NjYTNmMDUiLCJpYXQiOjE3NTM2OTUyNzQsImV4cCI6MTc1MzY5ODg3NH0.XuFLzEAKiXIERsWumu1vZNZKyxVeKktXSXr-GCKEU8k"
+        },
+        {
+          "name": "loglevel:auth",
+          "value": "ERROR"
+        },
+        {
+          "name": "loglevel:http-helpers",
+          "value": "INFO"
+        },
+        {
+          "name": "loglevel:web3auth-logger",
+          "value": "ERROR"
+        },
+        {
+          "name": "gbFeaturesCache",
+          "value": "[[\"https://cdn.growthbook.io||sdk-8PCWb1fqy5eBIAb\",{\"data\":{\"status\":200,\"features\":{\"show_quest_pages\":{\"defaultValue\":false,\"rules\":[{\"id\":\"fr_19g61wm7lunelx\",\"condition\":{\"id\":{\"$in\":[\"developer17ls@gmail.com\",\"neeraj@penomo.io\",\"neeraj+testing1@penomo.io\",\"neeraj+testing2@penomo.io\",\"kubisch@penomo.com\",\"kubisch@penomo.io\",\"kubisch+2507111@penomo.com\",\"kubisch+2507112@penomo.com\",\"kubisch+2507113@penomo.com\",\"dhillon@penomo.com\",\"laia@moonblastmarketing.com\",\"francyfc222@gmail.com\",\"ayanlolafestus@gmail.com\",\"th3tetherman@gmail.com\",\"dhillon@penomo.io\",\"dhillon+250711@penomo.io\",\"kubisch+2507121@penomo.com\",\"parrinellosteven62@gmail.com\",\"favourefedaye@gmail.com\",\"kubisch+2507123@penomo.io\",\"kubisch+250712100@penomo.com\",\"laia@penomo.com\",\"kubisch+25071299@penomo.com\",\"laia+investor@penomo.com\",\"kubisch+12345@penomo.com\",\"kubisch+2507131@penomo.com\",\"kubisch+2507132@penomo.com\"]}},\"force\":true}]}},\"experiments\":[],\"dateUpdated\":\"2025-07-13T07:26:18.859Z\"},\"version\":\"2025-07-13T07:26:18.859Z\",\"staleAt\":\"2025-07-28T09:35:16.643Z\",\"sse\":true}]]"
+        }
+      ]
+    },
+    {
+      "origin": "https://staging-auth.web3auth.io",
+      "localStorage": [
+        {
+          "name": "loglevel:torus.js",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel:SecurePubSub",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel:fnd",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel",
+          "value": "DEBUG"
+        },
+        {
+          "name": "loglevel:http-helpers",
+          "value": "INFO"
+        },
+        {
+          "name": "loglevel:customauth",
+          "value": "TRACE"
+        }
+      ]
+    },
+    {
+      "origin": "https://staging-passwordless.web3auth.io",
+      "localStorage": [
+        {
+          "name": "loglevel",
+          "value": "ERROR"
+        },
+        {
+          "name": "loglevel:http-helpers",
+          "value": "INFO"
+        }
+      ]
+    }
+  ]
+}

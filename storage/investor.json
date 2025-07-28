@@ -1,0 +1,229 @@
+{
+  "cookies": [
+    {
+      "name": "AWSALBTG",
+      "value": "8NPBPLvoymO+oZh2mTDBGAihSJ3ZQeXmaIbxj33982fm7al7vyf9jdBf2kMy5HZbW2s+OJVH0iA516sozd5JPpHrT18NEvP3lwL0zUtNTDcLAEUt8/jcsuZc3BD5iTM+CX4irKi2wr8Gry/MNBn2+zvja7W3LKDIfFbTyx4UVSBo",
+      "domain": "session.web3auth.io",
+      "path": "/",
+      "expires": 1746803763,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALBTGCORS",
+      "value": "8NPBPLvoymO+oZh2mTDBGAihSJ3ZQeXmaIbxj33982fm7al7vyf9jdBf2kMy5HZbW2s+OJVH0iA516sozd5JPpHrT18NEvP3lwL0zUtNTDcLAEUt8/jcsuZc3BD5iTM+CX4irKi2wr8Gry/MNBn2+zvja7W3LKDIfFbTyx4UVSBo",
+      "domain": "session.web3auth.io",
+      "path": "/",
+      "expires": 1746803763,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALB",
+      "value": "pfeQYCma5FOy3/fyT+QxpTah7dzQ0zymOx/KJYKgQNlX8hTislPPb8pHcDb8o8AXIvHaYX1wBal7p7GbI2oLGzvSSXjcptOclypCOggWKdfjztjsKzazztbTzMZe",
+      "domain": "session.web3auth.io",
+      "path": "/",
+      "expires": 1746803763,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "pfeQYCma5FOy3/fyT+QxpTah7dzQ0zymOx/KJYKgQNlX8hTislPPb8pHcDb8o8AXIvHaYX1wBal7p7GbI2oLGzvSSXjcptOclypCOggWKdfjztjsKzazztbTzMZe",
+      "domain": "session.web3auth.io",
+      "path": "/",
+      "expires": 1746803763,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.855312518.1746198965",
+      "domain": ".web3auth.io",
+      "path": "/",
+      "expires": 1780758968,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "_ga_DY71GQK057",
+      "value": "GS1.1.1746198964.1.1.1746198972.0.0.0",
+      "domain": ".web3auth.io",
+      "path": "/",
+      "expires": 1780758972,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "AMP_MKTG_57e1840af5",
+      "value": "JTdCJTdE",
+      "domain": ".penomo.com",
+      "path": "/",
+      "expires": 1777734962,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "connect.sid",
+      "value": "s%3A0Iq5eVws07RKgcK99x2tbRDebzrpEccJ.Nr6LGNNL65UEpI6ebOVtVWxZ%2FqEo4CG10PTCHWDnFqs",
+      "domain": "staging.api.penomo.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "email",
+      "value": "w5gcwwo@sbmchbly.mailosaur.net",
+      "domain": "www.staging.invest.penomo.com",
+      "path": "/",
+      "expires": 1777734992,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "AMP_57e1840af5",
+      "value": "JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjIzYTM2MzJlMC0wN2YxLTRjNzItOWVlNC01YzQ1ZjExNzk3OGQlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzQ2MTk4OTYyNDMyJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJsYXN0RXZlbnRUaW1lJTIyJTNBMTc0NjE5ODk5NDg5MyUyQyUyMmxhc3RFdmVudElkJTIyJTNBMTQlMkMlMjJwYWdlQ291bnRlciUyMiUzQTIlN0Q=",
+      "domain": ".penomo.com",
+      "path": "/",
+      "expires": 1777734994,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AWSALBTG",
+      "value": "JXmd9BSF9gQGYFfiOdbq45WImGMoHY+lfEdfRG8Kfd1VSA7f+Ai6v+V0QyNOH1g2E2Xfzt743DhkTKbxUL/sjAzkpmmUCNYYypq5W6LGAkaoPyurrwpAQXjk0UJeaV+Y4QS0njiE/tLbdSkwPpD7rXUZBjOJ39uqtlSuj9gP1EgEUq8WKCM=",
+      "domain": "staging.api.penomo.com",
+      "path": "/",
+      "expires": 1746803795,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALBTGCORS",
+      "value": "JXmd9BSF9gQGYFfiOdbq45WImGMoHY+lfEdfRG8Kfd1VSA7f+Ai6v+V0QyNOH1g2E2Xfzt743DhkTKbxUL/sjAzkpmmUCNYYypq5W6LGAkaoPyurrwpAQXjk0UJeaV+Y4QS0njiE/tLbdSkwPpD7rXUZBjOJ39uqtlSuj9gP1EgEUq8WKCM=",
+      "domain": "staging.api.penomo.com",
+      "path": "/",
+      "expires": 1746803795,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.staging.invest.penomo.com",
+      "localStorage": [
+        {
+          "name": "loglevel:http-helpers",
+          "value": "INFO"
+        },
+        {
+          "name": "loglevel:auth",
+          "value": "ERROR"
+        },
+        {
+          "name": "auth_store",
+          "value": "{\"sessionId\":\"ea0e01b399f3c2742e71a06b6208b89de4406f6756244ba0b3e20424359a390b\"}"
+        },
+        {
+          "name": "loglevel:SecurePubSub",
+          "value": "SILENT"
+        },
+        {
+          "name": "penomo_db",
+          "value": "{\"state\":{\"userData\":{\"_id\":\"6814e1ce255df0b710e84a11\",\"firstName\":\"\",\"lastName\":\"\",\"email\":\"w5gcwwo@sbmchbly.mailosaur.net\",\"isProfileExisting\":false,\"emailNotifications\":true,\"companyId\":null,\"roleId\":\"67a5b3bc6dac5eba5ff76a4e\",\"kycStatus\":\"Not Submitted\",\"countryOfResidence\":null,\"isDeleted\":false,\"referral_code\":\"FAEAC94F\",\"purchasedPnmoTokens\":false,\"totalPrnmoTokens\":0,\"prnmoTransactions\":[],\"walletDetails\":{\"web3authWalletAddress\":\"0xb1eb603e055e37295ad68e9ea63810f78c27e06f\",\"isWalletWhitelisted\":false,\"isWalletWhitelistedBitbond\":false}},\"investorData\":{\"_id\":\"\",\"investorType\":\"\",\"financialKnowledge\":\"\",\"kybStatus\":\"Not Submitted\",\"signingCombinations\":[],\"boardMembers\":[],\"statusUpdates\":[],\"deletedAt\":null,\"isVerifiedAccredited\":false,\"jurisdictionViewCount\":[],\"organizationDocuments\":[],\"legalDocuments\":[],\"complianceDocuments\":[],\"boardMemberDocuments\":[],\"__v\":0,\"residencyCountry\":null,\"bankAccountHolderName\":\"\",\"bankName\":\"\",\"bankAccountNumber\":\"\",\"bankSwiftBicCode\":\"\",\"bankIban\":\"\",\"bankDefaultCurrency\":\"\"}},\"version\":0}"
+        },
+        {
+          "name": "authToken",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODE0ZTFjZTI1NWRmMGI3MTBlODRhMTEiLCJ1c2VyRW1haWwiOiJ3NWdjd3dvQHNibWNoYmx5Lm1haWxvc2F1ci5uZXQiLCJpbnZlc3RvcklkIjoiNjgxNGUxY2UyNTVkZjBiNzEwZTg0YTEzIiwicm9sZSI6ImludmVzdG9yIiwianRpIjoiMTNiZTRkYzUtMzczOS00NmVkLWJkZDYtMDNmZWZkZjg1MTQzIiwiaWF0IjoxNzQ2MTk4OTkxLCJleHAiOjE3NDYyMDI1OTF9.XHLbDuwCo9iseD5SEA8G85lceTqlLPpVv5tL-uALo18"
+        },
+        {
+          "name": "EXP_unsent_$default_instance",
+          "value": "[]"
+        },
+        {
+          "name": "EXP_57e1840af5_DEFAULT_USER_PROVIDER",
+          "value": "{\"first_seen\":\"1746198961.365\"}"
+        },
+        {
+          "name": "loginTime",
+          "value": "1746198992781"
+        },
+        {
+          "name": "loglevel:web3auth-logger",
+          "value": "ERROR"
+        },
+        {
+          "name": "AMP_unsent_57e1840af5",
+          "value": "[{\"device_id\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d\",\"session_id\":1746198962432,\"time\":1746198994339,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"dae4383b-ba00-4389-b452-b535b4f4b28f\",\"event_type\":\"[Amplitude] Element Changed\",\"event_properties\":{\"[Amplitude] Element Class\":\"!rounded-none placeholder-[#9E9E9E] text-[0.688rem] !imporant\",\"[Amplitude] Element Hierarchy\":[{\"tag\":\"input\",\"index\":1,\"indexOfType\":0,\"prevSib\":\"label\",\"classes\":[\"!rounded-none\",\"placeholder-[#9E9E9E]\",\"text-[0.688rem]\",\"!imporant\"],\"attrs\":{\"type\":\"text\"}},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"flex\",\"flex-col\",\"gap-2\"]},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"grid\",\"grid-cols-1\",\"md:grid-cols-2\",\"gap-4\",\"md:gap-x-2\"]},{\"tag\":\"form\",\"index\":2,\"indexOfType\":0,\"prevSib\":\"h3\",\"classes\":[\"w-full\",\"flex\",\"flex-col\",\"gap-4\",\"profilePage\"]},{\"tag\":\"div\",\"index\":1,\"indexOfType\":1,\"prevSib\":\"div\",\"classes\":[\"flex\",\"flex-col\",\"rounded-[0.5rem]\",\"items-center\",\"bg-monochrome-100\",\"w-full\",\"sm:w-[426px]\",\"p-[1.5rem]\",\"gap-4\"]},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"flex\",\"flex-col\",\"items-center\",\"justify-center\",\"gap-4\",\"h-full\"]},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"mb-0\",\"px-4\",\"md:px-2\",\"xl:px-0\",\"mx-auto\",\"w-full\",\"pt-0\",\"p-0\",\"min-h-[calc(100vh-64px-56px-1.2rem)]\"]}],\"[Amplitude] Element Tag\":\"input\",\"[Amplitude] Element Position Left\":451,\"[Amplitude] Element Position Top\":184,\"[Amplitude] Element Parent Label\":\"Profile Info\",\"[Amplitude] Page URL\":\"https://www.staging.invest.penomo.com/setupProfile\",\"[Amplitude] Page Title\":\"Invest App | penomo\",\"[Amplitude] Viewport Height\":720,\"[Amplitude] Viewport Width\":1280,\"[Amplitude] Session Replay ID\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d/1746198962432\"},\"event_id\":8,\"library\":\"amplitude-ts-script/2.16.0\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"},{\"device_id\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d\",\"session_id\":1746198962432,\"time\":1746198994355,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"4ad1bd34-4876-4188-95dd-63ed5bd05bd0\",\"event_type\":\"[Amplitude] Form Started\",\"event_properties\":{\"[Amplitude] Form ID\":\"\",\"[Amplitude] Form Name\":\"\",\"[Amplitude] Form Destination\":\"https://www.staging.invest.penomo.com/setupProfile\",\"[Amplitude] Session Replay ID\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d/1746198962432\"},\"event_id\":9,\"library\":\"amplitude-ts-script/2.16.0\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"},{\"device_id\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d\",\"session_id\":1746198962432,\"time\":1746198994535,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"0e1d18f8-1bbd-4f67-9dda-e07ad088de1f\",\"event_type\":\"[Amplitude] Element Changed\",\"event_properties\":{\"[Amplitude] Element Class\":\"!rounded-none placeholder-[#9E9E9E] text-[0.688rem] !imporant\",\"[Amplitude] Element Hierarchy\":[{\"tag\":\"input\",\"index\":1,\"indexOfType\":0,\"prevSib\":\"label\",\"classes\":[\"!rounded-none\",\"placeholder-[#9E9E9E]\",\"text-[0.688rem]\",\"!imporant\"],\"attrs\":{\"type\":\"text\"}},{\"tag\":\"div\",\"index\":1,\"indexOfType\":1,\"prevSib\":\"div\",\"classes\":[\"flex\",\"flex-col\",\"gap-2\"]},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"grid\",\"grid-cols-1\",\"md:grid-cols-2\",\"gap-4\",\"md:gap-x-2\"]},{\"tag\":\"form\",\"index\":2,\"indexOfType\":0,\"prevSib\":\"h3\",\"classes\":[\"w-full\",\"flex\",\"flex-col\",\"gap-4\",\"profilePage\"]},{\"tag\":\"div\",\"index\":1,\"indexOfType\":1,\"prevSib\":\"div\",\"classes\":[\"flex\",\"flex-col\",\"rounded-[0.5rem]\",\"items-center\",\"bg-monochrome-100\",\"w-full\",\"sm:w-[426px]\",\"p-[1.5rem]\",\"gap-4\"]},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"flex\",\"flex-col\",\"items-center\",\"justify-center\",\"gap-4\",\"h-full\"]}],\"[Amplitude] Element Tag\":\"input\",\"[Amplitude] Element Position Left\":644,\"[Amplitude] Element Position Top\":184,\"[Amplitude] Element Parent Label\":\"Profile Info\",\"[Amplitude] Page URL\":\"https://www.staging.invest.penomo.com/setupProfile\",\"[Amplitude] Page Title\":\"Invest App | penomo\",\"[Amplitude] Viewport Height\":720,\"[Amplitude] Viewport Width\":1280,\"[Amplitude] Session Replay ID\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d/1746198962432\"},\"event_id\":10,\"library\":\"amplitude-ts-script/2.16.0\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"},{\"device_id\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d\",\"session_id\":1746198962432,\"time\":1746198994624,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"5333dc61-90ea-4ea9-a7bf-d035d88722d1\",\"event_type\":\"[Amplitude] Element Clicked\",\"event_properties\":{\"[Amplitude] Element Class\":\" css-1mjqheq\",\"[Amplitude] Element Hierarchy\":[{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"css-1mjqheq\"],\"attrs\":{\"data-value\":\"Ukr\"}},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"css-hlgwow\"]},{\"tag\":\"div\",\"index\":2,\"indexOfType\":0,\"prevSib\":\"span\",\"classes\":[\"css-q54ntu-control\"]},{\"tag\":\"div\",\"index\":1,\"indexOfType\":0,\"prevSib\":\"label\",\"classes\":[\"text-[0.688rem]\",\"!imporant\",\"font-normal\",\"css-b62m3t-container\"]},{\"tag\":\"div\",\"index\":3,\"indexOfType\":3,\"prevSib\":\"div\",\"classes\":[\"flex\",\"flex-col\",\"gap-2\"]},{\"tag\":\"form\",\"index\":2,\"indexOfType\":0,\"prevSib\":\"h3\",\"classes\":[\"w-full\",\"flex\",\"flex-col\",\"gap-4\",\"profilePage\"]},{\"tag\":\"div\",\"index\":1,\"indexOfType\":1,\"prevSib\":\"div\",\"classes\":[\"flex\",\"flex-col\",\"rounded-[0.5rem]\",\"items-center\",\"bg-monochrome-100\",\"w-full\",\"sm:w-[426px]\",\"p-[1.5rem]\",\"gap-4\"]},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"flex\",\"flex-col\",\"items-center\",\"justify-center\",\"gap-4\",\"h-full\"]}],\"[Amplitude] Element Tag\":\"div\",\"[Amplitude] Element Position Left\":461,\"[Amplitude] Element Position Top\":404,\"[Amplitude] Page URL\":\"https://www.staging.invest.penomo.com/setupProfile\",\"[Amplitude] Page Title\":\"Invest App | penomo\",\"[Amplitude] Viewport Height\":720,\"[Amplitude] Viewport Width\":1280,\"[Amplitude] Session Replay ID\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d/1746198962432\"},\"event_id\":11,\"library\":\"amplitude-ts-script/2.16.0\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"},{\"device_id\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d\",\"session_id\":1746198962432,\"time\":1746198994759,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"2c38be8a-3d27-4d26-ab6e-8f0c91593141\",\"event_type\":\"[Amplitude] Element Clicked\",\"event_properties\":{\"[Amplitude] Element ID\":\"react-select-3-option-232\",\"[Amplitude] Element Class\":\" css-1tt27x1-option\",\"[Amplitude] Element Hierarchy\":[{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"id\":\"react-select-3-option-232\",\"classes\":[\"css-1tt27x1-option\"],\"attrs\":{\"aria-disabled\":\"false\",\"tabindex\":\"-1\",\"role\":\"option\",\"aria-selected\":\"false\"}},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"id\":\"react-select-3-listbox\",\"classes\":[\"css-1pv0851\"],\"attrs\":{\"role\":\"listbox\",\"aria-multiselectable\":\"false\"}},{\"tag\":\"div\",\"classes\":[\"css-1xshyjz-menu\"]}],\"[Amplitude] Element Tag\":\"div\",\"[Amplitude] Element Text\":\"Ukraine\",\"[Amplitude] Element Position Left\":0,\"[Amplitude] Element Position Top\":0,\"[Amplitude] Page URL\":\"https://www.staging.invest.penomo.com/setupProfile\",\"[Amplitude] Page Title\":\"Invest App | penomo\",\"[Amplitude] Viewport Height\":720,\"[Amplitude] Viewport Width\":1280,\"[Amplitude] Session Replay ID\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d/1746198962432\"},\"event_id\":12,\"library\":\"amplitude-ts-script/2.16.0\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"},{\"device_id\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d\",\"session_id\":1746198962432,\"time\":1746198994889,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"f0f710a6-6394-4301-ae51-311643319c83\",\"event_type\":\"[Amplitude] Form Submitted\",\"event_properties\":{\"[Amplitude] Form ID\":\"\",\"[Amplitude] Form Name\":\"\",\"[Amplitude] Form Destination\":\"https://www.staging.invest.penomo.com/setupProfile\",\"[Amplitude] Session Replay ID\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d/1746198962432\"},\"event_id\":13,\"library\":\"amplitude-ts-script/2.16.0\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"},{\"device_id\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d\",\"session_id\":1746198962432,\"time\":1746198994893,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"7cddf7f9-16d5-4c81-87a6-33a2969ea3ef\",\"event_type\":\"[Amplitude] Element Clicked\",\"event_properties\":{\"[Amplitude] Element Class\":\"py-2 px-2 md:px-6 flex flex-row items-center cursor-pointer justify-center gap-2 text-[11px]  opacity-[1] !important text-[#1A1C22] bg-green-500 min-h-[40px] hover:bg-white rounded-[8px]\",\"[Amplitude] Element Hierarchy\":[{\"tag\":\"button\",\"index\":5,\"indexOfType\":0,\"prevSib\":\"div\",\"classes\":[\"py-2\",\"px-2\",\"md:px-6\",\"flex\",\"flex-row\",\"items-center\",\"cursor-pointer\",\"justify-center\",\"gap-2\",\"text-[11px]\",\"opacity-[1]\",\"!important\",\"text-[#1A1C22]\",\"bg-green-500\",\"min-h-[40px]\",\"hover:bg-white\",\"rounded-[8px]\"],\"attrs\":{\"type\":\"submit\"}},{\"tag\":\"form\",\"index\":2,\"indexOfType\":0,\"prevSib\":\"h3\",\"classes\":[\"w-full\",\"flex\",\"flex-col\",\"gap-4\",\"profilePage\"]},{\"tag\":\"div\",\"index\":1,\"indexOfType\":1,\"prevSib\":\"div\",\"classes\":[\"flex\",\"flex-col\",\"rounded-[0.5rem]\",\"items-center\",\"bg-monochrome-100\",\"w-full\",\"sm:w-[426px]\",\"p-[1.5rem]\",\"gap-4\"]},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"flex\",\"flex-col\",\"items-center\",\"justify-center\",\"gap-4\",\"h-full\"]},{\"tag\":\"div\",\"index\":0,\"indexOfType\":0,\"classes\":[\"mb-0\",\"px-4\",\"md:px-2\",\"xl:px-0\",\"mx-auto\",\"w-full\",\"pt-0\",\"p-0\",\"min-h-[calc(100vh-64px-56px-1.2rem)]\"]}],\"[Amplitude] Element Tag\":\"button\",\"[Amplitude] Element Text\":\"Submit\",\"[Amplitude] Element Position Left\":451,\"[Amplitude] Element Position Top\":522,\"[Amplitude] Element Parent Label\":\"Profile Info\",\"[Amplitude] Page URL\":\"https://www.staging.invest.penomo.com/setupProfile\",\"[Amplitude] Page Title\":\"Invest App | penomo\",\"[Amplitude] Viewport Height\":720,\"[Amplitude] Viewport Width\":1280,\"[Amplitude] Session Replay ID\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d/1746198962432\"},\"event_id\":14,\"library\":\"amplitude-ts-script/2.16.0\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"},{\"device_id\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d\",\"session_id\":1746198962432,\"time\":1746198995103,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"b3a7ce30-7abf-4c01-88fa-0f98bb07b19a\",\"event_type\":\"[Amplitude] Page Viewed\",\"event_properties\":{\"[Amplitude] Page Domain\":\"www.staging.invest.penomo.com\",\"[Amplitude] Page Location\":\"https://www.staging.invest.penomo.com/dashboard\",\"[Amplitude] Page Path\":\"/dashboard\",\"[Amplitude] Page Title\":\"Invest App | penomo\",\"[Amplitude] Page URL\":\"https://www.staging.invest.penomo.com/dashboard\",\"[Amplitude] Session Replay ID\":\"3a3632e0-07f1-4c72-9ee4-5c45f117978d/1746198962432\",\"[Amplitude] Page Counter\":3},\"event_id\":15,\"library\":\"amplitude-ts-script/2.16.0\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"}]"
+        },
+        {
+          "name": "EXP_57e1840af5",
+          "value": "{\"web_exp_id\":\"ac19aea0-017f-4322-97e9-e9fbc6c6d8c2\"}"
+        },
+        {
+          "name": "web3AuthToken",
+          "value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRZT2dnXy01RU9FYmxhWS1WVlJZcVZhREFncHRuZktWNDUzNU1aUEMwdzAifQ.eyJpYXQiOjE3NDYxOTg5NzAsImF1ZCI6IkJJeG9pSDBYSDV6NkJDNGNVYTVlWVpNbGZ5d0hkLVUzZ3BZT1daTzJqaTRHNzVfbXlQamhSYTdGaTJUOWw5QW5sbkVnYnFPeTR6U2h1ZVNieTFGRlU3NCIsIm5vbmNlIjoiMDMwZTczZGE4M2NjNzc3NDVmYWRkNWQ1OWI4NDFiNjlmOThhYzZmNzZkNzYyMzliODY5ODM5OTI0OGRlMzg5Nzg1IiwiaXNzIjoiaHR0cHM6Ly9hcGktYXV0aC53ZWIzYXV0aC5pbyIsIndhbGxldHMiOlt7InB1YmxpY19rZXkiOiIwMjIyOTFiYzEyNTdlYTVjODE3OWE0ZjQzNzdiYzRmMTMyNjZjNDRlODYyM2FmMTRiOWJiMDc0YjYzYjAxNDI2ZjAiLCJ0eXBlIjoid2ViM2F1dGhfYXBwX2tleSIsImN1cnZlIjoic2VjcDI1NmsxIn0seyJwdWJsaWNfa2V5IjoiMDMzMGEyNWViNDM1MzEyODA0NjU2NWQyZTdiMDdmNjEyM2RjYzA2ZDdhNDNhOTI4YmNhMzA5MTkwNzZjNDE4Mjg0IiwidHlwZSI6IndlYjNhdXRoX3RocmVzaG9sZF9rZXkiLCJjdXJ2ZSI6InNlY3AyNTZrMSJ9XSwiZW1haWwiOiJ3NWdjd3dvQHNibWNoYmx5Lm1haWxvc2F1ci5uZXQiLCJuYW1lIjoidzVnY3d3b0BzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwidmVyaWZpZXIiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwidmVyaWZpZXJJZCI6Inc1Z2N3d29Ac2JtY2hibHkubWFpbG9zYXVyLm5ldCIsImFnZ3JlZ2F0ZVZlcmlmaWVyIjoibm9fbW9kYWxfb25seV9lbWFpbF92ZXJpZmllciIsImV4cCI6MTc0NjI4NTM3MH0.1U8wH9MPmft3pegnX8a9zpmqInn1HqWQbyZIitNN3TTRi96SuqsZ8DpKcaPMqZqcfOR-kGL86rbxk9Gxey9Gnw"
+        },
+        {
+          "name": "Web3Auth-cachedAdapter",
+          "value": "auth"
+        }
+      ]
+    },
+    {
+      "origin": "https://auth.web3auth.io",
+      "localStorage": [
+        {
+          "name": "loglevel:http-helpers",
+          "value": "INFO"
+        },
+        {
+          "name": "loglevel:fnd",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel:torus.js",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel:customauth",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel:SecurePubSub",
+          "value": "SILENT"
+        },
+        {
+          "name": "loglevel",
+          "value": "ERROR"
+        }
+      ]
+    },
+    {
+      "origin": "https://passwordless.web3auth.io",
+      "localStorage": [
+        {
+          "name": "loglevel:http-helpers",
+          "value": "INFO"
+        },
+        {
+          "name": "loglevel",
+          "value": "ERROR"
+        }
+      ]
+    }
+  ]
+}
