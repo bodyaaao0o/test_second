@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { PageManager } from '../../support/PageObject/pageManager';
-import { checkVisibility } from '../../support/PageObject/pageManager';
-import { adminLogin } from '../../support/login_as_admin';
+import { PageManager } from '../../../support/PageObject/pageManager';
+import { checkVisibility } from '../../../support/PageObject/pageManager';
+import { adminLogin } from '../../../support/login_as_admin';
 
 
 test.describe("Admin quests test", () => {
