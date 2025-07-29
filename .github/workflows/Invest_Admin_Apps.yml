@@ -49,17 +49,8 @@ jobs:
 
       - name: Run E2E tests (Mobile)
         run: npx playwright test ./E2E --project="Mobile Safari"
-      # ---------- Slack on failure ----------
-
-      - name: Send Slack notification on test failure
-        if: failure()
-        run: |
-          curl -X POST -H 'Content-type: application/json' \
-            --data '{"text":"❌ Playwright tests failed on *staging*. Project: *Investor or Admin*. Check the Allure report."}' \
-            ${{ secrets.SLACK_WEBHOOK_URL }}
 
       # ---------- Allure reporting ----------
-
       - name: Install Allure CLI
         if: always()
         run: npm install -g allure-commandline
@@ -83,3 +74,21 @@ jobs:
           name: allure-results
           path: ./allure-results
           retention-days: 3
+
+      # ---------- Extract failure reason from Allure ----------
+      - name: Extract failure reason from Allure
+        if: failure()
+        run: |
+          echo "Getting failure reason from Allure results..."
+          REASON=$(jq -r 'select(.status=="failed") | .statusDetails.message // .statusDetails.trace' allure-results/*.json | head -n 1 | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
+          echo "REASON=$REASON" >> $GITHUB_ENV
+
+      # ---------- Send Slack notification on failure ----------
+      - name: Send Slack notification on test failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data "{
+              \"text\": \"❌ *Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\"
+            }" \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
