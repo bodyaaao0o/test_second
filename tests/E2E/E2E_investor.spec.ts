@@ -298,9 +298,10 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnBurgerMenu();
         
             await pm.dashboardTo().clickOnLogoutButtonForMobile();
-        };
-
-        await pm.dashboardTo().getLogoutNav().click();
+        } 
+        else {
+            await pm.dashboardTo().getLogoutNav().click();
+        }
 
         await page.waitForLoadState();
         

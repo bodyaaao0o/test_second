@@ -32,7 +32,7 @@ export class TransactionPage {
     };
 
     getTransactionCategoryBox(): Locator {
-        return this.page.locator('.css-qr46ko');
+        return this.page.locator('[role="listbox"][aria-multiselectable="true"]');
     };
 
     getAllTransactionFilter(): Locator {
