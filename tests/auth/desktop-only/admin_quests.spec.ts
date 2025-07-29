@@ -47,6 +47,8 @@ test.describe("Admin quests test", () => {
 
         await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
 
+        await page.waitForTimeout(1000);
+
         await expect(pm.questsAdminTo().getChellenge1()).toBeVisible();
 
         await pm.questsAdminTo().getChellenge1().click();
