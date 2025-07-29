@@ -9,11 +9,12 @@ on:
       - main
 
 jobs:
-  desktop-tests:
-    name: Run Desktop Tests
-    timeout-minutes: 30
+  setup:
+    name: Install dependencies and cache
     runs-on: ubuntu-latest
-
+    timeout-minutes: 10
+    outputs:
+      cache-hit: ${{ steps.cache-deps.outputs.cache-hit }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,6 +25,7 @@ jobs:
           node-version: 20
 
       - name: Cache node_modules
+        id: cache-deps
         uses: actions/cache@v4
         with:
           path: ./node_modules
@@ -32,7 +34,37 @@ jobs:
             penomo-tests-
 
       - name: Install dependencies
+        if: steps.cache-deps.outputs.cache-hit != 'true'
         run: npm ci
+
+      - name: Save node_modules as artifact (for later jobs)
+        if: steps.cache-deps.outputs.cache-hit != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: node_modules
+          path: ./node_modules
+          retention-days: 1
+
+  desktop-tests:
+    name: Run Desktop Tests
+    runs-on: ubuntu-latest
+    needs: setup
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Restore node_modules (if not cached)
+        uses: actions/download-artifact@v4
+        with:
+          name: node_modules
+          path: ./node_modules
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
@@ -45,9 +77,9 @@ jobs:
 
   mobile-tests:
     name: Run Mobile Tests
-    timeout-minutes: 30
     runs-on: ubuntu-latest
-    needs: desktop-tests # optional — запускати мобайл тести тільки після десктоп
+    needs: setup
+    timeout-minutes: 30
 
     steps:
       - name: Checkout code
@@ -58,27 +90,22 @@ jobs:
         with:
           node-version: 20
 
-      - name: Cache node_modules
-        uses: actions/cache@v4
+      - name: Restore node_modules (if not cached)
+        uses: actions/download-artifact@v4
         with:
+          name: node_modules
           path: ./node_modules
-          key: penomo-tests-${{ hashFiles('penomo_tests/package-lock.json') }}
-          restore-keys: |
-            penomo-tests-
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
       - name: Run auth tests (Mobile)
-        run: npx playwright test ./auth/login.spec.ts --project="Mobile Safari" 
+        run: npx playwright test ./auth/login.spec.ts --project="Mobile Safari"
 
       - name: Run E2E tests (Mobile)
         run: npx playwright test ./E2E --project="Mobile Safari"
 
-      # Allure Reporting
+      # Allure + Slack ↓ залишаємо як є
       - name: Install Allure CLI
         if: always()
         run: npm install -g allure-commandline
