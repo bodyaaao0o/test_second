@@ -45,7 +45,7 @@ export default defineConfig({
     // baseURL: 'https://dev.invest.penomo.com',
   },
   expect: {
-    timeout: 100000,
+    timeout: 10000,
   },
 
   /* Configure projects for major browsers */
