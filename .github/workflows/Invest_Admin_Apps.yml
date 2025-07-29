@@ -10,9 +10,10 @@ on:
 
 jobs:
   setup:
-    name: Setup and cache dependencies
+    name: Cache only (no install)
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    outputs:
+      cache-key: ${{ steps.cache-deps.outputs.cache-primary-key }}
 
     steps:
       - name: Checkout code
@@ -32,16 +33,6 @@ jobs:
           restore-keys: |
             penomo-tests-
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Upload node_modules as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: node_modules
-          path: ./node_modules
-          retention-days: 1
-
   desktop-tests:
     name: Run Desktop Tests
     runs-on: ubuntu-latest
@@ -57,11 +48,16 @@ jobs:
         with:
           node-version: 20
 
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
+      - name: Restore node_modules from cache
+        uses: actions/cache@v4
         with:
-          name: node_modules
           path: ./node_modules
+          key: penomo-tests-${{ hashFiles('penomo_tests/package-lock.json') }}
+          restore-keys: |
+            penomo-tests-
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
@@ -87,11 +83,16 @@ jobs:
         with:
           node-version: 20
 
-      - name: Download node_modules
-        uses: actions/download-artifact@v4
+      - name: Restore node_modules from cache
+        uses: actions/cache@v4
         with:
-          name: node_modules
           path: ./node_modules
+          key: penomo-tests-${{ hashFiles('penomo_tests/package-lock.json') }}
+          restore-keys: |
+            penomo-tests-
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
@@ -127,7 +128,6 @@ jobs:
           path: ./allure-results
           retention-days: 3
 
-      # -------- Slack Notification --------
       - name: Extract failure reason from Allure
         if: failure()
         run: |
