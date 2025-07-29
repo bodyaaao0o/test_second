@@ -15,7 +15,7 @@ test.describe("Admin quests test", () => {
         await expect(page).toHaveURL('https://www.staging.admin.penomo.com/dashboard');
 
         await expect(pm.questsAdminTo().getNavigationBar()).toBeVisible();
-        
+
         await expect(pm.questsAdminTo().getQuestsNav()).toBeVisible();
 
         await page.waitForTimeout(15000);
@@ -25,6 +25,7 @@ test.describe("Admin quests test", () => {
         await page.waitForURL('**/quest');
 
         await expect(page).toHaveURL('https://www.staging.admin.penomo.com/quest');
+
         await checkVisibility([
             pm.questsAdminTo().getChallengesNav(),
             pm.questsAdminTo().getFlipCardsNav(),
@@ -47,8 +48,15 @@ test.describe("Admin quests test", () => {
 
         await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
 
-        await page.waitForTimeout(1000);
+        const isVisible = await pm.questsAdminTo().getChellenge1().isVisible();
 
+        if (!isVisible) {
+            await page.reload();
+            // Після reload потрібно знову ввести значення у пошук
+            await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
+        }
+
+        // Фінальна перевірка — після reload елемент має бути видимим
         await expect(pm.questsAdminTo().getChellenge1()).toBeVisible();
 
         await pm.questsAdminTo().getChellenge1().click();
