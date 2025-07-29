@@ -40,18 +40,15 @@ jobs:
 
       - name: Run auth tests (Desktop)
         run: npx playwright test ./auth --project=chromium 
-
-      - name: Run auth tests (Mobile)
-        run: npx playwright test ./auth/login.spec.ts --project="Mobile Chromium" 
-
-      - name: Clear Playwright test results
-        run: rm -rf ./test-results
-
+        
       - name: Run E2E tests (Desktop)
         run: npx playwright test ./E2E --project=chromium
 
+      - name: Run auth tests (Mobile)
+        run: npx playwright test ./auth/login.spec.ts --project="Mobile Safari" 
+
       - name: Run E2E tests (Mobile)
-        run: npx playwright test ./E2E --project="Mobile Chromium"
+        run: npx playwright test ./E2E --project="Mobile Safari"
       # ---------- Slack on failure ----------
 
       - name: Send Slack notification on test failure
