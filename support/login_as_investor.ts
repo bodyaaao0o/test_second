@@ -65,9 +65,6 @@ export async function investorLogin(page: Page, context: BrowserContext, pm: Pag
     //await pm.profile().getInputReferalCode().fill(valid_referal_code)
     await pm.profile().getSubmiteButton().click();
     await page.waitForURL('**/dashboard');
-
-    const statePath = path.join(__dirname, '../storageState.json');
-    await context.storageState({ path: statePath });
     return page;
 }
 

@@ -52,18 +52,27 @@ export default defineConfig({
   projects: [
 
     // {
-    //   name: "infestor E2E",
-    //   testMatch: /.*\/tests\/E2E\/investor\.spec\.ts/,
+    //   name: "infestor mobile",
     //   use: {
-    //     storageState: 'playwright/.auth/redistered_invest_login.json',
+    //     ...devices['iPhone 12'],
+    //     isMobile: true,
     //   },
     // },
 
     // {
-    //   name: "Investor presale",
-    //   testMatch: /.*\/tests\/E2E\/presale\.spec\.ts/,
+    //   name: "Investor desktop",
     //   use: {
+    //     browserName: 'chromium',
+    //     isMobile: false,
     //     storageState: 'playwright/.auth/invest_login.json'
+    //   },
+    // },
+
+    // {
+    //   name: "Admin desktop",
+    //   use: {
+    //     browserName: 'chromium',
+    //     storageState: 'playwright/.auth/admin_login.json'
     //   },
     // },
 
@@ -80,13 +89,13 @@ export default defineConfig({
     //     isMobile: true,
     //   },
     // },
-    // {
-    //   name: 'Mobile Safari',
-    //   use: {
-    //     ...devices['iPhone 12'],
-    //     isMobile: true,
-    //   },
-    // },
+    {
+      name: 'Mobile Safari',
+      use: {
+        ...devices['iPhone 12'],
+        isMobile: true,
+      },
+    },
 
     /* Test against branded browsers. */
     // {

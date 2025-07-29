@@ -118,7 +118,7 @@ export class ProfileInfo {
     };
 
     getInvestorTypesAfterSelect(): Locator {
-        return this.page.locator('.css-1xshyjz-menu');
+        return this.page.locator('.css-asj84a-option');
     };
 
     getNationalityTitle(): Locator {
@@ -130,7 +130,7 @@ export class ProfileInfo {
     };
 
     getCountryList(): Locator {
-        return this.page.locator('.css-1xshyjz-menu');
+        return this.page.locator('.css-15mfycp-menu');
     };
 
     getInputCountryName(): Locator {

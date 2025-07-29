@@ -12,7 +12,8 @@ test.describe("E2E test for investor portal", () => {
     let pm: PageManager;
     
 
-    test("Investor test flow", async({ page, context }) => {
+    test("Investor test flow", async({ page, context }, testInfo) => {
+        const isMobile = testInfo.project.use.isMobile;
         pm  = new PageManager(page);
 
         await page.goto(stageBaseUrl);
@@ -20,17 +21,8 @@ test.describe("E2E test for investor portal", () => {
         // await investorLogin(page, context, pm);
         
         await expect(page).toHaveURL("https://www.staging.invest.penomo.com/dashboard");
-        
+
         await checkVisibility([
-            pm.dashboardTo().getDashboardNav(),
-            pm.dashboardTo().getPNMOPresaleRound2Nav(),
-            pm.dashboardTo().getInvestNav(),
-            pm.dashboardTo().getCampaignsNav(),
-            pm.dashboardTo().getPortfolioNav(),
-            pm.dashboardTo().getTransactionsNav(),
-            pm.dashboardTo().getStakingNav(),
-            pm.dashboardTo().getGovernanceNav(),
-            pm.dashboardTo().getSettingsNav(),
             pm.dashboardTo().getPNMORewardsBox(),
             pm.dashboardTo().getPNMORewardsInfo(),
             pm.dashboardTo().getPNMORewardsLogo(),
@@ -48,23 +40,45 @@ test.describe("E2E test for investor portal", () => {
             pm.dashboardTo().getUSDCCountBox(),
             pm.dashboardTo().getTopUpButton(),
             pm.dashboardTo().getWithdrawButton()
+        ])
+
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        }
+
+        await checkVisibility([
+            pm.dashboardTo().getDashboardNav(),
+            pm.dashboardTo().getPNMOPresaleRound2Nav(),
+            pm.dashboardTo().getInvestNav(),
+            pm.dashboardTo().getCampaignsNav(),
+            pm.dashboardTo().getPortfolioNav(),
+            pm.dashboardTo().getTransactionsNav(),
+            pm.dashboardTo().getStakingNav(),
+            pm.dashboardTo().getGovernanceNav(),
+            pm.dashboardTo().getSettingsNav(),
         ]);
 
-        await pm.dashboardTo().getCampaignsNav().click();
-        
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=referral');
-        
-        await page.goBack();
+        if (isMobile) {
+            await pm.dashboardTo().clickOnCloseBurgerMenu();
+        };
         
         await pm.dashboardTo().getViewAllTransactionsButton().click();
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/transactions');
         
         await page.goBack();
+
+        if(isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        };
         
         await pm.dashboardTo().getPNMOPresaleRound2Nav().click();
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/presale');
+
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        };
         
         await pm.dashboardTo().getInvestNav().click();
         
@@ -72,15 +86,25 @@ test.describe("E2E test for investor portal", () => {
 
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/marketplace');
 
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        };
+
         await pm.dashboardTo().getCampaignsNav().click();
         
         //Campaigns
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=referral');
+
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        };
         
         await pm.dashboardTo().getPortfolioNav().click();
         
         //Portfolio
+
+        
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/portfolio');
 
@@ -103,6 +127,10 @@ test.describe("E2E test for investor portal", () => {
         await pm.portfolioTo().getSearchFiled().fill('testdata');
         
         await pm.portfolioTo().getSearchFiled().clear();
+
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        };
         
         await pm.dashboardTo().getTransactionsNav().click();
         
@@ -152,17 +180,29 @@ test.describe("E2E test for investor portal", () => {
         
         await expect(pm.transactionTo().getAllTransactionFilterCheck()).not.toBeVisible();
 
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        };
+
         await pm.dashboardTo().getStakingNav().click();
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/staking');
         
         await expect(pm.dashboardTo().getComingSoonText()).toBeVisible();
+
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        };
         
         await pm.dashboardTo().getGovernanceNav().click();
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/governance');
         
         await expect(pm.dashboardTo().getComingSoonText()).toBeVisible();
+
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        };
         
         await pm.dashboardTo().getSettingsNav().click();
         
@@ -206,7 +246,7 @@ test.describe("E2E test for investor portal", () => {
         
         await pm.settingsTo().getFirstNameInput().fill(change_username);
         
-        await pm.settingsTo().getSaveChangesFirstName().click();
+        await pm.settingsTo().getSaveChangesNames().click();
         
         await expect(pm.settingsTo().getSuccessUpdateUserDataMessage()).toBeVisible();
         
@@ -214,7 +254,7 @@ test.describe("E2E test for investor portal", () => {
         
         await pm.settingsTo().getLastNameInput().fill(change_surename);
         
-        await pm.settingsTo().getSaveChangesLastName().click();
+        await pm.settingsTo().getSaveChangesNames().click();
         
         await expect(pm.settingsTo().getSuccessUpdateUserDataMessage()).toBeVisible(); 
         
@@ -254,8 +294,14 @@ test.describe("E2E test for investor portal", () => {
         
         await expect(pm.settingsTo().getSuccessUpdateNotificationMessage()).toBeVisible();
 
-        await pm.dashboardTo().getLogoutNav().click();
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
         
+            await pm.dashboardTo().clickOnLogoutButtonForMobile();
+        };
+
+        await pm.dashboardTo().getLogoutNav().click();
+
         await page.waitForLoadState();
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/');

@@ -42,8 +42,8 @@ export class SettingPage {
     }
 
 
-    getSaveChangesFirstName(): Locator {
-        return this.page.locator('.absolute.right-2.cursor-pointer.text-green-500', { hasText: "Save" }).nth(0)
+    getSaveChangesNames(): Locator {
+        return this.page.locator('.absolute.right-2.cursor-pointer.text-green-100', { hasText: "Save" }).nth(0)
     }
 
     getLastNameTitle(): Locator {
@@ -56,10 +56,6 @@ export class SettingPage {
 
     getChangeLastName(): Locator {
         return this.page.locator('div.cursor-pointer svg').nth(3);
-    };
-
-    getSaveChangesLastName(): Locator {
-        return this.page.locator('.absolute.right-2.cursor-pointer.text-green-500', { hasText: "Save" }).nth(0);
     };
 
     getEmailTitle(): Locator {

@@ -64,7 +64,7 @@ export class WhiteList {
     };
 
     getSuccessLogo(): Locator {
-        return this.page.locator('.aspect-square.text-green-500.bg-green-10');
+        return this.page.locator('.p-3.aspect-square.text-green-100.bg-green-10.rounded-full');
     };
 
     getSuccessTitle(): Locator {

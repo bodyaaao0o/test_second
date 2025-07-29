@@ -1,4 +1,5 @@
 import { Locator, Page, test } from '@playwright/test';
+import { get } from 'http';
 
 export class DashboardPage {
     private readonly page: Page;
@@ -161,5 +162,32 @@ export class DashboardPage {
     getComingSoonText(): Locator {
         return this.page.locator('p', {hasText: "Coming Soon."})
     };
+
+    //Mobile locators
+
+    getBurgerMenu() : Locator {
+        return this.page.locator('svg.w-5.h-5');
+    };
+
+    clickOnBurgerMenu() {
+        return this.getBurgerMenu().click();
+    };
+
+    getCloseBurgerMenu() : Locator {
+        return this.page.locator('svg.w-7.h-7');
+    }
+
+    clickOnCloseBurgerMenu() {
+        return this.getCloseBurgerMenu().click();
+    };
+
+    getLogoutButtonForMobile(): Locator {
+        return this.page.locator('div.flex.justify-items-center span.pl-4.flex.my-auto.text-sm', { hasText: "Logout" }).first();
+    };
+
+    clickOnLogoutButtonForMobile() {
+        return this.getLogoutButtonForMobile().click();
+    };
+
 
 }
