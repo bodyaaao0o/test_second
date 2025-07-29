@@ -6,7 +6,7 @@ on:
       - staging
   push:
     branches:
-      - staging
+      - main
 
 jobs:
   test:
@@ -22,54 +22,46 @@ jobs:
         with:
           node-version: 20
 
-      - name: Change directory to test project
-        working-directory: ./penomo_tests
-        run: echo "Now in test project folder"
-
       - name: Cache node_modules
         uses: actions/cache@v4
         with:
-          path: penomo_tests/node_modules
+          path: ./node_modules
           key: penomo-tests-${{ hashFiles('penomo_tests/package-lock.json') }}
           restore-keys: |
             penomo-tests-
 
       - name: Install dependencies
-        working-directory: ./penomo_tests
-        run: npm ci
+        run: npm ci --prefix penomo_tests
 
       - name: Install Playwright browsers
-        working-directory: ./penomo_tests
         run: npx playwright install --with-deps
 
-      - name: Run Login tests
-        working-directory: ./penomo_tests
-        run: npx playwright test ./auth --project=chromium
+      # ---------- Run tests ----------
+
+      - name: Run auth tests (Desktop)
+        run: npx playwright test ./auth --project=chromium 
+
+      - name: Run auth tests (Mobile)
+        run: npx playwright test ./auth --project="Mobile Chromium" 
 
       - name: Clear Playwright test results
-        working-directory: ./penomo_tests
-        run: rm -rf test-results
+        run: rm -rf ./test-results
 
-      - name: Run Playwright tests in Chromium
-        working-directory: ./penomo_tests
+      - name: Run E2E tests (Desktop)
         run: npx playwright test ./E2E --project=chromium
 
-      # - name: Run Playwright tests in Chromium and save output
-      #   id: run_tests
-      #   run: |
-      #     npx playwright test --project=chromium > result.log 2>&1
-      #     echo "exit_code=$?" >> result.env
-      #   shell: bash
+      - name: Run E2E tests (Mobile)
+        run: npx playwright test ./E2E --project="Mobile Chromium"
+      # ---------- Slack on failure ----------
 
-      # - name: Run Playwright tests in Chromium
-      #   run: npx playwright test --project=chromium
+      - name: Send Slack notification on test failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data '{"text":"❌ Playwright tests failed on *staging*. Project: *Investor or Admin*. Check the Allure report."}' \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
 
-      # - name: Send Slack notification on test failure
-      #   if: failure()  # тільки коли тести фейляться
-      #   run: |
-      #     curl -X POST -H 'Content-type: application/json' \
-      #       --data '{"text":"Playwright tests failed on staging for Investor or Admin apps! Check the Allure report."}' \
-      #       ${{ secrets.SLACK_WEBHOOK_URL }}
+      # ---------- Allure reporting ----------
 
       - name: Install Allure CLI
         if: always()
@@ -77,15 +69,14 @@ jobs:
 
       - name: Generate Allure Report
         if: failure()
-        working-directory: ./penomo_tests
-        run: npx allure generate allure-results -o allure-report --clean
+        run: npx allure generate ./allure-results -o ./allure-report --clean
 
       - name: Upload Allure report
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: penomo_tests/allure-report
+          path: ./allure-report
           retention-days: 3
 
       - name: Upload Allure raw results
@@ -93,5 +84,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
-          path: penomo_tests/allure-results
+          path: ./allure-results
           retention-days: 3
