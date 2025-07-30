@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test';
+import { test, expect, Page, Locator } from '@playwright/test';
 import { LoginPage, ProfileInfo } from '../PageObject/loginPage.PO';
 import { DashboardPage } from './dashboardPage.PO';
 import { WhiteList } from './whiteList.PO';
@@ -91,3 +91,23 @@ export const checkVisibility = async (elements: any[]) => {
         await expect(element).toBeVisible();
     }
 }
+
+export const checkVisibilityWithRetry = async (
+    locators: Locator[],
+    retries = 5,
+    delay = 3000,
+    page: Page 
+) => {
+    for (let i = 0; i < retries; i++) {
+        try {
+            for (const locator of locators) {
+                await expect(locator).toBeVisible({ timeout: 5000 });
+            }
+            return;
+        } catch (e) {
+            if (i === retries - 1) throw e;
+            await page.waitForTimeout(delay);
+            await page.reload();
+        }
+    }
+};

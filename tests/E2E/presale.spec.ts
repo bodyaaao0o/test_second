@@ -1,7 +1,7 @@
 import { test, expect, BrowserContext, Page, chromium, TestInfo } from '@playwright/test';
 import { PageManager } from '../../support/PageObject/pageManager';
 import { env } from '../../support/data';
-import { checkVisibility } from '../../support/PageObject/pageManager';
+import { checkVisibility, checkVisibilityWithRetry } from '../../support/PageObject/pageManager';
 import { userVerification } from '../../support/make_test_user_verify';
 import { Wallet } from 'ethers';
 import { investorLogin } from '../../support/login_as_investor';
@@ -27,12 +27,12 @@ test.describe("E2E: Investor + Admin presale flow", () => {
 
         if (isMobile) {
             investorContext = await browser.newContext({
-                viewport: { width: 375, height: 667 }, 
-                userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X)...' 
+                viewport: { width: 375, height: 667 },
+                userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X)...'
             });
         } else {
-            investorContext = await browser.newContext({ 
-                storageState: 'playwright/.auth/invest_login.json' 
+            investorContext = await browser.newContext({
+                storageState: 'playwright/.auth/invest_login.json'
             });
         }
 
@@ -76,12 +76,12 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         await investorPage.waitForTimeout(2000);
         await investorPage.reload();
 
-        await checkVisibility([
+        await checkVisibilityWithRetry([
             investorPM.dashboardTo().getWhiteList(),
             investorPM.dashboardTo().getWhiteListLogo(),
             investorPM.dashboardTo().getWhiteListDescription(),
             investorPM.dashboardTo().getWhiteListButton()
-        ]);
+        ], 5, 3000, investorPage);
 
         await investorPM.dashboardTo().getWhiteListButton().click();
 
@@ -176,13 +176,13 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         await investorPage.bringToFront();
         await investorPage.waitForTimeout(5000);
 
-        if(isMobile) {
-            await investorPM.dashboardTo().clickOnBurgerMenu(); 
+        if (isMobile) {
+            await investorPM.dashboardTo().clickOnBurgerMenu();
         };
 
         await expect(investorPM.presaleTo().getPresalePageNav()).toBeVisible();
 
-        if(isMobile) {
+        if (isMobile) {
             await investorPM.dashboardTo().clickOnCloseBurgerMenu();
         }
 
@@ -258,8 +258,8 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         await investorPage.bringToFront();
 
 
-        if(isMobile) {
-            await investorPM.dashboardTo().clickOnBurgerMenu(); 
+        if (isMobile) {
+            await investorPM.dashboardTo().clickOnBurgerMenu();
         }
 
         await expect(investorPM.dashboardTo().getDashboardNav()).toBeVisible();
