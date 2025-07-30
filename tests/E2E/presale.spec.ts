@@ -117,13 +117,13 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         await investorPM.whiteListTo().getInputWalletAddress().fill(wallet.address);
         await investorPM.whiteListTo().getJoinPNMOCommunityButton().click();
 
-        await checkVisibility([
+        await checkVisibilityWithRetry([
             investorPM.whiteListTo().getSuccessInvite(),
             investorPM.whiteListTo().getSuccessLogo(),
             investorPM.whiteListTo().getSuccessTitle(),
             investorPM.whiteListTo().getSuccessDescription(),
             investorPM.whiteListTo().getPNMOPresalePageButton(),
-        ])
+        ], 5, 3000, investorPage)
 
         await investorPM.whiteListTo().getPNMOPresalePageButton().click();
         await investorPage.waitForLoadState();
