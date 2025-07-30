@@ -35,7 +35,11 @@ jobs:
 
   desktop-tests:
     name: Run Desktop Tests
+<<<<<<< HEAD
     runs-on: windows-latest
+=======
+    runs-on: ubuntu-latest
+>>>>>>> 33804b5353f0002e37bd9eab35815018b4361d6c
     needs: setup
     timeout-minutes: 30
 
@@ -70,7 +74,11 @@ jobs:
 
   mobile-tests:
     name: Run Mobile Tests
+<<<<<<< HEAD
     runs-on: windows-latest
+=======
+    runs-on: ubuntu-latest
+>>>>>>> 33804b5353f0002e37bd9eab35815018b4361d6c
     needs: setup
     timeout-minutes: 30
 
@@ -145,4 +153,8 @@ jobs:
             --data "{
               \"text\": \"❌ *Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\"
             }" \
+<<<<<<< HEAD
             ${{ secrets.SLACK_WEBHOOK_URL }}
+=======
+            ${{ secrets.SLACK_WEBHOOK_URL }}
+>>>>>>> 33804b5353f0002e37bd9eab35815018b4361d6c
