@@ -129,16 +129,39 @@ jobs:
     if: failure()
 
     steps:
-      - name: Download Allure results
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download Desktop Allure results
         uses: actions/download-artifact@v4
         with:
-          path: ./allure-results-all
+          name: allure-results-desktop
+          path: ./allure-results-merged
+
+      - name: Download Mobile Allure results
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results-mobile
+          path: ./allure-results-merged
+
+      - name: List downloaded files (debug)
+        run: |
+          echo "Contents of allure-results-merged:"
+          find ./allure-results-merged -type f -name "*.json" | head -10
+          echo "Total JSON files: $(find ./allure-results-merged -name "*.json" | wc -l)"
 
       - name: Install Allure CLI
         run: npm install -g allure-commandline
 
       - name: Generate Allure Report
-        run: npx allure generate ./allure-results-all -o ./allure-report --clean
+        run: |
+          if [ -d "./allure-results-merged" ] && [ "$(find ./allure-results-merged -name "*.json" | wc -l)" -gt 0 ]; then
+            npx allure generate ./allure-results-merged -o ./allure-report --clean
+          else
+            echo "No Allure results found to generate report"
+            mkdir -p ./allure-report
+            echo "<h1>No test results available</h1>" > ./allure-report/index.html
+          fi
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
@@ -150,12 +173,18 @@ jobs:
       - name: Extract failure reason
         run: |
           echo "Extracting failure reason from Allure..."
-          REASON=$(jq -r 'select(.status=="failed") | .statusDetails.message // .statusDetails.trace' ./allure-results-all/**/*.json | head -n 1 | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
+          REASON=""
+          if [ -d "./allure-results-merged" ]; then
+            REASON=$(find ./allure-results-merged -name "*.json" -exec jq -r 'select(.status=="failed") | .statusDetails.message // .statusDetails.trace // "Unknown failure"' {} \; 2>/dev/null | head -n 1 | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
+          fi
+          if [ -z "$REASON" ]; then
+            REASON="Test execution failed - check logs for details"
+          fi
           echo "REASON=$REASON" >> $GITHUB_ENV
 
       - name: Send Slack notification on test failure
         run: |
           curl -X POST -H 'Content-type: application/json' \
             --data "{
-              \"text\": \"❌ *Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\" 
+              \"text\": \"❌ *Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\\n📊 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Download Allure Report>\" 
             }" ${{ secrets.SLACK_WEBHOOK_URL }}
