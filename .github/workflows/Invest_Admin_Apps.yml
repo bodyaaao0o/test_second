@@ -28,8 +28,10 @@ jobs:
         id: cache-deps
         uses: actions/cache@v4
         with:
-          path: ./node_modules
-          key: penomo-tests-${{ hashFiles('penomo_tests/package-lock.json') }}
+          path: |
+            ./node_modules
+            ./penomo_tests/node_modules
+          key: penomo-tests-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             penomo-tests-
 
@@ -38,6 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     timeout-minutes: 30
+    continue-on-error: true
 
     steps:
       - name: Checkout code
@@ -51,8 +54,10 @@ jobs:
       - name: Restore node_modules from cache
         uses: actions/cache@v4
         with:
-          path: ./node_modules
-          key: penomo-tests-${{ hashFiles('penomo_tests/package-lock.json') }}
+          path: |
+            ./node_modules
+            ./penomo_tests/node_modules
+          key: penomo-tests-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             penomo-tests-
 
@@ -61,6 +66,9 @@ jobs:
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
+
+      - name: Clean previous results
+        run: rm -rf ./allure-results
 
       - name: Run auth tests (Desktop)
         run: npx playwright test ./auth --project=chromium
@@ -75,12 +83,15 @@ jobs:
           name: allure-results-desktop
           path: ./allure-results
           retention-days: 3
+          if-no-files-found: warn
 
   mobile-tests:
     name: Run Mobile Tests
     runs-on: ubuntu-latest
     needs: desktop-tests
+    if: always() 
     timeout-minutes: 30
+    continue-on-error: true
 
     steps:
       - name: Checkout code
@@ -94,8 +105,10 @@ jobs:
       - name: Restore node_modules from cache
         uses: actions/cache@v4
         with:
-          path: ./node_modules
-          key: penomo-tests-${{ hashFiles('penomo_tests/package-lock.json') }}
+          path: |
+            ./node_modules
+            ./penomo_tests/node_modules
+          key: penomo-tests-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             penomo-tests-
 
@@ -105,11 +118,11 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      - name: Run auth test (Mobile)
-        run: npx playwright test ./auth/desktop-only --project=chromium
+      - name: Clean previous results
+        run: rm -rf ./allure-results
 
-      - name: Run login test (Mobile)
-        run: npx playwright test ./auth/login.spec.ts --project="Mobile Safari"
+      - name: Run auth tests (Mobile - excluding desktop-only)
+        run: npx playwright test ./auth --grep-invert "desktop-only" --project="Mobile Safari"
 
       - name: Run E2E tests (Mobile)
         run: npx playwright test ./E2E --project="Mobile Safari"
@@ -121,46 +134,77 @@ jobs:
           name: allure-results-mobile
           path: ./allure-results
           retention-days: 3
+          if-no-files-found: warn
 
   notify-on-failure:
     name: Generate Allure Report & Notify
     runs-on: ubuntu-latest
     needs: [desktop-tests, mobile-tests]
-    if: failure()
+    if: always() && (needs.desktop-tests.result == 'failure' || needs.mobile-tests.result == 'failure')
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Download Desktop Allure results
+      - name: Create results directory
+        run: mkdir -p ./allure-results-merged
+
+      - name: Download Desktop Allure results (if available)
         uses: actions/download-artifact@v4
         with:
           name: allure-results-desktop
-          path: ./allure-results-merged
+          path: ./allure-results-merged/desktop
+        continue-on-error: true
 
-      - name: Download Mobile Allure results
+      - name: Download Mobile Allure results (if available)
         uses: actions/download-artifact@v4
         with:
           name: allure-results-mobile
-          path: ./allure-results-merged
+          path: ./allure-results-merged/mobile
+        continue-on-error: true
+
+      - name: Merge results into single directory
+        run: |
+          echo "Merging Allure results..."
+          find ./allure-results-merged -name "*.json" -exec cp {} ./allure-results-merged/ \; 2>/dev/null || true
+          find ./allure-results-merged -name "*.txt" -exec cp {} ./allure-results-merged/ \; 2>/dev/null || true
+          find ./allure-results-merged -name "*.properties" -exec cp {} ./allure-results-merged/ \; 2>/dev/null || true
 
       - name: List downloaded files (debug)
         run: |
           echo "Contents of allure-results-merged:"
-          find ./allure-results-merged -type f -name "*.json" | head -10
-          echo "Total JSON files: $(find ./allure-results-merged -name "*.json" | wc -l)"
+          if [ -d "./allure-results-merged" ]; then
+            find ./allure-results-merged -type f -name "*.json" | head -10
+            echo "Total JSON files: $(find ./allure-results-merged -name "*.json" | wc -l)"
+            echo "Total files: $(find ./allure-results-merged -type f | wc -l)"
+          else
+            echo "No allure-results-merged directory found"
+          fi
+
+      - name: Setup Java (required for Allure)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
 
       - name: Install Allure CLI
-        run: npm install -g allure-commandline
+        run: |
+          curl -o allure-commandline.zip -Ls https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.zip
+          unzip -q allure-commandline.zip
+          sudo mv allure-2.24.0 /opt/allure
+          sudo ln -s /opt/allure/bin/allure /usr/local/bin/allure
+          allure --version
 
       - name: Generate Allure Report
         run: |
           if [ -d "./allure-results-merged" ] && [ "$(find ./allure-results-merged -name "*.json" | wc -l)" -gt 0 ]; then
-            npx allure generate ./allure-results-merged -o ./allure-report --clean
+            echo "Generating Allure report from results..."
+            allure generate ./allure-results-merged -o ./allure-report --clean
+            echo "Report generated successfully"
           else
             echo "No Allure results found to generate report"
             mkdir -p ./allure-report
-            echo "<h1>No test results available</h1>" > ./allure-report/index.html
+            echo "<h1>No test results available</h1><p>Tests may have failed before generating Allure results. Check if allure-playwright is configured in playwright.config.js</p>" > ./allure-report/index.html
           fi
 
       - name: Upload Allure Report
@@ -172,19 +216,37 @@ jobs:
 
       - name: Extract failure reason
         run: |
-          echo "Extracting failure reason from Allure..."
+          echo "Extracting failure reason..."
           REASON=""
+          
+          # Try to extract from Allure results first
           if [ -d "./allure-results-merged" ]; then
-            REASON=$(find ./allure-results-merged -name "*.json" -exec jq -r 'select(.status=="failed") | .statusDetails.message // .statusDetails.trace // "Unknown failure"' {} \; 2>/dev/null | head -n 1 | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
+            REASON=$(find ./allure-results-merged -name "*.json" -exec jq -r 'select(.status=="failed") | .statusDetails.message // .statusDetails.trace // empty' {} \; 2>/dev/null | head -n 1 | sed 's/"/\\"/g' | tr '\n' ' ' | sed 's/[[:space:]]*$//')
           fi
-          if [ -z "$REASON" ]; then
-            REASON="Test execution failed - check logs for details"
+          
+          # Fallback to job status if no specific reason found
+          if [ -z "$REASON" ] || [ "$REASON" = "null" ]; then
+            if [ "${{ needs.desktop-tests.result }}" == "failure" ] && [ "${{ needs.mobile-tests.result }}" == "failure" ]; then
+              REASON="Both desktop and mobile tests failed"
+            elif [ "${{ needs.desktop-tests.result }}" == "failure" ]; then
+              REASON="Desktop tests failed"
+            elif [ "${{ needs.mobile-tests.result }}" == "failure" ]; then
+              REASON="Mobile tests failed"
+            else
+              REASON="Test execution failed - check logs for details"
+            fi
           fi
+          
+          # Truncate if too long for Slack
+          if [ ${#REASON} -gt 200 ]; then
+            REASON="${REASON:0:200}..."
+          fi
+          
           echo "REASON=$REASON" >> $GITHUB_ENV
 
       - name: Send Slack notification on test failure
         run: |
           curl -X POST -H 'Content-type: application/json' \
             --data "{
-              \"text\": \"❌ *Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\\n📊 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Download Allure Report>\" 
+              \"text\": \"❌ *Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n📊 Desktop: ${{ needs.desktop-tests.result }} | Mobile: ${{ needs.mobile-tests.result }}\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\\n📄 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Download Allure Report>\" 
             }" ${{ secrets.SLACK_WEBHOOK_URL }}

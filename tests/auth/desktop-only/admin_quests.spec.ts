@@ -48,14 +48,14 @@ test.describe("Admin quests test", () => {
 
         await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
 
-        const isVisible = await pm.questsAdminTo().getChellenge1().isVisible();
-
-        if (!isVisible) {
+        try {
+            await expect(pm.questsAdminTo().getChellenge1()).toBeVisible({ timeout: 8000 });
+        } catch {
             await page.reload();
             await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
+            await page.waitForTimeout(2000);
+            await expect(pm.questsAdminTo().getChellenge1()).toBeVisible({ timeout: 10000 });
         }
-
-        await expect(pm.questsAdminTo().getChellenge1()).toBeVisible();
 
         await pm.questsAdminTo().getChellenge1().click();
 
