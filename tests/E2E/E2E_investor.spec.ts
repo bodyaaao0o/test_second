@@ -17,9 +17,7 @@ test.describe("E2E test for investor portal", () => {
         pm  = new PageManager(page);
 
         await page.goto(stageBaseUrl);
-        
-        // await investorLogin(page, context, pm);
-        
+
         await expect(page).toHaveURL("https://www.staging.invest.penomo.com/dashboard");
 
         await checkVisibility([
@@ -305,7 +303,7 @@ test.describe("E2E test for investor portal", () => {
 
         await page.waitForLoadState();
         
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/');
+        await page.waitForURL('https://www.staging.invest.penomo.com/');
 
         await page.close();
     });

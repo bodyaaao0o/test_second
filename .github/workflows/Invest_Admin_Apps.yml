@@ -9,9 +9,11 @@ on:
       - main
 
 jobs:
-  test:
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
+  setup:
+    name: Cache only (no install)
+    runs-on: windows-latest
+    outputs:
+      cache-key: ${{ steps.cache-deps.outputs.cache-primary-key }}
 
     steps:
       - name: Checkout code
@@ -23,6 +25,30 @@ jobs:
           node-version: 20
 
       - name: Cache node_modules
+        id: cache-deps
+        uses: actions/cache@v4
+        with:
+          path: ./node_modules
+          key: penomo-tests-${{ hashFiles('penomo_tests/package-lock.json') }}
+          restore-keys: |
+            penomo-tests-
+
+  desktop-tests:
+    name: Run Desktop Tests
+    runs-on: windows-latest
+    needs: setup
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Restore node_modules from cache
         uses: actions/cache@v4
         with:
           path: ./node_modules
@@ -36,30 +62,51 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
 
-      # ---------- Run tests ----------
-
       - name: Run auth tests (Desktop)
-        run: npx playwright test ./auth --project=chromium 
-        
+        run: npx playwright test ./auth --project=chromium
+
       - name: Run E2E tests (Desktop)
         run: npx playwright test ./E2E --project=chromium
 
+  mobile-tests:
+    name: Run Mobile Tests
+    runs-on: windows-latest
+    needs: setup
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Restore node_modules from cache
+        uses: actions/cache@v4
+        with:
+          path: ./node_modules
+          key: penomo-tests-${{ hashFiles('penomo_tests/package-lock.json') }}
+          restore-keys: |
+            penomo-tests-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+        
+      - name: Run auth test
+        run: npx playwright test ./auth/desktop-only --project=chromium
+
       - name: Run auth tests (Mobile)
-        run: npx playwright test ./auth/login.spec.ts --project="Mobile Safari" 
+        run: npx playwright test ./auth/login.spec.ts --project="Mobile Safari"
 
       - name: Run E2E tests (Mobile)
         run: npx playwright test ./E2E --project="Mobile Safari"
-      # ---------- Slack on failure ----------
 
-      - name: Send Slack notification on test failure
-        if: failure()
-        run: |
-          curl -X POST -H 'Content-type: application/json' \
-            --data '{"text":"❌ Playwright tests failed on *staging*. Project: *Investor or Admin*. Check the Allure report."}' \
-            ${{ secrets.SLACK_WEBHOOK_URL }}
-
-      # ---------- Allure reporting ----------
-
+      # -------- Allure Reporting --------
       - name: Install Allure CLI
         if: always()
         run: npm install -g allure-commandline
@@ -83,3 +130,19 @@ jobs:
           name: allure-results
           path: ./allure-results
           retention-days: 3
+
+      - name: Extract failure reason from Allure
+        if: failure()
+        run: |
+          echo "Getting failure reason from Allure results..."
+          REASON=$(jq -r 'select(.status=="failed") | .statusDetails.message // .statusDetails.trace' allure-results/*.json | head -n 1 | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
+          echo "REASON=$REASON" >> $GITHUB_ENV
+
+      - name: Send Slack notification on test failure
+        if: failure()
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+            --data "{
+              \"text\": \"❌ *Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\"
+            }" \
+            ${{ secrets.SLACK_WEBHOOK_URL }}
