@@ -82,12 +82,23 @@ jobs:
         run: |
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
-
-          echo "Searching in all subdirectories..."
-          find . -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-
-          echo "Copied artifacts:"
-          ls -lh ./allure-results || echo "No artifacts copied."
+    
+          # Копіюємо всі артефакти з test-results директорії
+          if [ -d "test-results" ]; then
+          echo "Copying from test-results directory..."
+          find test-results -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' -o -name '*.    trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+          fi
+    
+          # Копіюємо артефакти з playwright-report якщо є
+          if [ -d "playwright-report" ]; then
+            echo "Copying from playwright-report directory..."
+          find playwright-report -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \)     -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+          fi
+            find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+    
+            echo "Final artifacts in allure-results:"
+            ls -lah ./allure-results/ || echo "No artifacts found."
+          chmod -R 755 ./allure-results/ 2>/dev/null || true
 
 
       - name: Upload Allure raw results (Desktop)
@@ -151,12 +162,23 @@ jobs:
         run: |
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
-
-          echo "Searching in all subdirectories..."
-          find . -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-
-          echo "Copied artifacts:"
-          ls -lh ./allure-results || echo "No artifacts copied."
+    
+          # Копіюємо всі артефакти з test-results директорії
+          if [ -d "test-results" ]; then
+          echo "Copying from test-results directory..."
+          find test-results -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' -o -name '*.    trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+          fi
+    
+          # Копіюємо артефакти з playwright-report якщо є
+          if [ -d "playwright-report" ]; then
+            echo "Copying from playwright-report directory..."
+          find playwright-report -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \)     -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+          fi
+            find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+    
+            echo "Final artifacts in allure-results:"
+            ls -lah ./allure-results/ || echo "No artifacts found."
+          chmod -R 755 ./allure-results/ 2>/dev/null || true
 
       - name: Upload Allure raw results (Mobile)
         if: always()
