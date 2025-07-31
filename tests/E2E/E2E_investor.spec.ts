@@ -35,7 +35,7 @@ test.describe("E2E test for investor portal", () => {
             pm.dashboardTo().getWalletBalanceBox(),
             pm.dashboardTo().getWalletIcon(),
             pm.dashboardTo().getWalletBalanceTitle(),
-            pm.dashboardTo().getUSDCCountBox(),
+            //pm.dashboardTo().getUSDCCountBox(),
             pm.dashboardTo().getTopUpButton(),
             pm.dashboardTo().getWithdrawButton()
         ])

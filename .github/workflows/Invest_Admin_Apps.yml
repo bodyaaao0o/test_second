@@ -77,6 +77,13 @@ jobs:
         run: npx playwright test ./E2E --project=chromium
         #continue-on-error: true
 
+      - name: Copy screenshots/videos/traces to Allure results (Desktop)
+        if: always()
+        run: |
+          mkdir -p ./allure-results
+          find . -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp {} ./allure-results/ \; || true
+
+
       - name: Upload Allure raw results (Desktop)
         if: always()
         uses: actions/upload-artifact@v4
@@ -132,6 +139,13 @@ jobs:
       - name: Run E2E tests (Mobile)
         run: npx playwright test ./E2E --project="Mobile Safari"
         #continue-on-error: true
+
+      - name: Copy screenshots/videos/traces to Allure results (Mobile)
+        if: always()
+        run: |
+          mkdir -p ./allure-results
+          find . -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp {} ./allure-results/ \; || true
+
 
       - name: Upload Allure raw results (Mobile)
         if: always()
