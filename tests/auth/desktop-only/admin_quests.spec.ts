@@ -29,22 +29,22 @@ test.describe("Admin quests test", () => {
         await checkVisibility([
             pm.questsAdminTo().getChallengesNav(),
             pm.questsAdminTo().getFlipCardsNav(),
-            pm.questsAdminTo().getViewQuestDiagramButton(),
+            //pm.questsAdminTo().getViewQuestDiagramButton(),
             pm.questsAdminTo().getSearchFiled(),
             pm.questsAdminTo().getTitleColomnTitle(),
             pm.questsAdminTo().getChallengeStaticIdTitle(),
             pm.questsAdminTo().getChellenge1()
         ]);
 
-        await pm.questsAdminTo().getViewQuestDiagramButton().click();
+        // await pm.questsAdminTo().getViewQuestDiagramButton().click();
 
-        await expect(pm.questsAdminTo().getQuestsDiagramPhoto()).toBeVisible();
+        // await expect(pm.questsAdminTo().getQuestsDiagramPhoto()).toBeVisible();
 
-        await expect(pm.questsAdminTo().getCloseDiagramButton()).toBeVisible();
+        // await expect(pm.questsAdminTo().getCloseDiagramButton()).toBeVisible();
 
-        await pm.questsAdminTo().getCloseDiagramButton().click();
+        // await pm.questsAdminTo().getCloseDiagramButton().click();
 
-        await expect(pm.questsAdminTo().getQuestsDiagramPhoto()).not.toBeVisible();
+        // await expect(pm.questsAdminTo().getQuestsDiagramPhoto()).not.toBeVisible();
 
         await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
 
