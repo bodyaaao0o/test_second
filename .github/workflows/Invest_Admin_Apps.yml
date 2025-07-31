@@ -83,16 +83,11 @@ jobs:
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
 
-          echo "Checking in 'test-results/'..."
-          find ./test-results -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+          echo "Searching in all subdirectories..."
+          find . -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
 
-          echo "Checking in 'playwright-report/'..."
-          find ./playwright-report -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-
-          echo "Checking in root directory..."
-          find . -maxdepth 2 -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-
-          echo "Done copying artifacts."
+          echo "Copied artifacts:"
+          ls -lh ./allure-results || echo "No artifacts copied."
 
 
       - name: Upload Allure raw results (Desktop)
@@ -157,16 +152,11 @@ jobs:
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
 
-          echo "Checking in 'test-results/'..."
-          find ./test-results -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+          echo "Searching in all subdirectories..."
+          find . -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
 
-          echo "Checking in 'playwright-report/'..."
-          find ./playwright-report -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-
-          echo "Checking in root directory..."
-          find . -maxdepth 2 -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-
-          echo "Done copying artifacts."
+          echo "Copied artifacts:"
+          ls -lh ./allure-results || echo "No artifacts copied."
 
       - name: Upload Allure raw results (Mobile)
         if: always()
