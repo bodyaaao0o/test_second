@@ -71,11 +71,11 @@ jobs:
 
       - name: Run auth tests (Desktop)
         run: npx playwright test ./auth --project=chromium
-        continue-on-error: true
+        #continue-on-error: true
 
       - name: Run E2E tests (Desktop)
         run: npx playwright test ./E2E --project=chromium
-        continue-on-error: true
+        #continue-on-error: true
 
       - name: Upload Allure raw results (Desktop)
         if: always()
@@ -123,15 +123,15 @@ jobs:
 
       - name: Run auth tests (Desktop)
         run: npx playwright test ./auth/desktop-only --project=chromium
-        continue-on-error: true
+        #continue-on-error: true
 
       - name: Run auth tests (Mobile - excluding desktop-only)
         run: npx playwright test ./auth/login.spec.ts --project="Mobile Safari"
-        continue-on-error: true
+        #continue-on-error: true
 
       - name: Run E2E tests (Mobile)
         run: npx playwright test ./E2E --project="Mobile Safari"
-        continue-on-error: true
+        #continue-on-error: true
 
       - name: Upload Allure raw results (Mobile)
         if: always()
