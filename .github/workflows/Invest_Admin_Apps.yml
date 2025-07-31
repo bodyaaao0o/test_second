@@ -67,7 +67,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Clean previous results
-        run: rm -rf ./allure-results
+        run: rm -rf ./allure-results ./test-results
 
       - name: Run auth tests (Desktop)
         run: npx playwright test ./auth --project=chromium
@@ -77,29 +77,60 @@ jobs:
         run: npx playwright test ./E2E --project=chromium
         #continue-on-error: true
 
-      - name: Copy screenshots/videos/traces to Allure results (Desktop)
+      - name: Debug test results structure
+        if: always()
+        run: |
+          echo "=== Debugging test results structure ==="
+          echo "Current directory structure:"
+          find . -maxdepth 3 -type d -name "*result*" -o -name "*report*" | head -20
+          
+          echo "=== Looking for image/trace files ==="
+          find . -path "./node_modules" -prune -o -type f \( -name '*.png' -o -name '*.trace' \) -print | head -10
+          
+          echo "=== Allure results content before copy ==="
+          if [ -d "./allure-results" ]; then
+            echo "Allure results directory exists"
+            ls -la ./allure-results/
+          else
+            echo "No allure-results directory found"
+          fi
+
+      - name: Copy screenshots/traces to Allure results (Desktop)
         if: always()
         run: |
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
-    
-          # Копіюємо всі артефакти з test-results директорії
+          
+          # Копіюємо всі артефакти з test-results директорії (БЕЗ ВІДЕО)
           if [ -d "test-results" ]; then
-          echo "Copying from test-results directory..."
-          find test-results -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' -o -name '*.    trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+            echo "Copying from test-results directory..."
+            find test-results -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-    
-          # Копіюємо артефакти з playwright-report якщо є
+          
+          # Копіюємо артефакти з playwright-report якщо є (БЕЗ ВІДЕО)
           if [ -d "playwright-report" ]; then
             echo "Copying from playwright-report directory..."
-          find playwright-report -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \)     -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+            find playwright-report -type f \( -name '*.png' -o -name '*.zip' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-            find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-    
-            echo "Final artifacts in allure-results:"
-            ls -lah ./allure-results/ || echo "No artifacts found."
+          
+          # Додаткове копіювання з можливих локацій (БЕЗ ВІДЕО)
+          find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+          
+          echo "Final artifacts in allure-results:"
+          ls -lah ./allure-results/ || echo "No artifacts found."
+          
+          # Перевірка що файли дійсно скопіювались
+          echo "=== Final verification ==="
+          echo "Allure results directory size:"
+          du -sh ./allure-results/ 2>/dev/null || echo "Directory not found"
+          
+          echo "Files by type:"
+          find ./allure-results -name "*.png" | wc -l | xargs echo "PNG files:"
+          find ./allure-results -name "*.json" | wc -l | xargs echo "JSON files:"
+          find ./allure-results -name "*.trace" | wc -l | xargs echo "Trace files:"
+          
+          # Перевіряємо права доступу
           chmod -R 755 ./allure-results/ 2>/dev/null || true
-
 
       - name: Upload Allure raw results (Desktop)
         if: always()
@@ -143,7 +174,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Clean previous results
-        run: rm -rf ./allure-results
+        run: rm -rf ./allure-results ./test-results
 
       - name: Run auth tests (Desktop)
         run: npx playwright test ./auth/desktop-only --project=chromium
@@ -157,27 +188,41 @@ jobs:
         run: npx playwright test ./E2E --project="Mobile Safari"
         #continue-on-error: true
 
-      - name: Copy screenshots/videos/traces to Allure results (Mobile)
+      - name: Copy screenshots/traces to Allure results (Mobile)
         if: always()
         run: |
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
-    
-          # Копіюємо всі артефакти з test-results директорії
+          
+          # Копіюємо всі артефакти з test-results директорії (БЕЗ ВІДЕО)
           if [ -d "test-results" ]; then
-          echo "Copying from test-results directory..."
-          find test-results -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' -o -name '*.    trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+            echo "Copying from test-results directory..."
+            find test-results -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-    
-          # Копіюємо артефакти з playwright-report якщо є
+          
+          # Копіюємо артефакти з playwright-report якщо є (БЕЗ ВІДЕО)
           if [ -d "playwright-report" ]; then
             echo "Copying from playwright-report directory..."
-          find playwright-report -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' \)     -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+            find playwright-report -type f \( -name '*.png' -o -name '*.zip' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-            find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.webm' -o -name '*.zip' -o -name '*.mp4' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-    
-            echo "Final artifacts in allure-results:"
-            ls -lah ./allure-results/ || echo "No artifacts found."
+          
+          # Додаткове копіювання з можливих локацій (БЕЗ ВІДЕО)
+          find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
+          
+          echo "Final artifacts in allure-results:"
+          ls -lah ./allure-results/ || echo "No artifacts found."
+          
+          # Перевірка що файли дійсно скопіювались
+          echo "=== Final verification ==="
+          echo "Allure results directory size:"
+          du -sh ./allure-results/ 2>/dev/null || echo "Directory not found"
+          
+          echo "Files by type:"
+          find ./allure-results -name "*.png" | wc -l | xargs echo "PNG files:"
+          find ./allure-results -name "*.json" | wc -l | xargs echo "JSON files:"
+          find ./allure-results -name "*.trace" | wc -l | xargs echo "Trace files:"
+          
+          # Перевіряємо права доступу
           chmod -R 755 ./allure-results/ 2>/dev/null || true
 
       - name: Upload Allure raw results (Mobile)
@@ -206,33 +251,30 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: allure-results-desktop
-          path: ./allure-results-merged/desktop
+          path: ./allure-results-merged
         continue-on-error: true
 
       - name: Download Mobile Allure results (if available)
         uses: actions/download-artifact@v4
         with:
           name: allure-results-mobile
-          path: ./allure-results-merged/mobile
+          path: ./allure-results-merged
         continue-on-error: true
 
-      - name: Merge results into single directory
+      - name: Debug downloaded artifacts
         run: |
-          echo "Merging Allure results..."
-          find ./allure-results-merged -name "*.json" -exec cp {} ./allure-results-merged/ \; 2>/dev/null || true
-          find ./allure-results-merged -name "*.txt" -exec cp {} ./allure-results-merged/ \; 2>/dev/null || true
-          find ./allure-results-merged -name "*.properties" -exec cp {} ./allure-results-merged/ \; 2>/dev/null || true
-
-      - name: List downloaded files (debug)
-        run: |
-          echo "Contents of allure-results-merged:"
-          if [ -d "./allure-results-merged" ]; then
-            find ./allure-results-merged -type f -name "*.json" | head -10
-            echo "Total JSON files: $(find ./allure-results-merged -name "*.json" | wc -l)"
-            echo "Total files: $(find ./allure-results-merged -type f | wc -l)"
-          else
-            echo "No allure-results-merged directory found"
-          fi
+          echo "=== Debug downloaded artifacts ==="
+          echo "Structure of allure-results-merged:"
+          find ./allure-results-merged -type f | head -20
+          
+          echo "=== Files by type ==="
+          echo "JSON files: $(find ./allure-results-merged -name "*.json" | wc -l)"
+          echo "PNG files: $(find ./allure-results-merged -name "*.png" | wc -l)"
+          echo "Trace files: $(find ./allure-results-merged -name "*.trace" | wc -l)"
+          
+          echo "=== Sample files ==="
+          find ./allure-results-merged -name "*.json" | head -3
+          find ./allure-results-merged -name "*.png" | head -3
 
       - name: Setup Java (required for Allure)
         uses: actions/setup-java@v4
@@ -252,8 +294,20 @@ jobs:
         run: |
           if [ -d "./allure-results-merged" ] && [ "$(find ./allure-results-merged -name "*.json" | wc -l)" -gt 0 ]; then
             echo "Generating Allure report from results..."
+            echo "Using directory: ./allure-results-merged"
+            echo "JSON files found: $(find ./allure-results-merged -name "*.json" | wc -l)"
+            echo "PNG files found: $(find ./allure-results-merged -name "*.png" | wc -l)"
+            
+            # Генеруємо звіт з усією директорією
             allure generate ./allure-results-merged -o ./allure-report --clean
             echo "Report generated successfully"
+            
+            # Перевіряємо що звіт містить артефакти
+            echo "=== Report contents check ==="
+            if [ -d "./allure-report" ]; then
+              echo "Report directory size: $(du -sh ./allure-report)"
+              find ./allure-report -name "*.png" | wc -l | xargs echo "PNG files in report:"
+            fi
           else
             echo "No Allure results found to generate report"
             mkdir -p ./allure-report

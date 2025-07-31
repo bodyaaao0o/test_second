@@ -21,7 +21,6 @@ export default defineConfig({
     ["line"],
     ['allure-playwright', { 
       outputFolder: 'allure-results',
-      // Додайте ці опції для кращої інтеграції
       suiteTitle: false,
       detail: true,
       links: [
@@ -36,12 +35,11 @@ export default defineConfig({
   timeout: 120000,
   use: {
     navigationTimeout: 120000,
-    trace: 'retain-on-failure', // Змініть на retain-on-failure
+    trace: 'retain-on-failure',
     headless: true,
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure' // Додайте відео для невдалих тестів
   },
-  // Додайте налаштування для артефактів
+  
   outputDir: 'test-results',
   expect: {
     timeout: 10000,
