@@ -39,7 +39,7 @@ test.describe("Login as investor", () => {
     test('Register on investor page', async ({ context, page }, testInfo) => {
         const isMobile = testInfo.project.use.isMobile;
         await page.goto(devBaseUrl);
-        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/');
+        await expect(page).toHaveURL('https://dev.invest.penomo.com/');
         if (!isMobile) {
             await images.checkAllImagesAreVisible();
         }
@@ -153,7 +153,7 @@ test.describe("Login as investor", () => {
         await pm.profile().getInputReferalCode().clear();
         await pm.profile().getSubmiteButton().click();
         await page.waitForURL('**/dashboard');
-        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/dashboard');
+        await expect(page).toHaveURL('https://dev.invest.penomo.com/dashboard');
         await page.waitForLoadState();
         await context.storageState({ path: 'playwright/.auth/invest_login.json' });
 
@@ -162,7 +162,7 @@ test.describe("Login as investor", () => {
     test("Log in on investor page", async ({ context, page }, testInfo) => {
         const isMobile = testInfo.project.use.isMobile;
         await page.goto(devBaseUrl);
-        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/');
+        await expect(page).toHaveURL('https://dev.invest.penomo.com/');
         if (!isMobile) {
             await images.checkAllImagesAreVisible();
         }

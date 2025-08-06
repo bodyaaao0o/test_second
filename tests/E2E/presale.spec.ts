@@ -128,7 +128,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         await investorPM.whiteListTo().getPNMOPresalePageButton().click();
         await investorPage.waitForLoadState();
 
-        await expect(investorPage).toHaveURL('https://www.dev.invest.penomo.com/presale');
+        await expect(investorPage).toHaveURL('https://dev.invest.penomo.com/presale');
         await expect(investorPM.whiteListTo().getNotificationForInitated()).toBeVisible();
         await expect(investorPM.presaleTo().getPresalePageBox()).toBeVisible();
 
@@ -142,7 +142,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         ]);
 
         await adminPM.adminTo().getPresaleNavigation().click();
-        await expect(adminPage).toHaveURL('https://www.dev.admin.penomo.com/presale');
+        await expect(adminPage).toHaveURL('https://dev.admin.penomo.com/presale');
 
         await checkVisibility([
             adminPM.adminTo().getPresaleBox(),
