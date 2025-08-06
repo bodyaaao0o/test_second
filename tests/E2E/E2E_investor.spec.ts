@@ -4,7 +4,7 @@ import { env, cred } from '../../support/data';
 import { checkVisibility } from '../../support/PageObject/pageManager';
 
 const {change_username, change_surename,} = cred;
-const { stageBaseUrl } = env;
+const { devBaseUrl } = env;
 
 test.use({ storageState: 'playwright/.auth/redistered_invest_login.json' });
 
@@ -12,13 +12,13 @@ test.describe("E2E test for investor portal", () => {
     let pm: PageManager;
     
 
-    test("Investor test flow", async({ page, context }, testInfo) => {
+    test("Investor test flow", async({ page }, testInfo) => {
         const isMobile = testInfo.project.use.isMobile;
         pm  = new PageManager(page);
 
-        await page.goto(stageBaseUrl);
+        await page.goto(devBaseUrl);
 
-        await expect(page).toHaveURL("https://www.staging.invest.penomo.com/dashboard");
+        await expect(page).toHaveURL("https://www.dev.invest.penomo.com/dashboard");
 
         await checkVisibility([
             pm.dashboardTo().getPNMORewardsBox(),
@@ -35,7 +35,6 @@ test.describe("E2E test for investor portal", () => {
             pm.dashboardTo().getWalletBalanceBox(),
             pm.dashboardTo().getWalletIcon(),
             pm.dashboardTo().getWalletBalanceTitle(),
-            //pm.dashboardTo().getUSDCCountBox(),
             pm.dashboardTo().getTopUpButton(),
             pm.dashboardTo().getWithdrawButton()
         ])
@@ -62,7 +61,7 @@ test.describe("E2E test for investor portal", () => {
         
         await pm.dashboardTo().getViewAllTransactionsButton().click();
         
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/transactions');
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/transactions');
         
         await page.goBack();
 
@@ -72,7 +71,7 @@ test.describe("E2E test for investor portal", () => {
         
         await pm.dashboardTo().getPNMOPresaleRound2Nav().click();
         
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/presale');
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/presale');
 
         if (isMobile) {
             await pm.dashboardTo().clickOnBurgerMenu();
@@ -82,7 +81,7 @@ test.describe("E2E test for investor portal", () => {
         
         //Marketplace
 
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/marketplace');
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/marketplace');
 
         if (isMobile) {
             await pm.dashboardTo().clickOnBurgerMenu();
@@ -92,7 +91,7 @@ test.describe("E2E test for investor portal", () => {
         
         //Campaigns
         
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=referral');
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/campaigns?section=referral');
 
         if (isMobile) {
             await pm.dashboardTo().clickOnBurgerMenu();
@@ -101,10 +100,8 @@ test.describe("E2E test for investor portal", () => {
         await pm.dashboardTo().getPortfolioNav().click();
         
         //Portfolio
-
         
-        
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/portfolio');
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/portfolio');
 
         await checkVisibility([
             pm.portfolioTo().getTotalInvested(),
@@ -134,7 +131,7 @@ test.describe("E2E test for investor portal", () => {
         
         //Transactions
 
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/transactions');
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/transactions');
         
         await checkVisibility([
             pm.transactionTo().getTransactionPeriodTitle(),
@@ -184,7 +181,7 @@ test.describe("E2E test for investor portal", () => {
 
         await pm.dashboardTo().getStakingNav().click();
         
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/staking');
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/staking');
         
         await expect(pm.dashboardTo().getComingSoonText()).toBeVisible();
 
@@ -194,7 +191,7 @@ test.describe("E2E test for investor portal", () => {
         
         await pm.dashboardTo().getGovernanceNav().click();
         
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/governance');
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/governance');
         
         await expect(pm.dashboardTo().getComingSoonText()).toBeVisible();
 
@@ -204,7 +201,7 @@ test.describe("E2E test for investor portal", () => {
         
         await pm.dashboardTo().getSettingsNav().click();
         
-        await expect(page).toHaveURL("https://www.staging.invest.penomo.com/settings");
+        await expect(page).toHaveURL("https://www.dev.invest.penomo.com/settings");
 
         //Settings
 
@@ -303,7 +300,7 @@ test.describe("E2E test for investor portal", () => {
 
         await page.waitForLoadState();
         
-        await page.waitForURL('https://www.staging.invest.penomo.com/');
+        await page.waitForURL('https://www.dev.invest.penomo.com/');
 
         await page.close();
     });

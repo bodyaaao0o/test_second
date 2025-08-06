@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 
-const { stageBaseUrl } = env;
+const { devBaseUrl } = env;
 const { valid_username,
     valid_surename,
     invalid_userName,
@@ -22,7 +22,7 @@ test.describe("Login as investor", () => {
 
     test.beforeEach(async ( {context, page} ) => {
         await context.clearCookies();
-        await page.goto(stageBaseUrl);
+        await page.goto(devBaseUrl);
         await page.evaluate(() => {
             localStorage.clear();
             sessionStorage.clear();
@@ -38,8 +38,8 @@ test.describe("Login as investor", () => {
 
     test('Register on investor page', async ({ context, page }, testInfo) => {
         const isMobile = testInfo.project.use.isMobile;
-        await page.goto(stageBaseUrl);
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/');
+        await page.goto(devBaseUrl);
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/');
         if (!isMobile) {
             await images.checkAllImagesAreVisible();
         }
@@ -153,7 +153,7 @@ test.describe("Login as investor", () => {
         await pm.profile().getInputReferalCode().clear();
         await pm.profile().getSubmiteButton().click();
         await page.waitForURL('**/dashboard');
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/dashboard');
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/dashboard');
         await page.waitForLoadState();
         await context.storageState({ path: 'playwright/.auth/invest_login.json' });
 
@@ -161,8 +161,8 @@ test.describe("Login as investor", () => {
 
     test("Log in on investor page", async ({ context, page }, testInfo) => {
         const isMobile = testInfo.project.use.isMobile;
-        await page.goto(stageBaseUrl);
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/');
+        await page.goto(devBaseUrl);
+        await expect(page).toHaveURL('https://www.dev.invest.penomo.com/');
         if (!isMobile) {
             await images.checkAllImagesAreVisible();
         }
