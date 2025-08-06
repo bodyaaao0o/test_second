@@ -43,9 +43,9 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         if (isMobile) {
             const loggedInPage = await investorLogin(investorPage, investorContext, pm);
             investorPM = new PageManager(loggedInPage);
+        } else {
+            await investorPage.goto(devBaseUrl);
         }
-
-        await investorPage.goto(devBaseUrl);
     });
 
     test.afterEach(async () => {

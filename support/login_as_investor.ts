@@ -7,11 +7,11 @@ import path from 'path';
 dotenv.config();
 
 
-const { stageBaseUrl } = env;
+const { devBaseUrl } = env;
 const { valid_username, valid_surename } = cred
 
 export async function investorLogin(page: Page, context: BrowserContext, pm: PageManager): Promise<Page> {
-    await page.goto(stageBaseUrl);
+    await page.goto(devBaseUrl);
     const mailosaur = new Mailosaur(process.env.MAILOSAUR_API_KEY!);
     const serverId = process.env.MAILOSAUR_SERVER_ID!;
 

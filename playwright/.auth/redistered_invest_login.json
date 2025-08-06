@@ -5,65 +5,65 @@
       "value": "JTdCJTdE",
       "domain": ".penomo.com",
       "path": "/",
-      "expires": 1785408482,
+      "expires": 1786030690,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "AMP_57e1840af5",
-      "value": "JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjIzYzU0YjYyYS03MzI2LTRjZTItYmU4Ni0yZWEwYTM3MjUyNDUlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzUzODcyNDgyOTY0JTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJsYXN0RXZlbnRUaW1lJTIyJTNBMTc1Mzg3MjQ4Njg2NSUyQyUyMmxhc3RFdmVudElkJTIyJTNBNSUyQyUyMnBhZ2VDb3VudGVyJTIyJTNBMiU3RA==",
+      "value": "JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjJlNWRmMDY5OC01NTQxLTQxZDQtODBhMy0wNzM4ODc4YmQyYjclMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzU0NDk0NjkwMzExJTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJsYXN0RXZlbnRUaW1lJTIyJTNBMTc1NDQ5NDY5MTI3OSUyQyUyMmxhc3RFdmVudElkJTIyJTNBNCUyQyUyMnBhZ2VDb3VudGVyJTIyJTNBMSU3RA==",
       "domain": ".penomo.com",
       "path": "/",
-      "expires": 1785408486,
+      "expires": 1786030691,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "AWSALBTGCORS",
-      "value": "Ggy9dM/37wXc+97+4BFmIUj5klmfz7qs1rnurCkes9jtbv5yOyAgcuNDulOf012z2SajM/I5AsjdrKUL4vpukj2SUk7UHsy/bUIc7jS6+VPwOqBHXumcZe1QqUWpR2jQJLNPlbG6QaOXRePZAz6+qO+LfrLBHaMt7428qxoHK1hy",
+      "value": "k3CsX/+AuJTbPCupl042QMhXnB/JBWtjFy+dhxRnrjpuQOCi8vNzMus2+YldRoz9tHT2g+WAkm3ZDZuWpwtApDHFxDoNGMil14lBbJ+jGTokZ3FrTu+RsDcOCFhuDZVhDpXMV3xSA0ef/TuSkV3UZZUXtbmb3uMJsrzha/NnoHG5",
       "domain": "session.web3auth.io",
       "path": "/",
-      "expires": 1754477287.221844,
+      "expires": 1755099491.565721,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "AWSALBCORS",
-      "value": "dtlHEaa60D1xD8WQpoAukegxTJ+L5BSJRtHnJ+Vbp0CLIw0pPu3qpuP341qNYgQKzEJD0ZIxjM8aMw+eKIGOviv8mmJGhuQ+hqXxhYDEEjbDfM7CeWbceP+P+KDX",
+      "value": "mZsk82KOHNczBuM6GVgIRpZvNl7p+eR21vxFUM8dowb8J6Lh3LbGpwHkve2U0xIx+NJjLOzgveg4DaONoGcdycGjAY0zMf8c2+iXg9pp3Uk3iQlHOqg5JPA3Lt5Q",
       "domain": "session.web3auth.io",
       "path": "/",
-      "expires": 1754477287.221911,
+      "expires": 1755099491.565789,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "_ga",
-      "value": "GA1.1.761065609.1753872489",
+      "value": "GA1.1.1457106297.1754494692",
       "domain": ".web3auth.io",
       "path": "/",
-      "expires": 1788432496.875938,
+      "expires": 1789054698.810381,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "_ga_DY71GQK057",
-      "value": "GS2.1.s1753872488$o1$g1$t1753872500$j48$l0$h0",
+      "value": "GS2.1.s1754494692$o1$g1$t1754494700$j52$l0$h0",
       "domain": ".web3auth.io",
       "path": "/",
-      "expires": 1788432500.457155,
+      "expires": 1789054700.856069,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "connect.sid",
-      "value": "s%3AH3AH7k4OWgx9u_CC4vsLzTPRuA7mKUaV.76GckbzYhGyLK9S%2ButPk7tuUWvuGKDyPo5hSez4xSTk",
-      "domain": "staging.api.penomo.com",
+      "value": "s%3AjabUn5vLZspvYFgvxLUHLAHYL8unLhQN.BEQOipTDIPhmPNR0DjfVv%2BKIZqNd3Q%2BT6mnMu2SpGYY",
+      "domain": "dev.api.penomo.com",
       "path": "/",
       "expires": -1,
       "httpOnly": true,
@@ -73,29 +73,29 @@
     {
       "name": "email",
       "value": "penomo-at-investor2@sbmchbly.mailosaur.net",
-      "domain": "www.staging.invest.penomo.com",
+      "domain": "dev.invest.penomo.com",
       "path": "/",
-      "expires": 1785408502,
+      "expires": 1786030702,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "AWSALBTG",
-      "value": "Ix8P7yYQKbQKr5gv23SV9QeHn8g+NfhP2+z4PqaemXskP0g6NNiAd3GdU4yJ9aiYBATGlG9nudalEgVA0jck0BuFa/2oVXE+P1C9qXrK/BA9aUAhWdfK4Nn2zXaKfr9n5MqIsQqJDJ7EfkRVZXEYDUDuXaoYDDkBUMg3ShuyB5PRrKUXvtM=",
-      "domain": "staging.api.penomo.com",
+      "value": "/AE7CTKzjQil0FxJGHlXzBdkQiJmECpVw+ecNlKgC6MRCZJFBYsauFPfShnwO0hrODpKZw5W3CFX55u/0BqUr0YwXu7Dtbc3PDARnYxrvPjxZFz0aTyNX+AhLtAxUBruGYn9qIdppoXDn5at3ptsVOXDZJ9noBwm0btejM/ZVBjIN2zi7fc=",
+      "domain": "dev.api.penomo.com",
       "path": "/",
-      "expires": 1754477302.368609,
+      "expires": 1755099502.214928,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "AWSALBTGCORS",
-      "value": "Ix8P7yYQKbQKr5gv23SV9QeHn8g+NfhP2+z4PqaemXskP0g6NNiAd3GdU4yJ9aiYBATGlG9nudalEgVA0jck0BuFa/2oVXE+P1C9qXrK/BA9aUAhWdfK4Nn2zXaKfr9n5MqIsQqJDJ7EfkRVZXEYDUDuXaoYDDkBUMg3ShuyB5PRrKUXvtM=",
-      "domain": "staging.api.penomo.com",
+      "value": "/AE7CTKzjQil0FxJGHlXzBdkQiJmECpVw+ecNlKgC6MRCZJFBYsauFPfShnwO0hrODpKZw5W3CFX55u/0BqUr0YwXu7Dtbc3PDARnYxrvPjxZFz0aTyNX+AhLtAxUBruGYn9qIdppoXDn5at3ptsVOXDZJ9noBwm0btejM/ZVBjIN2zi7fc=",
+      "domain": "dev.api.penomo.com",
       "path": "/",
-      "expires": 1754477302.368674,
+      "expires": 1755099502.214993,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -103,27 +103,27 @@
   ],
   "origins": [
     {
-      "origin": "https://www.staging.invest.penomo.com",
+      "origin": "https://dev.invest.penomo.com",
       "localStorage": [
         {
           "name": "EXP_57e1840af5_DEFAULT_USER_PROVIDER",
-          "value": "{\"first_seen\":\"1753872485.964\"}"
+          "value": "{\"first_seen\":\"1754494690.032\"}"
         },
         {
           "name": "penomo_db",
-          "value": "{\"state\":{\"userData\":{\"_id\":\"68874749fcd370b1d794d19c\",\"firstName\":\"arsenchange\",\"lastName\":\"autotestchange\",\"email\":\"penomo-at-investor2@sbmchbly.mailosaur.net\",\"isProfileExisting\":true,\"emailNotifications\":true,\"companyId\":null,\"roleId\":\"67a5b3bc6dac5eba5ff76a4e\",\"kycStatus\":\"Not Submitted\",\"countryOfResidence\":\"UA\",\"isDeleted\":false,\"referral_code\":\"DB3EB971\",\"purchasedPnmoTokens\":false,\"totalPrnmoTokens\":0,\"isOnboardingCompleted\":false,\"prnmoTransactions\":[],\"walletDetails\":{\"web3authWalletAddress\":\"0xec8ae9caff08f918d1b38ff0cb3cbe338227065d\",\"isWalletWhitelisted\":false,\"isWalletWhitelistedBitbond\":false}},\"investorData\":{\"_id\":\"\",\"investorType\":\"\",\"financialKnowledge\":\"\",\"kybStatus\":\"Not Submitted\",\"signingCombinations\":[],\"boardMembers\":[],\"statusUpdates\":[],\"deletedAt\":null,\"isVerifiedAccredited\":false,\"jurisdictionViewCount\":[],\"organizationDocuments\":[],\"legalDocuments\":[],\"complianceDocuments\":[],\"boardMemberDocuments\":[],\"__v\":0,\"residencyCountry\":null,\"bankAccountHolderName\":\"\",\"bankName\":\"\",\"bankAccountNumber\":\"\",\"bankSwiftBicCode\":\"\",\"bankIban\":\"\",\"bankDefaultCurrency\":\"\"}},\"version\":0}"
+          "value": "{\"state\":{\"userData\":{\"_id\":\"689371c7430b6dea4d6e7c32\",\"firstName\":\"arsenchange\",\"lastName\":\"autotestchange\",\"email\":\"penomo-at-investor2@sbmchbly.mailosaur.net\",\"isProfileExisting\":true,\"emailNotifications\":true,\"companyId\":null,\"roleId\":\"67a4be6e768ed7689ed8d5ce\",\"kycStatus\":\"Not Submitted\",\"countryOfResidence\":\"UA\",\"isDeleted\":false,\"referral_code\":\"9AEEC6DB\",\"purchasedPnmoTokens\":false,\"totalPrnmoTokens\":0,\"isOnboardingCompleted\":false,\"prnmoTransactions\":[],\"walletDetails\":{\"web3authWalletAddress\":\"0xec8ae9caff08f918d1b38ff0cb3cbe338227065d\",\"isWalletWhitelisted\":false,\"isWalletWhitelistedBitbond\":false}},\"investorData\":{\"_id\":\"\",\"investorType\":\"\",\"financialKnowledge\":\"\",\"kybStatus\":\"Not Submitted\",\"signingCombinations\":[],\"boardMembers\":[],\"statusUpdates\":[],\"deletedAt\":null,\"isVerifiedAccredited\":false,\"jurisdictionViewCount\":[],\"organizationDocuments\":[],\"legalDocuments\":[],\"complianceDocuments\":[],\"boardMemberDocuments\":[],\"__v\":0,\"residencyCountry\":null,\"bankAccountHolderName\":\"\",\"bankName\":\"\",\"bankAccountNumber\":\"\",\"bankSwiftBicCode\":\"\",\"bankIban\":\"\",\"bankDefaultCurrency\":\"\"}},\"version\":0}"
         },
         {
           "name": "auth_store",
-          "value": "{\"sessionId\":\"c52d3abcd7ef248f47d517e80c9a5206c6242d3705ae7278cb6f133a44506d6a\"}"
+          "value": "{\"sessionId\":\"23d6d62ef1e97d32b25470bf73ac90c6acaff3525b0c25b7ba527f10b64b91ac\"}"
         },
         {
           "name": "loginTime",
-          "value": "1753872502213"
+          "value": "1754494702138"
         },
         {
           "name": "authToken",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg3NDc0OWZjZDM3MGIxZDc5NGQxOWMiLCJ1c2VyRW1haWwiOiJwZW5vbW8tYXQtaW52ZXN0b3IyQHNibWNoYmx5Lm1haWxvc2F1ci5uZXQiLCJpbnZlc3RvcklkIjoiNjg4NzQ3NDlmY2QzNzBiMWQ3OTRkMTllIiwicm9sZSI6ImludmVzdG9yIiwianRpIjoiODZiYzg1YTYtMjQwZS00ZjEyLTg0ZjctMDA2ZWY3MjhmMTk0IiwiaWF0IjoxNzUzODcyNTAxLCJleHAiOjE3NTM4NzYxMDF9.yn-f2YA4BqMggzNOptgQItg8YyubAlXAs_hyhI6b2XM"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODkzNzFjNzQzMGI2ZGVhNGQ2ZTdjMzIiLCJ1c2VyRW1haWwiOiJwZW5vbW8tYXQtaW52ZXN0b3IyQHNibWNoYmx5Lm1haWxvc2F1ci5uZXQiLCJpbnZlc3RvcklkIjoiNjg5MzcxYzc0MzBiNmRlYTRkNmU3YzM0Iiwicm9sZSI6ImludmVzdG9yIiwianRpIjoiNjJkYTBkZDgtZjYzZC00ZjQ1LWE5YWYtOTg5OGY4NTE0ZjEyIiwiaWF0IjoxNzU0NDk0NzAxLCJleHAiOjE3NTQ0OTgzMDF9._Ky3qE6F0Q7kjmnqKV0tz6K1RfRPR4T8qBktg7A4KXY"
         },
         {
           "name": "loglevel:web3auth-logger",
@@ -131,7 +131,7 @@
         },
         {
           "name": "EXP_57e1840af5",
-          "value": "{\"web_exp_id\":\"df3c86bf-4433-4f52-9615-296b2672318a\"}"
+          "value": "{\"web_exp_id\":\"26d34c5f-8d37-4bea-af5f-c907744216bc\"}"
         },
         {
           "name": "EXP_unsent_$default_instance",
@@ -143,11 +143,11 @@
         },
         {
           "name": "AMP_unsent_57e1840af5",
-          "value": "[{\"device_id\":\"3c54b62a-7326-4ce2-be86-2ea0a3725245\",\"session_id\":1753872482964,\"time\":1753872502426,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"74034659-0f15-42f9-adfc-02aab36ec719\",\"event_type\":\"[Amplitude] Page Viewed\",\"event_properties\":{\"[Amplitude] Page Domain\":\"www.staging.invest.penomo.com\",\"[Amplitude] Page Location\":\"https://www.staging.invest.penomo.com/dashboard\",\"[Amplitude] Page Path\":\"/dashboard\",\"[Amplitude] Page Title\":\"Invest App | penomo\",\"[Amplitude] Page URL\":\"https://www.staging.invest.penomo.com/dashboard\",\"[Amplitude] Session Replay ID\":\"3c54b62a-7326-4ce2-be86-2ea0a3725245/1753872482964\",\"[Amplitude] Page Counter\":3},\"event_id\":6,\"library\":\"amplitude-ts-script/2.16.1\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"}]"
+          "value": "[{\"device_id\":\"e5df0698-5541-41d4-80a3-0738878bd2b7\",\"session_id\":1754494690311,\"time\":1754494702254,\"platform\":\"Web\",\"language\":\"en-US\",\"ip\":\"$remote\",\"insert_id\":\"57472c2f-663a-4714-95ea-8772630b8fa1\",\"event_type\":\"[Amplitude] Page Viewed\",\"event_properties\":{\"[Amplitude] Page Domain\":\"dev.invest.penomo.com\",\"[Amplitude] Page Location\":\"https://dev.invest.penomo.com/dashboard\",\"[Amplitude] Page Path\":\"/dashboard\",\"[Amplitude] Page Title\":\"Invest App | penomo\",\"[Amplitude] Page URL\":\"https://dev.invest.penomo.com/dashboard\",\"[Amplitude] Session Replay ID\":\"e5df0698-5541-41d4-80a3-0738878bd2b7/1754494690311\",\"[Amplitude] Page Counter\":2},\"event_id\":5,\"library\":\"amplitude-ts-script/2.16.1\",\"user_agent\":\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.7103.25 Safari/537.36\"}]"
         },
         {
           "name": "web3AuthToken",
-          "value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRZT2dnXy01RU9FYmxhWS1WVlJZcVZhREFncHRuZktWNDUzNU1aUEMwdzAifQ.eyJpYXQiOjE3NTM4NzI0OTgsImF1ZCI6IkJJeG9pSDBYSDV6NkJDNGNVYTVlWVpNbGZ5d0hkLVUzZ3BZT1daTzJqaTRHNzVfbXlQamhSYTdGaTJUOWw5QW5sbkVnYnFPeTR6U2h1ZVNieTFGRlU3NCIsIm5vbmNlIjoiMDNmMTEwYWU0NTIyY2Y4Njc2NDcxZjg1ZjViOTRkMjQ2ZjEwNzA2MjFhOTdkYzQ5NmZiMzViZDgwNTE5NDY3ZTE2IiwiaXNzIjoiaHR0cHM6Ly9hcGktYXV0aC53ZWIzYXV0aC5pbyIsIndhbGxldHMiOlt7InB1YmxpY19rZXkiOiIwMjRkZjVlNzIwMDJmY2QxY2Y1NDYxNzFlZDM5YmIxNDk3ZDk4MDQxMzRjOTM1ZTZhZmZmYjAxYWJkMzY5NjIzYjkiLCJ0eXBlIjoid2ViM2F1dGhfYXBwX2tleSIsImN1cnZlIjoic2VjcDI1NmsxIn0seyJwdWJsaWNfa2V5IjoiMDIzYzJjN2E1OGY0OWNkZDQ3NzRkZWNiZTcwMjVlNDQyMDg1ODZlMGY5N2Y3OTRiYjQ2YjFlNTk5MTE2OGQ2YWI1IiwidHlwZSI6IndlYjNhdXRoX3RocmVzaG9sZF9rZXkiLCJjdXJ2ZSI6InNlY3AyNTZrMSJ9XSwiZW1haWwiOiJwZW5vbW8tYXQtaW52ZXN0b3IyQHNibWNoYmx5Lm1haWxvc2F1ci5uZXQiLCJuYW1lIjoicGVub21vLWF0LWludmVzdG9yMkBzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwidmVyaWZpZXIiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwiYXV0aENvbm5lY3Rpb25JZCI6Im5vX21vZGFsX29ubHlfZW1haWxfdmVyaWZpZXIiLCJ2ZXJpZmllcklkIjoicGVub21vLWF0LWludmVzdG9yMkBzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwidXNlcklkIjoicGVub21vLWF0LWludmVzdG9yMkBzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwiYWdncmVnYXRlVmVyaWZpZXIiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwiZ3JvdXBlZEF1dGhDb25uZWN0aW9uSWQiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwiZXhwIjoxNzUzOTU4ODk4fQ.EYYNuPVyNcayhDhDw0zRlBUgFrDEDyq2A0vXvW6KqxBojeW5_PoVLcl5HB8VX2ovjSH5lu-lOo57jt3uowqbsg"
+          "value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRZT2dnXy01RU9FYmxhWS1WVlJZcVZhREFncHRuZktWNDUzNU1aUEMwdzAifQ.eyJpYXQiOjE3NTQ0OTQ2OTksImF1ZCI6IkJJeG9pSDBYSDV6NkJDNGNVYTVlWVpNbGZ5d0hkLVUzZ3BZT1daTzJqaTRHNzVfbXlQamhSYTdGaTJUOWw5QW5sbkVnYnFPeTR6U2h1ZVNieTFGRlU3NCIsIm5vbmNlIjoiMDMwZTA4OWNkZWUzNjBkNzQwZWM5ZTExMzdkNjQ5NDk1N2I3ZjNkZjQ3M2U3ZWUzNmM3YmJkZTk3ODRmM2EyNjJiIiwiaXNzIjoiaHR0cHM6Ly9hcGktYXV0aC53ZWIzYXV0aC5pbyIsIndhbGxldHMiOlt7InB1YmxpY19rZXkiOiIwMjRkZjVlNzIwMDJmY2QxY2Y1NDYxNzFlZDM5YmIxNDk3ZDk4MDQxMzRjOTM1ZTZhZmZmYjAxYWJkMzY5NjIzYjkiLCJ0eXBlIjoid2ViM2F1dGhfYXBwX2tleSIsImN1cnZlIjoic2VjcDI1NmsxIn0seyJwdWJsaWNfa2V5IjoiMDIzYzJjN2E1OGY0OWNkZDQ3NzRkZWNiZTcwMjVlNDQyMDg1ODZlMGY5N2Y3OTRiYjQ2YjFlNTk5MTE2OGQ2YWI1IiwidHlwZSI6IndlYjNhdXRoX3RocmVzaG9sZF9rZXkiLCJjdXJ2ZSI6InNlY3AyNTZrMSJ9XSwiZW1haWwiOiJwZW5vbW8tYXQtaW52ZXN0b3IyQHNibWNoYmx5Lm1haWxvc2F1ci5uZXQiLCJuYW1lIjoicGVub21vLWF0LWludmVzdG9yMkBzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwidmVyaWZpZXIiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwiYXV0aENvbm5lY3Rpb25JZCI6Im5vX21vZGFsX29ubHlfZW1haWxfdmVyaWZpZXIiLCJ2ZXJpZmllcklkIjoicGVub21vLWF0LWludmVzdG9yMkBzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwidXNlcklkIjoicGVub21vLWF0LWludmVzdG9yMkBzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwiYWdncmVnYXRlVmVyaWZpZXIiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwiZ3JvdXBlZEF1dGhDb25uZWN0aW9uSWQiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwiZXhwIjoxNzU0NTgxMDk5fQ.E-yd_oaTLFkFYcBx_aFAgkTHHVCerD3lcnsQdeCimT3u9sBy2hRYZn0plzHjPOxSYYPgkLppMkp9MncC-UpU0g"
         },
         {
           "name": "Web3Auth-cachedAdapter",
@@ -163,7 +163,7 @@
         },
         {
           "name": "gbFeaturesCache",
-          "value": "[[\"https://cdn.growthbook.io||sdk-j5okp4Tx6Hof4T\",{\"data\":{\"status\":200,\"features\":{\"show_quest_pages\":{\"defaultValue\":false,\"rules\":[{\"id\":\"fr_19g62cm7m21qau\",\"condition\":{\"id\":{\"$in\":[\"developer17ls@gmail.com\",\"neeraj@penomo.io\",\"neeraj+investor2+test1@penomo.io\",\"testquests243@gmail.com\",\"testquest11211@gmail.com\",\"developer17ls+in@gmail.com\",\"kubisch@penomo.io\",\"kubisch@penomo.com\",\"neeraj+investor2+test2@penomo.io\",\"ttesrqueststtets@gmail.com\",\"kubisch+250711@penomo.com\",\"kubisch+2507111@penomo.com\",\"kubisch+2507112@penomo.com\",\"testttestuone@gmail.com\",\"kubisch+2507121@penomo.com\",\"dhillon@penomo.io\",\"kubisch+2507122@penomo.com\",\"kubisch+25071233@penomo.com\",\"kubisch+2507131@penomo.com\",\"kubisch+2507132@penomo.com\",\"kubisch+250729@penomo.com\",\"sherem963+29test@gmail.com\"]}},\"force\":true}]}},\"dateUpdated\":\"2025-07-29T13:24:02.434Z\"},\"version\":\"2025-07-29T13:24:02.434Z\",\"staleAt\":\"2025-07-30T10:48:15.615Z\",\"sse\":true}]]"
+          "value": "[[\"https://cdn.growthbook.io||sdk-j5okp4Tx6Hof4T\",{\"data\":{\"status\":200,\"features\":{\"show_quest_pages\":{\"defaultValue\":false,\"rules\":[{\"id\":\"fr_19g62cm7m21qau\",\"condition\":{\"id\":{\"$in\":[\"developer17ls@gmail.com\",\"neeraj@penomo.io\",\"neeraj+investor2+test1@penomo.io\",\"testquests243@gmail.com\",\"testquest11211@gmail.com\",\"developer17ls+in@gmail.com\",\"kubisch@penomo.io\",\"kubisch@penomo.com\",\"neeraj+investor2+test2@penomo.io\",\"ttesrqueststtets@gmail.com\",\"kubisch+250711@penomo.com\",\"kubisch+2507111@penomo.com\",\"kubisch+2507112@penomo.com\",\"testttestuone@gmail.com\",\"kubisch+2507121@penomo.com\",\"dhillon@penomo.io\",\"kubisch+2507122@penomo.com\",\"kubisch+25071233@penomo.com\",\"kubisch+2507131@penomo.com\",\"kubisch+2507132@penomo.com\",\"kubisch+250729@penomo.com\",\"kubisch+25073021@penomo.com\",\"sherem963+test11@gmail.com\",\"kubisch+2508061@penomo.com\",\"kubisch+2508062@penomo.com\"]}},\"force\":true}]}},\"dateUpdated\":\"2025-08-06T10:37:03.510Z\"},\"version\":\"2025-08-06T10:37:03.510Z\",\"staleAt\":\"2025-08-06T15:38:20.281Z\",\"sse\":true}]]"
         }
       ]
     },
