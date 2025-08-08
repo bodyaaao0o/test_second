@@ -1,4 +1,4 @@
-import { test, expect, BrowserContext, Page, chromium, firefox } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { PageManager } from '../../support/PageObject/pageManager';
 import { env, cred } from '../../support/data';
 import { checkVisibility } from '../../support/PageObject/pageManager';

@@ -101,25 +101,21 @@ jobs:
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
           
-          # Копіюємо всі артефакти з test-results директорії (БЕЗ ВІДЕО)
           if [ -d "test-results" ]; then
             echo "Copying from test-results directory..."
             find test-results -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
           
-          # Копіюємо артефакти з playwright-report якщо є (БЕЗ ВІДЕО)
           if [ -d "playwright-report" ]; then
             echo "Copying from playwright-report directory..."
             find playwright-report -type f \( -name '*.png' -o -name '*.zip' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
           
-          # Додаткове копіювання з можливих локацій (БЕЗ ВІДЕО)
           find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           
           echo "Final artifacts in allure-results:"
           ls -lah ./allure-results/ || echo "No artifacts found."
           
-          # Перевірка що файли дійсно скопіювались
           echo "=== Final verification ==="
           echo "Allure results directory size:"
           du -sh ./allure-results/ 2>/dev/null || echo "Directory not found"
@@ -129,7 +125,6 @@ jobs:
           find ./allure-results -name "*.json" | wc -l | xargs echo "JSON files:"
           find ./allure-results -name "*.trace" | wc -l | xargs echo "Trace files:"
           
-          # Перевіряємо права доступу
           chmod -R 755 ./allure-results/ 2>/dev/null || true
 
       - name: Upload Allure raw results (Desktop)
@@ -194,25 +189,21 @@ jobs:
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
           
-          # Копіюємо всі артефакти з test-results директорії (БЕЗ ВІДЕО)
           if [ -d "test-results" ]; then
             echo "Copying from test-results directory..."
             find test-results -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
           
-          # Копіюємо артефакти з playwright-report якщо є (БЕЗ ВІДЕО)
           if [ -d "playwright-report" ]; then
             echo "Copying from playwright-report directory..."
             find playwright-report -type f \( -name '*.png' -o -name '*.zip' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-          
-          # Додаткове копіювання з можливих локацій (БЕЗ ВІДЕО)
+
           find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           
           echo "Final artifacts in allure-results:"
           ls -lah ./allure-results/ || echo "No artifacts found."
           
-          # Перевірка що файли дійсно скопіювались
           echo "=== Final verification ==="
           echo "Allure results directory size:"
           du -sh ./allure-results/ 2>/dev/null || echo "Directory not found"
@@ -222,7 +213,6 @@ jobs:
           find ./allure-results -name "*.json" | wc -l | xargs echo "JSON files:"
           find ./allure-results -name "*.trace" | wc -l | xargs echo "Trace files:"
           
-          # Перевіряємо права доступу
           chmod -R 755 ./allure-results/ 2>/dev/null || true
 
       - name: Upload Allure raw results (Mobile)
@@ -298,11 +288,9 @@ jobs:
             echo "JSON files found: $(find ./allure-results-merged -name "*.json" | wc -l)"
             echo "PNG files found: $(find ./allure-results-merged -name "*.png" | wc -l)"
             
-            # Генеруємо звіт з усією директорією
             allure generate ./allure-results-merged -o ./allure-report --clean
             echo "Report generated successfully"
             
-            # Перевіряємо що звіт містить артефакти
             echo "=== Report contents check ==="
             if [ -d "./allure-report" ]; then
               echo "Report directory size: $(du -sh ./allure-report)"
@@ -326,12 +314,10 @@ jobs:
           echo "Extracting failure reason..."
           REASON=""
 
-          # Try to extract from Allure results first
           if [ -d "./allure-results-merged" ]; then
             REASON=$(find ./allure-results-merged -name "*.json" -exec jq -r 'select(.status=="failed") | .statusDetails.message // .statusDetails.trace // empty' {} \; 2>/dev/null | head -n 1 | sed 's/"/\\"/g' | tr '\n' ' ' | sed 's/[[:space:]]*$//')
           fi
 
-          # Fallback to job status if no specific reason found
           if [ -z "$REASON" ] || [ "$REASON" = "null" ]; then
             if [ "${{ needs.desktop-tests.result }}" == "failure" ] && [ "${{ needs.mobile-tests.result }}" == "failure" ]; then
               REASON="Both desktop and mobile tests failed"
@@ -344,7 +330,6 @@ jobs:
             fi
           fi
 
-          # Truncate if too long for Slack
           if [ ${#REASON} -gt 200 ]; then
             REASON="${REASON:0:200}..."
           fi
@@ -355,5 +340,5 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' \
             --data "{
-              \"text\": \"❌ *Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n📊 Desktop: ${{ needs.desktop-tests.result }} | Mobile: ${{ needs.mobile-tests.result }}\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\\n📄 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Download Allure Report>\" 
+              \"text\": \"*Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n Desktop: ${{ needs.desktop-tests.result }} | Mobile: ${{ needs.mobile-tests.result }}\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\\n📄 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Download Allure Report>\" 
             }" ${{ secrets.SLACK_WEBHOOK_URL }}

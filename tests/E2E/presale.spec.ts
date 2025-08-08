@@ -1,4 +1,4 @@
-import { test, expect, BrowserContext, Page, chromium, TestInfo } from '@playwright/test';
+import { test, expect, BrowserContext, Page, chromium } from '@playwright/test';
 import { PageManager } from '../../support/PageObject/pageManager';
 import { env } from '../../support/data';
 import { checkVisibility, checkVisibilityWithRetry } from '../../support/PageObject/pageManager';
@@ -69,11 +69,15 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         await adminPage.waitForTimeout(15000);
 
         await adminPM.adminTo().getUsersNavigation().click();
+        
         await adminPage.waitForLoadState();
+        
         await userVerification(adminPage, adminPM);
 
         await investorPage.bringToFront();
+        
         await investorPage.waitForTimeout(2000);
+        
         await investorPage.reload();
 
         await checkVisibilityWithRetry([
@@ -94,6 +98,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         ])
 
         await investorPM.whiteListTo().getInvestmentSum().fill('2222');
+        
         await investorPM.whiteListTo().getNextButton().click();
 
         await checkVisibility([
@@ -107,14 +112,19 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         ])
 
         await investorPM.whiteListTo().getInputWalletAddress().fill('asdflkjhasdkjahsdkjashd');
+        
         await expect(investorPM.whiteListTo().getInvalidWalletAddressMessage()).toBeVisible();
 
         await investorPM.whiteListTo().getInputWalletAddress().clear();
+        
         await investorPM.whiteListTo().getBackButton().click();
+        
         await expect(investorPM.whiteListTo().getGettingWhitelist()).toBeVisible();
 
         await investorPM.whiteListTo().getNextButton().click();
+        
         await investorPM.whiteListTo().getInputWalletAddress().fill(wallet.address);
+        
         await investorPM.whiteListTo().getJoinPNMOCommunityButton().click();
 
         await checkVisibilityWithRetry([
@@ -126,14 +136,19 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         ], 5, 3000, investorPage)
 
         await investorPM.whiteListTo().getPNMOPresalePageButton().click();
+        
         await investorPage.waitForLoadState();
 
         await expect(investorPage).toHaveURL('https://dev.invest.penomo.com/presale');
+        
         await expect(investorPM.whiteListTo().getNotificationForInitated()).toBeVisible();
+        
         await expect(investorPM.presaleTo().getPresalePageBox()).toBeVisible();
 
         await adminPage.bringToFront();
+        
         await adminPage.reload();
+        
         await adminPage.waitForLoadState();
 
         await checkVisibility([
@@ -142,6 +157,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         ]);
 
         await adminPM.adminTo().getPresaleNavigation().click();
+        
         await expect(adminPage).toHaveURL('https://dev.admin.penomo.com/presale');
 
         await checkVisibility([
@@ -174,6 +190,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         await adminPM.adminTo().getConfirmWalletConfirmButton().click();
 
         await investorPage.bringToFront();
+        
         await investorPage.waitForTimeout(5000);
 
         if (isMobile) {
@@ -187,6 +204,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         }
 
         await investorPage.reload();
+        
         await investorPage.waitForLoadState();
 
         await checkVisibility([
@@ -200,9 +218,11 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         await expect(investorPM.presaleTo().getTermsAndConditionsAgreeAndContinueButton()).toBeDisabled();
 
         await investorPM.presaleTo().getConfirmTermsAndConditionsCheckBox().click();
+        
         await expect(investorPM.presaleTo().getTermsAndConditionsAgreeAndContinueButton()).toBeEnabled();
 
         await investorPM.presaleTo().getTermsAndConditionsAgreeAndContinueButton().click();
+        
         await investorPage.waitForLoadState();
 
         await expect(investorPM.presaleTo().getIFrameForTokens()).toBeVisible();
@@ -214,9 +234,11 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         ]);
 
         await adminPM.adminTo().getUsersNavigation().click();
+        
         await adminPage.waitForLoadState();
 
         await expect(adminPM.adminTo().getUsersList()).toBeVisible();
+        
         await expect(adminPM.adminTo().getLastUser()).toBeVisible();
 
         await adminPM.adminTo().getLastUser().click();
@@ -246,13 +268,17 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         ])
 
         await adminPM.adminTo().getInputToken().fill('123321');
+        
         await adminPM.adminTo().getInputTransactionHash().fill('0x5bfff430adD6f397C8d0Cae0E28F9cDAD1a256Aa');
 
         await expect(adminPM.adminTo().getSaveButton()).toBeVisible();
+        
         await adminPM.adminTo().getSaveButton().click();
 
         const notifies = adminPM.adminTo().getSuccessfulyUpdateNotify();
+        
         await expect(notifies).toHaveCount(1);
+        
         await expect(notifies).toBeVisible();
 
         await investorPage.bringToFront();
@@ -263,7 +289,9 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         }
 
         await expect(investorPM.dashboardTo().getDashboardNav()).toBeVisible();
+        
         await investorPM.dashboardTo().getDashboardNav().click();
+        
         await investorPage.waitForLoadState();
 
         await browser2.close();
