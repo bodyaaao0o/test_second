@@ -1,5 +1,4 @@
 import { Page, Locator } from '@playwright/test'
-import { LoadFnOutput } from 'module';
 
 export class SettingPage {
     private readonly page: Page;
@@ -177,15 +176,15 @@ export class SettingPage {
     };
 
     getSuccessUpdateUserDataMessage(): Locator {
-        return this.page.locator('.go3958317564', { hasText: "User details updated successfully" });
+        return this.page.locator('.go2072408551', { hasText: "User details updated successfully" });
     };
 
     getAddressCopiedMessage(): Locator {
-        return this.page.locator('.go3958317564', { hasText: "Address copied to clipboard!" });
+        return this.page.locator('.go2072408551', { hasText: "Address copied to clipboard!" });
     };
 
     getReferalLinkCopiedMessage(): Locator {
-        return this.page.locator('.go3958317564', { hasText: "Referral link copied to clipboard!" });
+        return this.page.locator('.go2072408551', { hasText: "Referral link copied to clipboard!" });
     };
 
 

@@ -3,7 +3,7 @@ name: Run Playwright tests for IA and AA
 on:
   pull_request:
     branches:
-      - staging
+      - main
   push:
     branches:
       - main
@@ -342,3 +342,7 @@ jobs:
             --data "{
               \"text\": \"*Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n Desktop: ${{ needs.desktop-tests.result }} | Mobile: ${{ needs.mobile-tests.result }}\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\\n📄 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Download Allure Report>\" 
             }" ${{ secrets.SLACK_WEBHOOK_URL }}
+
+              \"text\": \"❌ *Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n📊 Desktop: ${{ needs.desktop-tests.result }} | Mobile: ${{ needs.mobile-tests.result }}\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\\n📄 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Download Allure Report>\" 
+            }" ${{ secrets.SLACK_WEBHOOK_URL }}
+
