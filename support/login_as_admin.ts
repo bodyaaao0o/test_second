@@ -6,10 +6,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 
-const { devAdminUrl } = env;
+const { stageAdminUrl } = env;
 
 export async function adminLogin(page: Page, context: BrowserContext, pm: PageManager): Promise<Page> {
-    await page.goto(devAdminUrl);
+    await page.goto(stageAdminUrl);
     const mailosaur = new Mailosaur(process.env.MAILOSAUR_API_KEY!);
     const serverId = process.env.MAILOSAUR_SERVER_ID!;
     const testEmail = process.env.LOGIN_ADMIN_EMAIL!;
