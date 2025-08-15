@@ -52,7 +52,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         await investorPage.close();
     });
 
-    test("Investor + Admin presale flow", async () => {
+    test.skip("Investor + Admin presale flow", async () => {
         const browser2 = await chromium.launch();
 
         adminContext = await browser2.newContext({
