@@ -12,7 +12,7 @@ test.describe("Admin quests test", () => {
 
         await adminLogin(page, context, pm);
 
-        await expect(page).toHaveURL('https://dev.admin.penomo.com/dashboard');
+        await expect(page).toHaveURL('https://www.staging.admin.penomo.com/dashboard');
 
         await expect(pm.questsAdminTo().getNavigationBar()).toBeVisible();
 
@@ -24,7 +24,7 @@ test.describe("Admin quests test", () => {
 
         await page.waitForURL('**/quest');
 
-        await expect(page).toHaveURL('https://dev.admin.penomo.com/quest');
+        await expect(page).toHaveURL('https://www.staging.admin.penomo.com/quest');
 
         await checkVisibility([
             pm.questsAdminTo().getChallengesNav(),

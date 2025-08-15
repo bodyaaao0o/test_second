@@ -7,11 +7,11 @@ dotenv.config();
 
 
 
-const { devBaseUrl } = env;
+const { stageBaseUrl } = env;
 const { valid_username, valid_surename, valid_referal_code } = cred
 
 export async function investorLogin(page: Page, context: BrowserContext, pm: PageManager): Promise<Page> {
-    await page.goto(devBaseUrl);
+    await page.goto(stageBaseUrl);
     const mailosaur = new Mailosaur(process.env.MAILOSAUR_API_KEY!);
     const serverId = process.env.MAILOSAUR_SERVER_ID!;
 

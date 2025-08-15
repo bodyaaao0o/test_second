@@ -11,30 +11,38 @@ export class CampaignsPage {
         return this.page.locator('ul.flex.flex-wrap.-mb-px');
     };
 
-    getInfoPage(): Locator {
-        return this.page.locator('span', { hasText: "Info" });
+    getReferralPage(): Locator {
+        return this.page.locator('span.inline-block.px-6.border-b-2.border-transparent.rounded-t-lg', { hasText: "Referral" });
     };
 
     getQuestsPage(): Locator {
-        return this.page.locator('span.inline-block', { hasText: "Quests" });
+        return this.page.locator('span.inline-block.px-6.border-b-2.border-transparent.rounded-t-lg', { hasText: "Quests" });
     };
 
     getLeaderboardPage(): Locator {
-        return this.page.locator('span.inline-block', { hasText: 'Leaderboard' });
+        return this.page.locator('span.inline-block.px-6.border-b-2.border-transparent.rounded-t-lg', { hasText: 'Leaderboard' });
     };
 
     //Info page
 
-    getInfoTitle(): Locator {
+    getReferralTitle(): Locator {
         return this.page.locator('h1', { hasText: "Earn XP* by referring penomo to " });
     };
 
-    getInfoDescription(): Locator {
+    getReferralDescription(): Locator {
         return this.page.locator('p', { hasText: "250 XP will be claimed after your referee has completed a successful KYC on penomo. Another 1000 XP will be claimed after the presale, if your referee has invested in the PNMO presale" });
     };
 
-    getReferalLinkBox(): Locator {
-        return this.page.locator('button[aria-label="Copy referral link"]').locator('..'); // отримує батьківський div
+    getReferralLinkBox(): Locator {
+        return this.page.locator('.flex-1.overflow-hidden.px-3.py-2')
+    }
+
+    getCopyReferralLinkbutton(): Locator {
+        return this.page.locator('button[data-testid="button"]');
+    }
+
+    clickCopyReferralLink() {
+        return this.getCopyReferralLinkbutton().click();
     }
 
 
@@ -99,21 +107,28 @@ export class CampaignsPage {
         return this.page.locator('button', { hasText: "Let's Start" });
     };
 
-    getActiveQuests(): Locator {
-        return this.page.locator('div.flex.flex-col.body-medium', { hasText: "ACTIVE QUESTS" });
+    // Info section
+
+    getInfoContainer(): Locator {
+        return this.page.locator('.col-span-1.p-4.rounded-lg.border.border-monochrome-60.bg-cardOverlay.box-shadow-card');
     };
 
-    getQuestsComplete(): Locator {
-        return this.page.locator('div.flex.flex-col.body-medium', { hasText: "QUESTS COMPLETED" });
-    };
 
-    getClaimedXP(): Locator {
-        return this.page.locator('div.flex.flex-col.body-medium', { hasText: "CLAIMED XP" });
-    };
+    // getActiveQuests(): Locator {
+    //     return this.page.locator('div.flex.flex-col.body-medium', { hasText: "ACTIVE QUESTS" });
+    // };
 
-    getCompletionProgress(): Locator {
-        return this.page.locator('div.flex.flex-col.body-medium', { hasText: "COMPLETION PROGRESS" });
-    };
+    // getQuestsComplete(): Locator {
+    //     return this.page.locator('div.flex.flex-col.body-medium', { hasText: "QUESTS COMPLETED" });
+    // };
+
+    // getClaimedXP(): Locator {
+    //     return this.page.locator('div.flex.flex-col.body-medium', { hasText: "CLAIMED XP" });
+    // };
+
+    // getCompletionProgress(): Locator {
+    //     return this.page.locator('div.flex.flex-col.body-medium', { hasText: "COMPLETION PROGRESS" });
+    //};
 
     getQuestMessage(): Locator {
         return this.page.locator('.p-4.rounded-lg', {
@@ -139,7 +154,7 @@ export class CampaignsPage {
     };
 
     getCloseQuestButton(): Locator {
-        return this.page.locator('button.bg-monochrome-60').first();
+        return this.page.locator('button[data-testid="button"].flex.flex-row.cursor-pointer.items-center.justify-center.gap-2.transition-all').nth(1);
     };
 
     getJoinTelegramQuest(): Locator {
@@ -164,6 +179,14 @@ export class CampaignsPage {
 
     getRetweetOnXQuestDescription(): Locator {
         return this.page.locator('div.flex.items-center.gap-4', { hasText: "Complete the challenge by retweeting the following post on X!" });
+    };
+
+    getCheckRulesButton(): Locator {
+        return this.page.locator('button.bg-monochrome-60');
+    };
+
+    clickOnRulesButton() {
+        return this.getCheckRulesButton().click();
     };
 
 
@@ -214,11 +237,11 @@ export class CampaignsPage {
     };
 
     getLeftButton(): Locator {
-        return this.page.locator('button:has(svg.text-green-500)').nth(0);
+        return this.page.locator('button:has(svg.text-green-100)').nth(0);
     };
 
     getRightButton(): Locator {
-        return this.page.locator('button:has(svg.text-green-500)').nth(1);
+        return this.page.locator('button:has(svg.text-green-100)').nth(1);
     };
 
     getPageNumber(): Locator {

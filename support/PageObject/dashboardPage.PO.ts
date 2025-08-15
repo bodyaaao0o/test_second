@@ -41,15 +41,15 @@ export class DashboardPage {
     };
 
     getReferralLink(): Locator {
-        return this.page.locator('span', {hasText: "Referral Link"});
+        return this.page.locator('a[href="/campaigns?section=referral"]');
     };
 
     getQuests(): Locator {
-        return this.page.locator('span', {hasText: "Quests"}).first();
+        return this.page.locator('a[href="/campaigns?section=quests"]');
     };
 
     getLeaderboard(): Locator {
-        return this.page.locator('span', {hasText: "Leaderboard"}).first();
+        return this.page.locator('a[href="/campaigns?section=leaderboard"]');
     };
 
     getPortfolioNav(): Locator {

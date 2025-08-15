@@ -8,7 +8,7 @@ import { investorLogin } from '../../support/login_as_investor';
 
 const wallet = Wallet.createRandom();
 console.log('New wallet address:', wallet.address);
-const { devBaseUrl, devAdminUrl } = env;
+const { stageBaseUrl, stageAdminUrl } = env;
 
 test.describe("E2E: Investor + Admin presale flow", () => {
     let isMobile = false;
@@ -44,7 +44,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
             const loggedInPage = await investorLogin(investorPage, investorContext, pm);
             investorPM = new PageManager(loggedInPage);
         } else {
-            await investorPage.goto(devBaseUrl);
+            await investorPage.goto(stageBaseUrl);
         }
     });
 
@@ -61,7 +61,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         });
 
         adminPage = await adminContext.newPage();
-        await adminPage.goto(devAdminUrl);
+        await adminPage.goto(stageAdminUrl);
 
         pm = new PageManager(adminPage);
         adminPM = new PageManager(adminPage);
@@ -139,7 +139,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
         
         await investorPage.waitForLoadState();
 
-        await expect(investorPage).toHaveURL('https://dev.invest.penomo.com/presale');
+        await expect(investorPage).toHaveURL('https://www.staging.invest.penomo.com/presale');
         
         await expect(investorPM.whiteListTo().getNotificationForInitated()).toBeVisible();
         
@@ -158,7 +158,7 @@ test.describe("E2E: Investor + Admin presale flow", () => {
 
         await adminPM.adminTo().getPresaleNavigation().click();
         
-        await expect(adminPage).toHaveURL('https://dev.admin.penomo.com/presale');
+        await expect(adminPage).toHaveURL('https://www.staging.admin.penomo.com/presale');
 
         await checkVisibility([
             adminPM.adminTo().getPresaleBox(),

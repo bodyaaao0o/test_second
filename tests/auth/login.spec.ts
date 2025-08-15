@@ -2,12 +2,13 @@ import { test, expect } from '@playwright/test';
 import { PageManager } from '../../support/PageObject/pageManager';
 import { env, cred } from '../../support/data';
 import { LoginImages, checkVisibility } from '../../support/PageObject/loginPage.PO';
+import { setGeneratedEmail, getGeneratedEmail } from '../../support/email';
 import Mailosaur from 'mailosaur';
 import dotenv from 'dotenv';
 dotenv.config();
 
 
-const { devBaseUrl } = env;
+const { stageBaseUrl, devBaseUrl } = env;
 const { valid_username,
     valid_surename,
     invalid_userName,
@@ -22,7 +23,7 @@ test.describe("Login as investor", () => {
 
     test.beforeEach(async ( {context, page} ) => {
         await context.clearCookies();
-        await page.goto(devBaseUrl);
+        await page.goto(stageBaseUrl);
         await page.evaluate(() => {
             localStorage.clear();
             sessionStorage.clear();
@@ -38,8 +39,8 @@ test.describe("Login as investor", () => {
 
     test('Register on investor page', async ({ context, page }, testInfo) => {
         const isMobile = testInfo.project.use.isMobile;
-        await page.goto(devBaseUrl);
-        await expect(page).toHaveURL('https://dev.invest.penomo.com/');
+        await page.goto(stageBaseUrl);
+        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/');
         if (!isMobile) {
             await images.checkAllImagesAreVisible();
         }
@@ -56,7 +57,9 @@ test.describe("Login as investor", () => {
 
         const shortId = Math.random().toString(36).slice(2, 9);
         const testEmail = `${shortId}@${serverId}.mailosaur.net`;
-
+        setGeneratedEmail(testEmail);
+        console.log(getGeneratedEmail())
+        
         await pm.loginTo().getInputEmail().fill(testEmail);
         const [popup] = await Promise.all([
             context.waitForEvent('page'),
@@ -153,7 +156,7 @@ test.describe("Login as investor", () => {
         await pm.profile().getInputReferalCode().clear();
         await pm.profile().getSubmiteButton().click();
         await page.waitForURL('**/dashboard');
-        await expect(page).toHaveURL('https://dev.invest.penomo.com/dashboard');
+        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/dashboard');
         await page.waitForLoadState();
         await context.storageState({ path: 'playwright/.auth/invest_login.json' });
 
@@ -161,8 +164,8 @@ test.describe("Login as investor", () => {
 
     test("Log in on investor page", async ({ context, page }, testInfo) => {
         const isMobile = testInfo.project.use.isMobile;
-        await page.goto(devBaseUrl);
-        await expect(page).toHaveURL('https://dev.invest.penomo.com/');
+        await page.goto(stageBaseUrl);
+        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/');
         if (!isMobile) {
             await images.checkAllImagesAreVisible();
         }
