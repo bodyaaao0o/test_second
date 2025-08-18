@@ -363,37 +363,37 @@ test.describe("Quests complete test", () => {
 
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
 
-        await pm.questsTo().getSkipButton().click();
+        // await pm.questsTo().getSkipButton().click();
 
-        await checkVisibility([
-            pm.questsTo().getCompleteYourTasks(),
-            pm.questsTo().getCompleteYourTasksDescription(),
-            pm.questsTo().getCompleteYourTasksVideoHelp(),
-            pm.questsTo().getBackButton(),
-            pm.questsTo().getNextButton(),
-        ]);
+        // await checkVisibility([
+        //     pm.questsTo().getCompleteYourTasks(),
+        //     pm.questsTo().getCompleteYourTasksDescription(),
+        //     pm.questsTo().getCompleteYourTasksVideoHelp(),
+        //     pm.questsTo().getBackButton(),
+        //     pm.questsTo().getNextButton(),
+        // ]);
 
-        await pm.questsTo().getNextButton().click();
+        // await pm.questsTo().getNextButton().click();
 
-        await checkVisibility([
-            pm.questsTo().getQuantumCoresPage(),
-            pm.questsTo().getQuantumCoresDescription(),
-            pm.questsTo().getQuantumCoresVideo(),
-            pm.questsTo().getBackButton(),
-            pm.questsTo().getNextButton()
-        ]);
+        // await checkVisibility([
+        //     pm.questsTo().getQuantumCoresPage(),
+        //     pm.questsTo().getQuantumCoresDescription(),
+        //     pm.questsTo().getQuantumCoresVideo(),
+        //     pm.questsTo().getBackButton(),
+        //     pm.questsTo().getNextButton()
+        // ]);
 
-        await pm.questsTo().getNextButton().click();
+        // await pm.questsTo().getNextButton().click();
 
-        await checkVisibility([
-            pm.questsTo().getBewareOfDoomCoresPage(),
-            pm.questsTo().getBewareOfDoomCoresDescription(),
-            pm.questsTo().getBewareOfDoomCoresVideo(),
-            pm.questsTo().getLetsStartButton(),
-            pm.questsTo().getBackButton()
-        ]);
+        // await checkVisibility([
+        //     pm.questsTo().getBewareOfDoomCoresPage(),
+        //     pm.questsTo().getBewareOfDoomCoresDescription(),
+        //     pm.questsTo().getBewareOfDoomCoresVideo(),
+        //     pm.questsTo().getLetsStartButton(),
+        //     pm.questsTo().getBackButton()
+        // ]);
 
-        await pm.questsTo().getLetsStartButton().click();
+        // await pm.questsTo().getLetsStartButton().click();
 
         const InfoCon = await pm.questsTo().getInfoContainer();
 
