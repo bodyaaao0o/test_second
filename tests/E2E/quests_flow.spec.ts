@@ -56,9 +56,17 @@ test.describe("Quests complete test", () => {
 
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=referral');
 
-        await pm.dashboardTo().getQuests().click();
-
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
+        try{
+            await pm.dashboardTo().getQuests().click();
+    
+            await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
+        }
+        catch {
+            await page.reload();
+            await pm.dashboardTo().getQuests().click();
+    
+            await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
+        }
 
         await pm.dashboardTo().getLeaderboard().click();
 

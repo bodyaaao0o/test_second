@@ -1,8 +1,9 @@
+import "dotenv/config"
 import fetch from "node-fetch";
 
-const API_KEY = process.env.GROWTHBOOK_API_KEY!;
-const BASE_URL = process.env.GROWTHBOOK_URL!;
-const FEATURE_KEY = process.env.GROWTHBOOK_FEATURE_KEY!;
+const API_KEY = process.env.GROWTHBOOK_API_KEY! as string;
+const BASE_URL = process.env.GROWTHBOOK_URL! as string;
+const FEATURE_KEY = process.env.GROWTHBOOK_FEATURE_KEY! as string;
 
 export async function getFeatureData() {
     const res = await fetch(`${BASE_URL}/features/${FEATURE_KEY}`, {
