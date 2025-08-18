@@ -40,16 +40,32 @@ export class DashboardPage {
         return this.page.locator('span', {hasText: "Campaigns"});
     };
 
+    clickOnCampaignsNav() { 
+        return this.getCampaignsNav().click();
+    };
+
     getReferralLink(): Locator {
         return this.page.locator('a[href="/campaigns?section=referral"]');
+    };
+
+    clickOnReferralLink() {
+        return this.getReferralLink().click();
     };
 
     getQuests(): Locator {
         return this.page.locator('a[href="/campaigns?section=quests"]');
     };
 
+    clickOnQuests() {
+        return this.getQuests().click();
+    };
+
     getLeaderboard(): Locator {
         return this.page.locator('a[href="/campaigns?section=leaderboard"]');
+    };
+
+    clickOnLeaderboard() {
+        return this.getLeaderboard().click();
     };
 
     getPortfolioNav(): Locator {

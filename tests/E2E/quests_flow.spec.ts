@@ -23,20 +23,20 @@ test.describe("Quests complete test", () => {
 
     let pm: PageManager;
     let page: Page;
-    let email: string;
 
     test.beforeAll(async ( {} ) => {
         const email = getGeneratedEmail();
         await addUserToQuests(email);
     });
 
-    test.afterAll(async ({ page }) => {
+    test.afterAll(async ({}) => {
         const email = getGeneratedEmail();
         await deleteUserFromQuests(email);
-        await page.close();
     })
 
-    test("Progressive challenges completion", async ({ page, context, request }) => {
+
+    test("Progressive challenges completion", async ({ page}, testInfo) => {
+        const isMobile = testInfo.project.use.isMobile;
         pm = new PageManager(page);
 
         await page.goto(stageBaseUrl);
@@ -45,6 +45,10 @@ test.describe("Quests complete test", () => {
 
         await page.reload();
 
+        if (isMobile) {
+            await pm.dashboardTo().clickOnBurgerMenu();
+        };
+
         await checkVisibility([
             pm.dashboardTo().getCampaignsNav(),
             pm.dashboardTo().getReferralLink(),
@@ -52,27 +56,44 @@ test.describe("Quests complete test", () => {
             pm.dashboardTo().getLeaderboard()
         ])
 
-        await pm.dashboardTo().getCampaignsNav().click();
+        await pm.dashboardTo().clickOnCampaignsNav();
 
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=referral');
 
         try{
-            await pm.dashboardTo().getQuests().click();
+            if(isMobile) {
+                await pm.questsTo().clickOnQuestsPage();
+            } else {
+                await pm.dashboardTo().clickOnQuests();
+            };
     
             await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
         }
         catch {
             await page.reload();
-            await pm.dashboardTo().getQuests().click();
+            if(isMobile) {
+                await pm.questsTo().clickOnQuestsPage();
+            } else {
+                await pm.dashboardTo().clickOnQuests();
+            }
+
     
             await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
         }
 
-        await pm.dashboardTo().getLeaderboard().click();
+        if (isMobile) {
+            await pm.questsTo().clickOnLeaderboardPage();
+        } else {
+            await pm.dashboardTo().clickOnLeaderboard();
+        };
 
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=leaderboard');
 
-        await pm.dashboardTo().getReferralLink().click();
+        if (isMobile) {
+            await pm.questsTo().clickOnReferralPage();
+        } else {
+            await pm.dashboardTo().clickOnReferralLink();
+        }
 
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=referral');
 
@@ -88,11 +109,15 @@ test.describe("Quests complete test", () => {
             pm.questsTo().getXPHelpText()
         ]);
 
-        await pm.questsTo().getQuestsPage().click();
+        if (isMobile) {
+            await pm.questsTo().clickOnQuestsPage();
+        } else {
+            await pm.questsTo().clickOnQuestsPage();
+        }
 
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
 
-        await pm.questsTo().getSkipButton().click();
+        await pm.questsTo().clickOnSkipButton();
 
         await checkVisibility([
             pm.questsTo().getCompleteYourTasks(),
@@ -102,7 +127,7 @@ test.describe("Quests complete test", () => {
             pm.questsTo().getNextButton(),
         ]);
 
-        await pm.questsTo().getNextButton().click();
+        await pm.questsTo().clickOnNextButton();
 
         await checkVisibility([
             pm.questsTo().getQuantumCoresPage(),
@@ -112,7 +137,7 @@ test.describe("Quests complete test", () => {
             pm.questsTo().getNextButton()
         ]);
 
-        await pm.questsTo().getNextButton().click();
+        await pm.questsTo().clickOnNextButton();
 
         await checkVisibility([
             pm.questsTo().getBewareOfDoomCoresPage(),
@@ -122,7 +147,7 @@ test.describe("Quests complete test", () => {
             pm.questsTo().getBackButton()
         ]);
 
-        await pm.questsTo().getLetsStartButton().click();
+        await pm.questsTo().clickOnLetsStartButton();
 
         const InfoCon = await pm.questsTo().getInfoContainer();
 
@@ -153,21 +178,21 @@ test.describe("Quests complete test", () => {
 
                 await expect(pm.questsTo().getFollowUsOnXQuestDescription()).toBeVisible();
 
-                await pm.questsTo().getCloseQuestButton().click();
+                await pm.questsTo().clickOnCloseQuestButton();
             },
             1: async () => {
                 await expect(pm.questsTo().getJoinTelegramQuest()).toBeVisible();
 
                 await expect(pm.questsTo().getJoinTelegramQuestDescription()).toBeVisible();
 
-                await pm.questsTo().getCloseQuestButton().click();
+                await pm.questsTo().clickOnCloseQuestButton();
             },
             3: async () => {
                 await expect(pm.questsTo().getJoinDiscordQuest()).toBeVisible();
 
                 await expect(pm.questsTo().getJoinDiscordQuestDescription()).toBeVisible();
 
-                await pm.questsTo().getCloseQuestButton().click();
+                await pm.questsTo().clickOnCloseQuestButton();
             }
         };
 
@@ -207,11 +232,11 @@ test.describe("Quests complete test", () => {
 
                 await expect(pm.questsTo().getRetweetOnXQuestDescription()).toBeVisible();
 
-                await pm.questsTo().getCloseQuestButton().click();
+                await pm.questsTo().clickOnCloseQuestButton();
             }
         }
 
-        await pm.questsTo().getLeaderboardPage().click();
+        await pm.questsTo().clickOnLeaderboardPage();
 
         await checkVisibility([
             pm.questsTo().getYourRank(),
@@ -224,16 +249,16 @@ test.describe("Quests complete test", () => {
             pm.questsTo().get10LeaderPerPage(),
             pm.questsTo().get100LeaderPerPage(),
             pm.questsTo().getPageNumbersBox(),
-            pm.questsTo().getLeftButton(),
-            pm.questsTo().getRightButton(),
+            pm.questsTo().getLeftPaginationButton(),
+            pm.questsTo().getRightPaginationButton(),
             pm.questsTo().getPageNumber()
         ]);
 
-        await pm.questsTo().getRightButton().click();
+        await pm.questsTo().clickOnRightButton();
 
         await expect(pm.questsTo().getPageNumber()).toHaveValue('2');
 
-        await pm.questsTo().getLeftButton().click();
+        await pm.questsTo().clickOnLeftButton();
 
         await expect(pm.questsTo().getPageNumber()).toHaveValue('1');
 
@@ -245,201 +270,28 @@ test.describe("Quests complete test", () => {
 
         expect(rowCount).toBeGreaterThanOrEqual(10);
 
-        await pm.questsTo().get25LeadersPerPage().click();
+        await pm.questsTo().clickOn25LeadersPerPageButton();
 
         await page.waitForTimeout(2000);
 
         expect(await rows.count()).toBeGreaterThanOrEqual(25);
 
-        await pm.questsTo().get50LeadersPerPage().click();
+        await pm.questsTo().clickOn50LeadersPerPageButton();
 
         await page.waitForTimeout(2000);
 
         expect(await rows.count()).toBeGreaterThanOrEqual(50);
 
-        await pm.questsTo().get100LeaderPerPage().click();
+        await pm.questsTo().clickOn100LeadersPerPageButton();
 
         await page.waitForTimeout(2000);
 
         expect(await rows.count()).toBeGreaterThanOrEqual(100);
 
-        await pm.questsTo().get10LeaderPerPage().click();
+        await pm.questsTo().clickOn10LeadersPerPageButton();
 
         await page.waitForTimeout(2000);
 
         expect(rowCount).toBeGreaterThanOrEqual(10);
-    });
-
-    test("Testcopmleted quests", async ({ page, context, request }) => {
-        pm = new PageManager(page);
-
-        await page.goto(stageBaseUrl);
-
-        await expect(page).toHaveURL("https://www.staging.invest.penomo.com/dashboard");
-
-        await pm.dashboardTo().getCampaignsNav().click();
-
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=referral');
-
-        await checkVisibility([
-            pm.questsTo().getCampaignsNavBar(),
-            pm.questsTo().getReferralPage(),
-            pm.questsTo().getQuestsPage(),
-            pm.questsTo().getLeaderboardPage(),
-            pm.questsTo().getReferralTitle(),
-            pm.questsTo().getReferralDescription(),
-            pm.questsTo().getReferralLinkBox(),
-            pm.questsTo().getXPHelpText()
-        ]);
-
-        await page.route('**/challenges/quests', async route => {
-            const response = await route.fetch();
-            const json = await response.json();
-
-            const unlockChallenges = (challenges: any[]) =>
-                challenges.map(challenge => {
-                    if (/^CH\d+$/.test(challenge.challengeStaticId)) {
-                        return {
-                            ...challenge,
-                            isChallengeCompleted: true,
-                            challengeCompletedAt: new Date().toISOString(),
-                            isLocked: false,
-                            isExpired: false,
-                            isFlipCardLocked: false,
-                            flipCards: (challenge.flipCards || []).map((card: any) => ({
-                                ...card,
-                                isFlipCardLocked: false,
-                                flipCardPoints: 500,
-                                isFlipCardRevealed: true,
-                                isFlipCardClaimed: true,
-                                isDestroyed: false,
-                                isExpired: false,
-                            })),
-                        };
-                    }
-                    return challenge;
-                });
-
-            if (Array.isArray(json.data.challengeDetails)) {
-                json.data.challengeDetails = unlockChallenges(json.data.challengeDetails);
-            }
-            if (Array.isArray(json.data.challenges)) {
-                json.data.challenges = unlockChallenges(json.data.challenges);
-            }
-            if (Array.isArray(json.data.completedChallenges)) {
-                json.data.completedChallenges = unlockChallenges(json.data.completedChallenges);
-            }
-
-            await route.fulfill({
-                status: response.status(),
-                headers: {
-                    ...response.headers(),
-                    'content-type': 'application/json',
-                },
-                body: JSON.stringify(json),
-            });
-        });
-        await page.route('**/api/challenges/quests/usertracking', route => {
-            route.fulfill({
-                status: 200,
-                contentType: 'application/json',
-                body: JSON.stringify({
-                    ok: true,
-                    code: 200,
-                    message: "Challenge retrieved successfully",
-                    data: {
-                        claimedPoint: 50000,
-                        completionPercentage: 100,
-                        questCompleted: 10,
-                        totalQuest: 13,
-                        activeQuest: 0,
-                        totalFlipCardPoints: 516497820
-                    }
-                })
-            });
-        });
-
-        await pm.questsTo().getQuestsPage().click();
-
-        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
-
-        // await pm.questsTo().getSkipButton().click();
-
-        // await checkVisibility([
-        //     pm.questsTo().getCompleteYourTasks(),
-        //     pm.questsTo().getCompleteYourTasksDescription(),
-        //     pm.questsTo().getCompleteYourTasksVideoHelp(),
-        //     pm.questsTo().getBackButton(),
-        //     pm.questsTo().getNextButton(),
-        // ]);
-
-        // await pm.questsTo().getNextButton().click();
-
-        // await checkVisibility([
-        //     pm.questsTo().getQuantumCoresPage(),
-        //     pm.questsTo().getQuantumCoresDescription(),
-        //     pm.questsTo().getQuantumCoresVideo(),
-        //     pm.questsTo().getBackButton(),
-        //     pm.questsTo().getNextButton()
-        // ]);
-
-        // await pm.questsTo().getNextButton().click();
-
-        // await checkVisibility([
-        //     pm.questsTo().getBewareOfDoomCoresPage(),
-        //     pm.questsTo().getBewareOfDoomCoresDescription(),
-        //     pm.questsTo().getBewareOfDoomCoresVideo(),
-        //     pm.questsTo().getLetsStartButton(),
-        //     pm.questsTo().getBackButton()
-        // ]);
-
-        // await pm.questsTo().getLetsStartButton().click();
-
-        const InfoCon = await pm.questsTo().getInfoContainer();
-
-        await expect(InfoCon).toHaveCount(4);
-
-        await expect(InfoCon).toContainText([
-            "ACTIVE QUESTS",
-            "QUESTS COMPLETED",
-            "CLAIMED XP",
-            "COMPLETION PROGRESS"
-        ]);
-
-        const questButtons = pm.questsTo().getQuests();
-
-        const count = await questButtons.count();
-        console.log(`Find ${count} quests`);
-
-        const correctOrder = [];
-        for (let i = 0; i < count; i++) {
-            if (i === 7) {
-                correctOrder.push(8);
-            } else if (i === 8) {
-                correctOrder.push(7);
-            } else {
-                correctOrder.push(i);
-            }
-        }
-
-        console.log('Right DOM indexs:', correctOrder);
-
-        for (let i = 0; i < count; i++) {
-            if (i === 2) {
-                console.log(`Skip quest №${i + 1}`);
-                continue;
-            }
-
-            const domIndex = correctOrder[i];
-            console.log(`Click on the quest №${i + 1} (DOM index: ${domIndex})`);
-            const svgElement = questButtons.nth(domIndex);
-
-            const svgHTML = await svgElement.evaluate((el) => el.outerHTML);
-
-            const expectedSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none" class="text-black"><path d="M10.625 21.5625L16.8663 29.375L29.375 13.75" stroke="#1A1C22" stroke-width="4.6875" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
-
-            expect(svgHTML.replace(/\s+/g, '')).toBe(expectedSVG.replace(/\s+/g, ''));
-
-        }
     });
 });

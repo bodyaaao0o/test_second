@@ -15,12 +15,24 @@ export class CampaignsPage {
         return this.page.locator('span.inline-block.px-6.border-b-2.border-transparent.rounded-t-lg', { hasText: "Referral" });
     };
 
+    clickOnReferralPage() {
+        return this.getReferralPage().click();
+    };
+
     getQuestsPage(): Locator {
         return this.page.locator('span.inline-block.px-6.border-b-2.border-transparent.rounded-t-lg', { hasText: "Quests" });
     };
 
+    clickOnQuestsPage() {
+        return this.getQuestsPage().click();
+    };
+
     getLeaderboardPage(): Locator {
         return this.page.locator('span.inline-block.px-6.border-b-2.border-transparent.rounded-t-lg', { hasText: 'Leaderboard' });
+    };
+
+    clickOnLeaderboardPage() {
+        return this.getLeaderboardPage().click();
     };
 
     //Info page
@@ -57,6 +69,10 @@ export class CampaignsPage {
         return this.page.locator('button', { hasText: "Skip" });
     };
 
+    clickOnSkipButton() {
+        return this.getSkipButton().click();
+    };
+
     getCompleteYourTasks(): Locator {
         return this.page.locator('.flex.flex-col.items-center.justify-center', { hasText: "Complete Your Tasks" });
     };
@@ -77,6 +93,10 @@ export class CampaignsPage {
 
     getNextButton(): Locator {
         return this.page.locator('button', { hasText: "Next" });
+    };
+
+    clickOnNextButton() {
+        return this.getNextButton().click();
     };
 
     getQuantumCoresPage(): Locator {
@@ -106,6 +126,10 @@ export class CampaignsPage {
     getLetsStartButton(): Locator {
         return this.page.locator('button', { hasText: "Let's Start" });
     };
+
+    clickOnLetsStartButton() {
+        return this.getLetsStartButton().click();
+    }
 
     // Info section
 
@@ -155,6 +179,10 @@ export class CampaignsPage {
 
     getCloseQuestButton(): Locator {
         return this.page.locator('button[data-testid="button"].flex.flex-row.cursor-pointer.items-center.justify-center.gap-2.transition-all').nth(1);
+    };
+
+    clickOnCloseQuestButton() {
+        return this.getCloseQuestButton().click();
     };
 
     getJoinTelegramQuest(): Locator {
@@ -220,28 +248,52 @@ export class CampaignsPage {
         return this.page.locator('li.py-1.px-2', {hasText: "25"})
     };
 
+    clickOn25LeadersPerPageButton() {
+        return this.get25LeadersPerPage().click();
+    };
+
     get50LeadersPerPage(): Locator {
         return this.page.locator('li.py-1.px-2', {hasText: "50"});
+    };
+
+    clickOn50LeadersPerPageButton() {
+        return this.get50LeadersPerPage().click();
     };
 
     get10LeaderPerPage(): Locator {
         return this.page.locator('li.py-1.px-2', {hasText: "10"}).nth(0);
     };
 
+    clickOn10LeadersPerPageButton() {
+        return this.get10LeaderPerPage().click();
+    };
+
     get100LeaderPerPage(): Locator {
         return this.page.locator('li.py-1.px-2', {hasText: "100"});
+    };
+
+    clickOn100LeadersPerPageButton() {
+        return this.get100LeaderPerPage().click();
     };
 
     getPageNumbersBox(): Locator {
         return this.page.locator(".flex.items-center.gap-2").nth(1);
     };
 
-    getLeftButton(): Locator {
+    getLeftPaginationButton(): Locator {
         return this.page.locator('button:has(svg.text-green-100)').nth(0);
     };
 
-    getRightButton(): Locator {
+    clickOnLeftButton() {
+        return this.getLeftPaginationButton().click();
+    };
+
+    getRightPaginationButton(): Locator {
         return this.page.locator('button:has(svg.text-green-100)').nth(1);
+    };
+
+    clickOnRightButton() {
+        return this.getRightPaginationButton().click();
     };
 
     getPageNumber(): Locator {

@@ -54,6 +54,7 @@ export default defineConfig({
       use: {
         ...devices['iPhone 12'],
         isMobile: true,
+        viewport: { width: 450, height: 850 },
       },
     },
   ],
