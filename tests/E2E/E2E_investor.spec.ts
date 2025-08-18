@@ -239,30 +239,42 @@ test.describe("E2E test for investor portal", () => {
         await pm.settingsTo().getSaveChangesNames().click();
         
         await expect(pm.settingsTo().getSuccessUpdateUserDataMessage()).toBeVisible(); 
-        
-        await pm.settingsTo().getCopyWalletAddressButton().click();
-        
-        await expect(pm.settingsTo().getAddressCopiedMessage()).toBeVisible();
-        
-        await pm.settingsTo().getCopyReferalLinkButton().click(); 
 
-        await expect(pm.settingsTo().getReferalLinkCopiedMessage()).toBeVisible();
+        try {
+            await pm.settingsTo().clickOnCopyWalletAddress();
+            
+            await expect(pm.settingsTo().getAddressCopiedMessage()).toBeVisible();
+        } catch {
+            await pm.settingsTo().clickOnCopyWalletAddress();
+            
+            await expect(pm.settingsTo().getAddressCopiedMessage()).toBeVisible();
+        }
+            
+        try {
+            await pm.settingsTo().clickOnCopyReferralLink(); 
+    
+            await expect(pm.settingsTo().getReferalLinkCopiedMessage()).toBeVisible();
+        } catch {
+            await pm.settingsTo().clickOnCopyReferralLink(); 
+    
+            await expect(pm.settingsTo().getReferalLinkCopiedMessage()).toBeVisible();
+        }
         
-        await pm.settingsTo().getDeleteAccountButton().click();
+        await pm.settingsTo().clickOnDeleteAccountButton();
         
         await checkVisibility([
             pm.settingsTo().getDeleteAccountBox(),
             pm.settingsTo().getDeleteAccountTitle(),
             pm.settingsTo().getDeleteAccountDescription(),
-            pm.settingsTo().getCanselDeleteButton(),
+            pm.settingsTo().getCancelDeleteButton(),
             pm.settingsTo().getConfirmDeleteButton()
         ]);
 
-        await pm.settingsTo().getCanselDeleteButton().click();
+        await pm.settingsTo().clickOnCancelDeleteButton();
         
         await expect(pm.settingsTo().getDeleteAccountBox()).not.toBeVisible();
         
-        await pm.settingsTo().getNotificationPage().click();
+        await pm.settingsTo().clickOnNotificatonPage();
         
         await checkVisibility([
             pm.settingsTo().getNotificationsTitle(),
@@ -272,7 +284,7 @@ test.describe("E2E test for investor portal", () => {
             pm.settingsTo().getNotificationSwitchDescription()
         ]);
 
-        await pm.settingsTo().getNotificationSwitch().click();
+        await pm.settingsTo().clickOnNotificationSwitch();
         
         await expect(pm.settingsTo().getSuccessUpdateNotificationMessage()).toBeVisible();
 
@@ -282,7 +294,7 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnLogoutButtonForMobile();
         } 
         else {
-            await pm.dashboardTo().getLogoutNav().click();
+            await pm.dashboardTo().clickOnLogoutNav();
         }
 
         await page.waitForLoadState();

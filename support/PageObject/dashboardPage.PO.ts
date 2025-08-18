@@ -92,6 +92,10 @@ export class DashboardPage {
         return this.page.locator('.flex.justify-items-center', {hasText: "Logout"}).nth(1);
     };
 
+    clickOnLogoutNav() {
+        return this.getLogoutNav().click();
+    };
+
     getPNMORewardsBox(): Locator {
         return this.page.locator('.bg-monochrome-100.p-4.flex.flex-col.justify-between');
     };

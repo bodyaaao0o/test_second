@@ -15,6 +15,9 @@ export class SettingPage {
         return this.page.locator(".cursor-pointer.font-sm", { hasText: 'Notifications' });
     }
 
+    clickOnNotificatonPage() {
+        return this.getNotificationPage().click();
+    };
 
     getAccountTitle(): Locator {
         return this.page.locator('h4', { hasText: "Account" });
@@ -89,6 +92,10 @@ export class SettingPage {
         return this.page.locator('.text-monochrome-20.cursor-pointer').nth(0);
     };
 
+    clickOnCopyWalletAddress() {
+        return this.getCopyWalletAddressButton().click();
+    };
+
     getReferralLinkTitle(): Locator {
         return this.page.locator('h3', { hasText: "Referral Link" });
     };
@@ -107,6 +114,10 @@ export class SettingPage {
 
     getCopyReferalLinkButton(): Locator {
         return this.page.locator('.text-monochrome-20.cursor-pointer').nth(1);
+    };
+
+    clickOnCopyReferralLink() {
+        return this.getCopyReferalLinkButton().click();
     };
 
     getCompleteKYCBox(): Locator {
@@ -130,6 +141,10 @@ export class SettingPage {
         return this.page.locator('button', { hasText: "Delete Account" });
     };
 
+    clickOnDeleteAccountButton() {
+        return this.getDeleteAccountButton().click();
+    };
+
     getDeleteAccountBox(): Locator {
         return this.page.locator('.flex-1.overflow-auto.p-6.bg-monochrome-100');
     };
@@ -142,8 +157,12 @@ export class SettingPage {
         return this.page.locator('p', { hasText: "Are you sure you want to delete your account? This action cannot be undone." });
     };
 
-    getCanselDeleteButton(): Locator {
+    getCancelDeleteButton(): Locator {
         return this.page.locator('button', { hasText: "Cancel" });
+    };
+
+    clickOnCancelDeleteButton() {
+        return this.getCancelDeleteButton().click();
     };
 
     getConfirmDeleteButton(): Locator {
@@ -165,6 +184,10 @@ export class SettingPage {
 
     getNotificationSwitch(): Locator {
         return this.page.locator('.react-switch-bg');
+    };
+
+    clickOnNotificationSwitch() {
+        return this.getNotificationSwitch().click();
     };
 
     getNotificationSwitchDescription(): Locator {
