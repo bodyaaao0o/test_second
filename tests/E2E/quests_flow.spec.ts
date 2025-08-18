@@ -38,7 +38,6 @@ test.describe("Quests complete test", () => {
 
     test("Progressive challenges completion", async ({ page, context, request }) => {
         pm = new PageManager(page);
-        //await investorLogin(page, context, pm);
 
         await page.goto(stageBaseUrl);
 
@@ -128,17 +127,10 @@ test.describe("Quests complete test", () => {
             "COMPLETION PROGRESS"
         ]);
 
-        // await checkVisibility([
-        //     pm.questsTo().getActiveQuests(),
-        //     pm.questsTo().getQuestsComplete(),
-        //     pm.questsTo().getClaimedXP(),
-        //     pm.questsTo().getCompletionProgress()
-        // ]);
-
         const questButtons = page.locator('svg.text-black');
 
         const count = await questButtons.count();
-        console.log(`Знайдено ${count} квест(ів)`);
+        console.log(`Finded ${count} quests`);
 
         const validIndices = [];
         for (let i = 1; i < count; i++) {
@@ -405,13 +397,6 @@ test.describe("Quests complete test", () => {
             "CLAIMED XP",
             "COMPLETION PROGRESS"
         ]);
-
-        // await checkVisibility([
-        //     pm.questsTo().getActiveQuests(),
-        //     pm.questsTo().getQuestsComplete(),
-        //     pm.questsTo().getClaimedXP(),
-        //     pm.questsTo().getCompletionProgress()
-        // ]);
 
         const questButtons = pm.questsTo().getQuests();
 

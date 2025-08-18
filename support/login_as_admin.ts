@@ -87,13 +87,7 @@ export async function adminLogin(page: Page, context: BrowserContext, pm: PageMa
     await page.waitForLoadState();
 
     await context.storageState({ path: 'playwright/.auth/admin_login.json' });
-//     const web3Token = await page.evaluate(() => {
-//         return localStorage.getItem('web3AuthToken');
-//     });
-
-//     console.log("🔥 Web3Auth idToken:", web3Token);
     return page;
-//
 }
 
 async function waitForPopup(context: BrowserContext): Promise<Page> {
@@ -101,14 +95,3 @@ async function waitForPopup(context: BrowserContext): Promise<Page> {
     await popup.waitForLoadState();
     return popup;
 }
-
-// (async () => {
-//     const browser = await chromium.launch({ headless: false });
-//     const context = await browser.newContext();
-//     const page = await context.newPage();
-//     const pm = new PageManager(page);
-
-//     await adminLogin(page, context, pm);
-
-//     await browser.close();
-// })();

@@ -62,7 +62,6 @@ export async function investorLogin(page: Page, context: BrowserContext, pm: Pag
     await pm.profile().getSelectNationality().click();
     await pm.profile().getInputCountryName().fill('Ukr');
     await pm.profile().getUkraineFromList().click();
-    //await pm.profile().getInputReferalCode().fill(valid_referal_code)
     await pm.profile().getSubmiteButton().click();
     await page.waitForURL('**/dashboard');
     return page;

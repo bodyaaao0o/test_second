@@ -32,7 +32,6 @@ test.describe("Admin quests test", () => {
             pm.questsAdminTo().getSearchFiled(),
             pm.questsAdminTo().getTitleColomnTitle(),
             pm.questsAdminTo().getChallengeStaticIdTitle(),
-            pm.questsAdminTo().getChellenge1()
         ]);
 
         await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
@@ -41,6 +40,8 @@ test.describe("Admin quests test", () => {
             await expect(pm.questsAdminTo().getChellenge1()).toBeVisible({ timeout: 8000 });
         } catch {
             await page.reload();
+            await pm.questsAdminTo().getFlipCardsNav().click();
+            await pm.questsAdminTo().getChallengesNav().click();
             await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
             await page.waitForTimeout(2000);
             await expect(pm.questsAdminTo().getChellenge1()).toBeVisible({ timeout: 10000 });
