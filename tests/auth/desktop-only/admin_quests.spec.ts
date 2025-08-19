@@ -20,7 +20,7 @@ test.describe("Admin quests test", () => {
 
         await page.waitForTimeout(15000);
 
-        await pm.questsAdminTo().getQuestsNav().click();
+        await pm.questsAdminTo().clickOnQuestsNav();
 
         await page.waitForURL('**/quest');
 
@@ -37,17 +37,17 @@ test.describe("Admin quests test", () => {
         await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
 
         try {
-            await expect(pm.questsAdminTo().getChellenge1()).toBeVisible({ timeout: 8000 });
+            await expect(pm.questsAdminTo().getChallenge1()).toBeVisible({ timeout: 8000 });
         } catch {
             await page.reload();
-            await pm.questsAdminTo().getFlipCardsNav().click();
-            await pm.questsAdminTo().getChallengesNav().click();
+            await pm.questsAdminTo().clickOnFlipCardsNav();
+            await pm.questsAdminTo().clickOnChallengeNav();
             await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
             await page.waitForTimeout(2000);
-            await expect(pm.questsAdminTo().getChellenge1()).toBeVisible({ timeout: 10000 });
+            await expect(pm.questsAdminTo().getChallenge1()).toBeVisible({ timeout: 10000 });
         }
 
-        await pm.questsAdminTo().getChellenge1().click();
+        await pm.questsAdminTo().clickOnChallenge1();
 
         await checkVisibility([
             pm.questsAdminTo().getChallenge1Info(),
@@ -56,7 +56,7 @@ test.describe("Admin quests test", () => {
             pm.questsAdminTo().getIsExpiredBox()
         ]);
 
-        await pm.questsAdminTo().getEditButton().click();
+        await pm.questsAdminTo().clickOnEditButton();
 
         await expect(pm.questsAdminTo().getCancelButton()).toBeVisible();
 
@@ -66,34 +66,34 @@ test.describe("Admin quests test", () => {
 
         await pm.questsAdminTo().getSelectIsExpired().selectOption("Yes");
 
-        await pm.questsAdminTo().getSaveButton().click();
+        await pm.questsAdminTo().clickOnSaveButton();
 
-        await pm.questsAdminTo().getEditButton().click();
+        await pm.questsAdminTo().clickOnEditButton();
 
         await pm.questsAdminTo().getSelectIsLocked().selectOption("No");
 
         await pm.questsAdminTo().getSelectIsExpired().selectOption("No");
 
-        await pm.questsAdminTo().getSaveButton().click();
+        await pm.questsAdminTo().clickOnSaveButton();
 
-        await pm.questsAdminTo().getCloseEditPage().click();
+        await pm.questsAdminTo().clickOnCloseEditPage();
 
         //Flip Cards
 
         await expect(pm.questsAdminTo().getFlipCardsNav()).toBeVisible();
 
-        await pm.questsAdminTo().getFlipCardsNav().click();
+        await pm.questsAdminTo().clickOnFlipCardsNav();
 
         await checkVisibility([
             pm.questsAdminTo().getFlipCardStaticIdTitle(),
             pm.questsAdminTo().getFlipCard7()
         ]);
 
-        await pm.questsAdminTo().getFlipCard7().click();
+        await pm.questsAdminTo().clickOnFlipCard7();
 
         await expect(pm.questsAdminTo().getFlipCard7Info()).toBeVisible();
 
-        await pm.questsAdminTo().getEditButton().click();
+        await pm.questsAdminTo().clickOnEditButton();
 
         await checkVisibility([
             pm.questsAdminTo().getPointInput(),
@@ -105,9 +105,9 @@ test.describe("Admin quests test", () => {
         ]);
         await pm.questsAdminTo().getPointInput().fill('1000');
 
-        await pm.questsAdminTo().getSaveButton().click();
+        await pm.questsAdminTo().clickOnSaveButton();
 
-        await pm.questsAdminTo().getCloseEditPage().click();
+        await pm.questsAdminTo().clickOnCloseEditPage();
 
         await page.close();
     })

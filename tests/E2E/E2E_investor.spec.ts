@@ -54,7 +54,7 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnCloseBurgerMenu();
         };
         
-        await pm.dashboardTo().getViewAllTransactionsButton().click();
+        await pm.dashboardTo().clickOnViewAllTransacrions();
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/transactions');
         
@@ -64,7 +64,7 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnBurgerMenu();
         };
         
-        await pm.dashboardTo().getInvestNav().click();
+        await pm.dashboardTo().clickOnInvestNow();
         
         //Marketplace
 
@@ -74,7 +74,7 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnBurgerMenu();
         };
 
-        await pm.dashboardTo().getCampaignsNav().click();
+        await pm.dashboardTo().clickOnCampaignsNav();
         
         //Campaigns
         
@@ -84,7 +84,7 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnBurgerMenu();
         };
         
-        await pm.dashboardTo().getPortfolioNav().click();
+        await pm.dashboardTo().clickOnPortfolioNav();
         
         //Portfolio
         
@@ -102,7 +102,7 @@ test.describe("E2E test for investor portal", () => {
             pm.portfolioTo().getNoTokenHoldings()
         ]);
         
-        await pm.portfolioTo().getPurchaseRequestsButton().click();
+        await pm.portfolioTo().clickOnPurchaseRequest();
         
         await expect(pm.portfolioTo().getNoPurchasingRequestsText()).toBeVisible();
         
@@ -114,7 +114,7 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnBurgerMenu();
         };
         
-        await pm.dashboardTo().getTransactionsNav().click();
+        await pm.dashboardTo().clickOnTransactionsNav();
         
         //Transactions
 
@@ -132,13 +132,13 @@ test.describe("E2E test for investor portal", () => {
             pm.transactionTo().getClearAllFilters(),
         ]);
 
-        await pm.transactionTo().getTransactionPeriodFilter().click();
+        await pm.transactionTo().clickOnTransactionsPeriod();
         
         await expect(pm.transactionTo().getPeriodBox()).toBeVisible();
         
-        await pm.transactionTo().getTransactionPeriodFilter().click();
+        await pm.transactionTo().clickOnTransactionsPeriod();
         
-        await pm.transactionTo().getTransactionCategoryButton().click();
+        await pm.transactionTo().clickOnTransactionCategory();
 
         await checkVisibility([
             pm.transactionTo().getTransactionCategoryBox(),
@@ -146,19 +146,19 @@ test.describe("E2E test for investor portal", () => {
             pm.transactionTo().getSecondTransactionFilter()
         ]);
 
-        await pm.transactionTo().getSecondTransactionFilter().click();
+        await pm.transactionTo().clickOnSecondTransaction();
         
-        await pm.transactionTo().getTransactionCategoryButton().click();
+        await pm.transactionTo().clickOnTransactionCategory();
         
         await expect(pm.transactionTo().getAllTransactionFilterCheck()).toBeVisible();
         
         await expect(pm.transactionTo().getSecondTransactionFilterCheck()).toBeVisible();
         
-        await pm.transactionTo().getClearAllFilters().click();
+        await pm.transactionTo().clickOnClearAllFilters();
         
         await expect(pm.transactionTo().getSecondTransactionFilterCheck()).not.toBeVisible();
 
-        await pm.transactionTo().getCloseFilters().click();
+        await pm.transactionTo().clickOncloseFilters();
         
         await expect(pm.transactionTo().getAllTransactionFilterCheck()).not.toBeVisible();
 
@@ -166,7 +166,7 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnBurgerMenu();
         };
 
-        await pm.dashboardTo().getStakingNav().click();
+        await pm.dashboardTo().clickOnStakingNav();
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/staking');
         
@@ -176,7 +176,7 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnBurgerMenu();
         };
         
-        await pm.dashboardTo().getGovernanceNav().click();
+        await pm.dashboardTo().clickOnGovernanceNav();
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/governance');
         
@@ -186,7 +186,7 @@ test.describe("E2E test for investor portal", () => {
             await pm.dashboardTo().clickOnBurgerMenu();
         };
         
-        await pm.dashboardTo().getSettingsNav().click();
+        await pm.dashboardTo().clickOnSettingNav();
         
         await expect(page).toHaveURL("https://www.staging.invest.penomo.com/settings");
 
@@ -224,19 +224,19 @@ test.describe("E2E test for investor portal", () => {
             pm.settingsTo().getDeleteAccountButton()
         ]);
 
-        await pm.settingsTo().getChangeFirstName().click();
+        await pm.settingsTo().clickOnChangeFirstName();
         
         await pm.settingsTo().getFirstNameInput().fill(change_username);
         
-        await pm.settingsTo().getSaveChangesNames().click();
+        await pm.settingsTo().clickOnSaveChanges();
         
         await expect(pm.settingsTo().getSuccessUpdateUserDataMessage()).toBeVisible();
         
-        await pm.settingsTo().getChangeLastName().click(); 
+        await pm.settingsTo().clickOnChangeLastName(); 
         
         await pm.settingsTo().getLastNameInput().fill(change_surename);
         
-        await pm.settingsTo().getSaveChangesNames().click();
+        await pm.settingsTo().clickOnSaveChanges();
         
         await expect(pm.settingsTo().getSuccessUpdateUserDataMessage()).toBeVisible(); 
 

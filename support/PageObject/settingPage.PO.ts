@@ -43,10 +43,18 @@ export class SettingPage {
         return this.page.locator('div.cursor-pointer svg').nth(2);
     }
 
+    clickOnChangeFirstName() {
+        return this.getChangeFirstName().click();
+    };
+
 
     getSaveChangesNames(): Locator {
         return this.page.locator('.absolute.right-2.cursor-pointer.text-green-100', { hasText: "Save" }).nth(0)
     }
+
+    clickOnSaveChanges() {
+        return this.getSaveChangesNames().click();
+    };
 
     getLastNameTitle(): Locator {
         return this.page.locator('label', { hasText: "Last Name" });
@@ -58,6 +66,10 @@ export class SettingPage {
 
     getChangeLastName(): Locator {
         return this.page.locator('div.cursor-pointer svg').nth(3);
+    };
+
+    clickOnChangeLastName() {
+        return this.getChangeLastName().click();
     };
 
     getEmailTitle(): Locator {

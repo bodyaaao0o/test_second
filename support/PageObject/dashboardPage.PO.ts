@@ -36,8 +36,16 @@ export class DashboardPage {
         return this.page.locator('span.pl-4.flex.my-auto', {hasText: "Invest"});
     };
 
+    clickOnInvestNow() {
+        return this.getInvestNav().click();
+    };
+
     getCampaignsNav(): Locator {
         return this.page.locator('span', {hasText: "Campaigns"});
+    };
+
+    cliclOnCampaignsNav() {
+        return this.getCampaignsNav().click();
     };
 
     clickOnCampaignsNav() { 
@@ -72,20 +80,40 @@ export class DashboardPage {
         return this.page.locator('span', {hasText: "Portfolio"});
     };
 
+    clickOnPortfolioNav() {
+        return this.getPortfolioNav().click();
+    };
+
     getTransactionsNav(): Locator {
         return this.page.locator('span', {hasText: "Transactions"});
+    };
+
+    clickOnTransactionsNav() {
+        return this.getTransactionsNav().click();
     };
 
     getStakingNav(): Locator {
         return this.page.locator('span', {hasText: "Staking"});
     };
 
+    clickOnStakingNav() {
+        return this.getStakingNav().click();
+    };
+
     getGovernanceNav(): Locator {
         return this.page.locator('span', {hasText: "Governance"});
     };
 
+    clickOnGovernanceNav() {
+        return this.getGovernanceNav().click();
+    };
+
     getSettingsNav(): Locator {
         return this.page.locator('span', {hasText: "Settings"});
+    };
+
+    clickOnSettingNav() {
+        return this.getSettingsNav().click();
     };
 
     getLogoutNav(): Locator {
@@ -133,6 +161,10 @@ export class DashboardPage {
 
     getViewAllTransactionsButton(): Locator {
         return this.page.locator('button', { hasText: "View All" }).nth(1);
+    };
+
+    clickOnViewAllTransacrions() {
+        return this.getViewAllTransactionsButton().click();
     };
 
     getGridInfoTransactions(): Locator {

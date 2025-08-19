@@ -39,6 +39,10 @@ export class PortfolioPage {
         return this.page.locator('button', {hasText: "Purchase Requests"});
     };
 
+    clickOnPurchaseRequest() {
+        return this.getPurchaseRequestsButton().click();
+    };
+
     getNoTokenHoldings(): Locator {
         return this.page.locator('p', {hasText: "No Token Holdings."});
     };

@@ -20,6 +20,10 @@ export class LoginPage {
         return this.page.locator('button', { hasText: "Log in" });
     };
 
+    clickOnLogIn() {
+        return this.getLogInButton().click();
+    };
+
     getImagesDiv(): Locator {
         return this.page.locator('div div .w-2\\/4 img');
     };
@@ -56,12 +60,20 @@ export class LoginPage {
         return this.page.locator('div.w-4.h-4.flex.items-center.justify-center');
     };
 
+    clickOnReadedCheckBox() {
+        return this.getReadedCheckbox().click();
+    };
+
     getCheckBoxDescription(): Locator {
         return this.page.locator('label.select-none.w-full');
     };
 
     getContinueButton(): Locator {
         return this.page.locator('button', { hasText: "Continue" });
+    };
+
+    clickOnContinueButton() {
+        return this.getContinueButton().click();
     };
 
 }
@@ -117,6 +129,10 @@ export class ProfileInfo {
         return this.page.locator('.css-1wy0on6').nth(0);
     };
 
+    SelectInvestorType() {
+        return this.getSelectInvestorType().click();
+    };
+
     getInvestorTypesAfterSelect(): Locator {
         return this.page.locator('.css-asj84a-option');
     };
@@ -127,6 +143,10 @@ export class ProfileInfo {
 
     getSelectNationality(): Locator {
         return this.page.locator('.css-hlgwow').nth(1);
+    };
+
+    SelectNationality() {
+        return this.getSelectNationality().click();
     };
 
     getCountryList(): Locator {
@@ -141,6 +161,10 @@ export class ProfileInfo {
         return this.page.locator('#react-select-3-option-232');
     };
 
+    clickOnUkraine() {
+        return this.getUkraineFromList().click();
+    };
+
     getReferalCodeTitle(): Locator {
         return this.page.locator('label', { hasText: "Referral Code (Optional)" });
     };
@@ -149,8 +173,16 @@ export class ProfileInfo {
         return this.page.locator('input[placeholder="Enter Referral Code"]');
     };
 
+    clearInputReferralCode() {
+        return this.getInputReferalCode().clear();
+    };
+
     getSubmiteButton(): Locator {
         return this.page.locator('button', { hasText: "Submit" });
+    };
+
+    clickOnSubmitButton() {
+        return this.getSubmiteButton().click();
     };
 
     getInvalidReferalCodeMessage(): Locator {

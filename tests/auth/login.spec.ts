@@ -39,16 +39,25 @@ test.describe("Login as investor", () => {
 
     test('Register on investor page', async ({ context, page }, testInfo) => {
         const isMobile = testInfo.project.use.isMobile;
+
         await page.goto(stageBaseUrl);
+        
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/');
+        
         if (!isMobile) {
             await images.checkAllImagesAreVisible();
         }
+        
         await expect(pm.loginTo().getLogoImage()).toBeVisible();
+        
         await expect(pm.loginTo().getSiteDescription()).toHaveText('Own physical infrastructure that powers the world');
+        
         await expect(pm.loginTo().getInputEmail()).toBeVisible();
+        
         await expect(pm.loginTo().getLogInButton()).toBeVisible();
+        
         await expect(pm.loginTo().getHelpText()).toBeVisible();
+        
         await expect(pm.loginTo().getFooter()).toHaveText('© 2025 penomo Foundation Ltd.');
 
 
@@ -57,14 +66,18 @@ test.describe("Login as investor", () => {
 
         const shortId = Math.random().toString(36).slice(2, 9);
         const testEmail = `${shortId}@${serverId}.mailosaur.net`;
+        
         setGeneratedEmail(testEmail);
+        
         console.log(getGeneratedEmail())
         
         await pm.loginTo().getInputEmail().fill(testEmail);
+        
         const [popup] = await Promise.all([
             context.waitForEvent('page'),
-            pm.loginTo().getLogInButton().click(),
+            pm.loginTo().clickOnLogIn(),
         ])
+        
         await popup.waitForLoadState();
 
         const searchCriteria = {
@@ -91,13 +104,14 @@ test.describe("Login as investor", () => {
 
         for (let i = 0; i < code.length; i++) {
             await codeInputes.nth(i).fill(code[i]);
+        
             await popup.waitForTimeout(50);
         }
 
         await popup.waitForEvent('close');
+        
         await page.waitForURL('**/setupProfile', { timeout: 90000 });
         
-
         await checkVisibility([
             pm.loginTo().getRulesContainer(),
             pm.loginTo().getRulesDescription(),
@@ -105,12 +119,19 @@ test.describe("Login as investor", () => {
             pm.loginTo().getContinueButton()
         ])
         await expect(pm.loginTo().getRulesTitle()).toHaveText('Privacy Policy');
+        
         await expect(pm.loginTo().getCheckBoxDescription()).toHaveText('I have read and agree to the Privacy Policy');
+        
         await expect(pm.loginTo().getContinueButton()).toBeDisabled();
-        await pm.loginTo().getReadedCheckbox().click();
+        
+        await pm.loginTo().clickOnReadedCheckBox();
+        
         await expect(pm.loginTo().getContinueButton()).toBeEnabled();
-        await pm.loginTo().getContinueButton().click();
+        
+        await pm.loginTo().clickOnContinueButton();
+        
         await page.waitForLoadState();
+        
         await checkVisibility([
             pm.profile().getProfileInfoBox(),
             pm.profile().getProfileInfoImage(),
@@ -126,62 +147,101 @@ test.describe("Login as investor", () => {
             pm.profile().getNationalityTitle(),
             pm.profile().getSelectNationality()
         ])
+        
         const actualEmail = await pm.profile().getEmailInput().inputValue();
+        
         await expect(actualEmail).toEqual(testEmail);
-        await pm.profile().getSelectInvestorType().click();
+        
+        await pm.profile().SelectInvestorType();
+        
         await expect(pm.profile().getInvestorTypesAfterSelect()).toBeVisible();
-        await pm.profile().getSelectInvestorType().click();
+        
+        await pm.profile().SelectInvestorType();
+        
         await expect(pm.profile().getInvestorTypesAfterSelect()).not.toBeVisible();
-        await pm.profile().getSelectNationality().click();
+        
+        await pm.profile().SelectNationality();
+        
         await expect(pm.profile().getCountryList()).toBeVisible();
+        
         await pm.profile().getInputCountryName().fill('Ukr');
+        
         await expect(pm.profile().getUkraineFromList()).toBeVisible();
-        await pm.profile().getUkraineFromList().click();
+        
+        await pm.profile().clickOnUkraine();
+        
         await checkVisibility([
             pm.profile().getReferalCodeTitle(),
             pm.profile().getInputReferalCode(),
             pm.profile().getSubmiteButton()
         ])
+        
         await expect(pm.profile().getSubmiteButton()).toBeDisabled();
+        
         await pm.profile().getFirstNameInput().fill(invalid_userName);
+        
         await expect(pm.profile().getIncorectNameMessage()).toBeVisible();
+        
         await pm.profile().getLastNameInput().fill(invalid_sureName);
+        
         await expect(pm.profile().getIncorectLastNameMessage()).toBeVisible();
+        
         await pm.profile().getFirstNameInput().fill(valid_username);
+        
         await pm.profile().getLastNameInput().fill(valid_surename);
+        
         await expect(pm.profile().getSubmiteButton()).toBeEnabled();
+        
         await pm.profile().getInputReferalCode().fill(invalid_referal_code);
-        await pm.profile().getSubmiteButton().click();
+        
+        await pm.profile().clickOnSubmitButton();
+        
         await expect(pm.profile().getInvalidReferalCodeMessage()).toBeVisible();
-        await pm.profile().getInputReferalCode().clear();
-        await pm.profile().getSubmiteButton().click();
+        
+        await pm.profile().clearInputReferralCode();
+        
+        await pm.profile().clickOnSubmitButton();
+        
         await page.waitForURL('**/dashboard');
+        
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/dashboard');
+        
         await page.waitForLoadState();
+        
         await context.storageState({ path: 'playwright/.auth/invest_login.json' });
-
     });
 
     test("Log in on investor page", async ({ context, page }, testInfo) => {
+        
         const isMobile = testInfo.project.use.isMobile;
+        
         await page.goto(stageBaseUrl);
+        
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/');
+        
         if (!isMobile) {
             await images.checkAllImagesAreVisible();
         }
+        
         await expect(pm.loginTo().getLogoImage()).toBeVisible();
+        
         await expect(pm.loginTo().getSiteDescription()).toHaveText('Own physical infrastructure that powers the world');
+        
         await expect(pm.loginTo().getInputEmail()).toBeVisible();
+        
         await expect(pm.loginTo().getLogInButton()).toBeVisible();
+        
         await expect(pm.loginTo().getHelpText()).toBeVisible();
+        
         await expect(pm.loginTo().getFooter()).toHaveText('© 2025 penomo Foundation Ltd.');
+        
         const mailosaur = new Mailosaur(process.env.MAILOSAUR_API_KEY!);
         const serverId = process.env.MAILOSAUR_SERVER_ID!;
         const testEmail = process.env.LOGIN_INVESTOR_SECOND_EMAIL!;
         await pm.loginTo().getInputEmail().fill(testEmail);
         const [popup] = await Promise.all([
             context.waitForEvent('page'),
-            pm.loginTo().getLogInButton().click()
+            pm.loginTo().clickOnLogIn()
         ]);
         await popup.waitForLoadState();
 
@@ -244,12 +304,16 @@ test.describe("Login as investor", () => {
 
         for (let i = 0; i < code.length; i++) {
             await codeInputs.nth(i).fill(code[i]);
+        
             await popup.waitForTimeout(50);
         }
 
         await popup.waitForEvent('close');
+        
         await page.waitForURL('**/dashboard');
+        
         await page.waitForLoadState();
+        
         await context.storageState({ path: 'playwright/.auth/redistered_invest_login.json' })
     });
 })

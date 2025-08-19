@@ -15,12 +15,24 @@ export class QuestsPage {
         return this.page.locator('span.pl-4.flex.my-auto', { hasText: "Quest" });
     };
 
+    clickOnQuestsNav() {
+        return this.getQuestsNav().click();
+    };
+
     getChallengesNav(): Locator {
         return this.page.locator('a', { hasText: "Challenges" });
     };
 
+    clickOnChallengeNav() {
+        return this.getChallengesNav().click();
+    };
+
     getFlipCardsNav(): Locator {
         return this.page.locator('a', { hasText: "Flip Cards" });
+    };
+
+    clickOnFlipCardsNav() {
+        return this.getFlipCardsNav().click();
     };
 
     getViewQuestDiagramButton(): Locator {
@@ -47,8 +59,12 @@ export class QuestsPage {
         return this.page.locator('span', { hasText: "Challenge Static Id" });
     };
 
-    getChellenge1(): Locator {
+    getChallenge1(): Locator {
         return this.page.locator('div.grid.grid-cols-2.py-4.border-b.border-monochrome-10', { hasText: "Challenge 1" }).nth(1);
+    };
+
+    clickOnChallenge1() {
+        return this.getChallenge1().click();
     };
 
     getChallenge1Info(): Locator {
@@ -57,6 +73,10 @@ export class QuestsPage {
 
     getEditButton(): Locator {
         return this.page.locator('button', { hasText: "Edit" });
+    };
+
+    clickOnEditButton() {
+        return this.getEditButton().click();
     };
 
     getIsLockedBox(): Locator {
@@ -83,8 +103,16 @@ export class QuestsPage {
         return this.page.locator('button', { hasText: "Save" });
     };
 
+    clickOnSaveButton() {
+        return this.getSaveButton().click();
+    };
+
     getCloseEditPage(): Locator {
         return this.page.locator('img[alt="crossIcon"]');
+    };
+
+    clickOnCloseEditPage() {
+        return this.getCloseEditPage().click();
     };
 
     //Flip Cards
@@ -95,6 +123,10 @@ export class QuestsPage {
 
     getFlipCard7(): Locator {
         return this.page.locator('.grid.grid-cols-2.py-4.border-b.border-monochrome-10', { hasText: "Flip Card 7" });
+    };
+
+    clickOnFlipCard7() {
+        return this.getFlipCard7().click();
     };
 
     getFlipCard7Info(): Locator {

@@ -15,6 +15,10 @@ export class TransactionPage {
         return this.page.locator('button.p-2\\.5.text-sm');
     }
 
+    clickOnTransactionsPeriod() {
+        return this.getTransactionPeriodFilter().click();
+    };
+
     getPeriodBox(): Locator {
         return this.page.locator('.absolute.z-10.mt-1.w-full');
     };
@@ -31,6 +35,10 @@ export class TransactionPage {
         return this.page.locator('.css-1xc3v61-indicatorContainer').nth(0);
     };
 
+    clickOnTransactionCategory() {
+        return this.getTransactionCategoryButton().click();
+    };
+
     getTransactionCategoryBox(): Locator {
         return this.page.locator('[role="listbox"][aria-multiselectable="true"]');
     };
@@ -42,6 +50,10 @@ export class TransactionPage {
     getSecondTransactionFilter(): Locator {
         return this.page.locator('#react-select-4-option-2').filter({ hasText: 'Security Token Sale' });
     }
+
+    clickOnSecondTransaction() {
+        return this.getSecondTransactionFilter().click();
+    };
 
     getProjectTitle(): Locator {
         return this.page.locator('label', { hasText: "Project" });
@@ -65,11 +77,19 @@ export class TransactionPage {
 
     getCloseFilters(): Locator {
         return this.page.locator('button.text-white.text-sm', { hasText: '✕' });
-    }
+    };
+
+    clickOncloseFilters() {
+        return this.getCloseFilters().click();
+    };
 
 
     getClearAllFilters(): Locator {
         return this.page.locator('button', { hasText: "Clear all filters" });
+    };
+
+    clickOnClearAllFilters() {
+        return this.getClearAllFilters().click();
     };
 
 
