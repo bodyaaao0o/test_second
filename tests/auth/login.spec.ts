@@ -58,7 +58,7 @@ test.describe("Login as investor", () => {
         
         await expect(pm.loginTo().getHelpText()).toBeVisible();
         
-        await expect(pm.loginTo().getFooter()).toHaveText('© 2025 penomo Foundation Ltd.');
+        await expect(pm.loginTo().getFooter()).toHaveText('© 2025 penomo Ltd.');
 
 
         const mailosaur = new Mailosaur(process.env.MAILOSAUR_API_KEY!);
@@ -201,7 +201,28 @@ test.describe("Login as investor", () => {
         await pm.profile().clearInputReferralCode();
         
         await pm.profile().clickOnSubmitButton();
-        
+
+        await checkVisibility([
+            pm.loginTo().getTermsAndConditionBox(),
+            pm.loginTo().getTermsTitle(),
+            pm.loginTo().getTermsDescription(),
+            pm.loginTo().getTermsCheckbox(),
+            pm.loginTo().getTermsCheckBoxDescription(),
+            pm.loginTo().getTermsContinueButton()
+        ]);
+
+        await expect(pm.loginTo().getTermsTitle()).toContainText('Terms & Conditions');
+
+        await expect(pm.loginTo().getTermsCheckBoxDescription()).toContainText('I have read and agree to the Terms & Conditions');
+
+        await expect(pm.loginTo().getTermsContinueButton()).toBeDisabled();
+
+        await pm.loginTo().clickOnTermsCheckBox();
+
+        await expect(pm.loginTo().getTermsContinueButton()).toBeEnabled();
+
+        await pm.loginTo().clickOnTermsContinueButton();
+
         await page.waitForURL('**/dashboard');
         
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/dashboard');

@@ -76,6 +76,37 @@ export class LoginPage {
         return this.getContinueButton().click();
     };
 
+    getTermsAndConditionBox(): Locator {
+        return this.page.locator('.flex.flex-col.items-center.bg-monochrome-100.w-full.gap-4');
+    };
+
+    getTermsTitle(): Locator {
+        return this.page.locator('h3.font-500');
+    };
+
+    getTermsDescription(): Locator {
+        return this.page.locator('div.rounded-md.border.border-monochrome-20');
+    };
+
+    getTermsCheckbox(): Locator {
+        return this.page.locator('div.w-4.h-4.flex.items-center.justify-center');
+    };
+
+    clickOnTermsCheckBox() {
+        return this.getTermsCheckbox().click();
+    };
+
+    getTermsCheckBoxDescription(): Locator {
+        return this.page.locator('label.select-none.w-full');
+    };
+
+    getTermsContinueButton(): Locator {
+        return this.page.locator('button', { hasText: "Continue" });
+    };
+
+    clickOnTermsContinueButton() {
+        return this.getContinueButton().click();
+    };
 }
 
 export class ProfileInfo {
