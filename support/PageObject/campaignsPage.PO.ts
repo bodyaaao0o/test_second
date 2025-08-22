@@ -174,7 +174,7 @@ export class CampaignsPage {
     };
 
     getFollowUsOnXQuestDescription(): Locator {
-        return this.page.locator('div.flex.items-center.gap-4', { hasText: "Complete the challenge by following the official penomo account on X!" });
+        return this.page.locator('div.text-white.break-words.whitespace-normal', { hasText: "Complete the challenge by following the official penomo account on X!" });
     };
 
     getCloseQuestButton(): Locator {
@@ -190,7 +190,7 @@ export class CampaignsPage {
     };
 
     getJoinTelegramQuestDescription(): Locator {
-        return this.page.locator('div.flex.items-center.gap-4', { hasText: "Complete the challenge by joining the penomo Telegram group!" });
+        return this.page.locator('div.text-white.break-words.whitespace-normal', { hasText: "Complete the challenge by joining the penomo Telegram group!" });
     };
 
     getJoinDiscordQuest(): Locator {
@@ -206,7 +206,7 @@ export class CampaignsPage {
     };
 
     getRetweetOnXQuestDescription(): Locator {
-        return this.page.locator('div.flex.items-center.gap-4', { hasText: "Complete the challenge by retweeting the following post on X!" });
+        return this.page.locator('div.text-white.break-words.whitespace-normal', { hasText: "Complete the challenge by retweeting the following post on X!" });
     };
 
     getCheckRulesButton(): Locator {
