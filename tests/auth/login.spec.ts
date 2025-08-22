@@ -254,7 +254,7 @@ test.describe("Login as investor", () => {
         
         await expect(pm.loginTo().getHelpText()).toBeVisible();
         
-        await expect(pm.loginTo().getFooter()).toHaveText('© 2025 penomo Foundation Ltd.');
+        await expect(pm.loginTo().getFooter()).toHaveText('© 2025 penomo Ltd.');
         
         const mailosaur = new Mailosaur(process.env.MAILOSAUR_API_KEY!);
         const serverId = process.env.MAILOSAUR_SERVER_ID!;
