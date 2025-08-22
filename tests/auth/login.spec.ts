@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 
-const { stageBaseUrl, devBaseUrl } = env;
+const { stageBaseUrl } = env;
 const { valid_username,
     valid_surename,
     invalid_userName,
