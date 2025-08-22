@@ -198,7 +198,7 @@ export class CampaignsPage {
     };
 
     getJoinDiscordQuestDescription(): Locator {
-        return this.page.locator('div.flex.items-center.gap-4', { hasText: "Complete the challenge by joining the official penomo Discord!" });
+        return this.page.locator('div.text-white.break-words.whitespace-normal', { hasText: "Complete the challenge by joining the official penomo Discord!" });
     };
 
     getRetweetOnXQuest(): Locator {

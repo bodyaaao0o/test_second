@@ -142,7 +142,7 @@ export class SettingPage {
     };
 
     getCompleteKYCDescription(): Locator {
-        return this.page.locator('p', { hasText: "Complete your KYC to access the complete platform." });
+        return this.page.locator('p.mt-2.font-normal.text-monochrome-20').first();
     };
 
     getStartKYCButton(): Locator {
