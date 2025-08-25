@@ -489,7 +489,8 @@ jobs:
   AI-accredited-tests:
     name: Run Desktop Tests for Accredited type
     runs-on: ubuntu-latest
-    needs: desktop-tests  # Чекає завершення desktop-tests
+    needs: desktop-tests
+    if: always()
     timeout-minutes: 30
     defaults:
       run:

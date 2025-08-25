@@ -68,6 +68,8 @@ test.describe("Admin quests test", () => {
 
         await pm.questsAdminTo().clickOnSaveButton();
 
+        await page.waitForLoadState();
+
         await pm.questsAdminTo().clickOnEditButton();
 
         await pm.questsAdminTo().getSelectIsLocked().selectOption("No");
