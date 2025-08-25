@@ -579,7 +579,7 @@ jobs:
           if-no-files-found: warn
 
   AI-accredited-tests:
-    name: Run Desktop Tests
+    name: Run Desktop Tests for Accredited type
     runs-on: ubuntu-latest
     needs: setup
     timeout-minutes: 30
