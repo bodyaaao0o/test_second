@@ -10,7 +10,7 @@ test.use({ storageState: 'playwright/.auth/registered_accredited_invest_login.js
 test.describe("Checking the project information in IA(accredited type)", () => {
     let pm: PageManager;
 
-    test.beforeAll(async({ page }) => {
+    test.beforeEach(async({ page }) => {
         pm = new PageManager(page);
     });
 
