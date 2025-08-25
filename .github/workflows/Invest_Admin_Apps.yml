@@ -291,10 +291,10 @@
 #             echo "Using directory: ./allure-results"
 #             echo "JSON files found: $(find ./allure-results -name "*.json" | wc -l)"
 #             echo "PNG files found: $(find ./allure-results -name "*.png" | wc -l)"
-            
+
 #             allure generate ./allure-results -o ./allure-report --clean
 #             echo "Report generated successfully"
-            
+
 #             echo "=== Report contents check ==="
 #             if [ -d "./allure-report" ]; then
 #               echo "Report directory size: $(du -sh ./allure-report)"
@@ -344,22 +344,18 @@
 #         run: |
 #           curl -X POST -H 'Content-type: application/json' \
 #             --data "{
-#               \"text\": \"*Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n Desktop: ${{ needs.desktop-tests.result }} | Mobile: ${{ needs.mobile-tests.result }}\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\\n📄 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Download Allure Report>\" 
+#               \"text\": \"*Playwright tests failed* on *${{ github.ref_name }}*\\n*Reason:* \`\`\`${{ env.REASON }}\`\`\`\\n Desktop: ${{ needs.desktop-tests.result }} | Mobile: ${{ needs.mobile-tests.result }}\\n🔎 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View run>\\n📄 <https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}#artifacts|Download Allure Report>\"
 #             }" ${{ secrets.SLACK_WEBHOOK_URL }}
-
-
-
-
 
 name: Run Playwright tests for IA and AA
 
 on:
   pull_request:
     branches:
-      - test/test-all-tests
+      - main
   push:
     branches:
-      - test/test-all-tests
+      - main
 
 jobs:
   setup:
@@ -437,10 +433,10 @@ jobs:
           echo "=== Debugging test results structure ==="
           echo "Current directory structure:"
           find . -maxdepth 3 -type d -name "*result*" -o -name "*report*" | head -20
-          
+
           echo "=== Looking for image/trace files ==="
           find . -path "./node_modules" -prune -o -type f \( -name '*.png' -o -name '*.trace' \) -print | head -10
-          
+
           echo "=== Allure results content before copy ==="
           if [ -d "./allure-results" ]; then
             echo "Allure results directory exists"
@@ -454,31 +450,31 @@ jobs:
         run: |
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
-          
+
           if [ -d "test-results" ]; then
             echo "Copying from test-results directory..."
             find test-results -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-          
+
           if [ -d "playwright-report" ]; then
             echo "Copying from playwright-report directory..."
             find playwright-report -type f \( -name '*.png' -o -name '*.zip' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-          
+
           find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-          
+
           echo "Final artifacts in allure-results:"
           ls -lah ./allure-results/ || echo "No artifacts found."
-          
+
           echo "=== Final verification ==="
           echo "Allure results directory size:"
           du -sh ./allure-results/ 2>/dev/null || echo "Directory not found"
-          
+
           echo "Files by type:"
           find ./allure-results -name "*.png" | wc -l | xargs echo "PNG files:"
           find ./allure-results -name "*.json" | wc -l | xargs echo "JSON files:"
           find ./allure-results -name "*.trace" | wc -l | xargs echo "Trace files:"
-          
+
           chmod -R 755 ./allure-results/ 2>/dev/null || true
 
       - name: Upload Allure raw results (Desktop)
@@ -542,31 +538,31 @@ jobs:
         run: |
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
-          
+
           if [ -d "test-results" ]; then
             echo "Copying from test-results directory..."
             find test-results -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-          
+
           if [ -d "playwright-report" ]; then
             echo "Copying from playwright-report directory..."
             find playwright-report -type f \( -name '*.png' -o -name '*.zip' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
 
           find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-          
+
           echo "Final artifacts in allure-results:"
           ls -lah ./allure-results/ || echo "No artifacts found."
-          
+
           echo "=== Final verification ==="
           echo "Allure results directory size:"
           du -sh ./allure-results/ 2>/dev/null || echo "Directory not found"
-          
+
           echo "Files by type:"
           find ./allure-results -name "*.png" | wc -l | xargs echo "PNG files:"
           find ./allure-results -name "*.json" | wc -l | xargs echo "JSON files:"
           find ./allure-results -name "*.trace" | wc -l | xargs echo "Trace files:"
-          
+
           chmod -R 755 ./allure-results/ 2>/dev/null || true
 
       - name: Upload Allure raw results (Mobile)
@@ -629,10 +625,10 @@ jobs:
           echo "=== Debugging test results structure ==="
           echo "Current directory structure:"
           find . -maxdepth 3 -type d -name "*result*" -o -name "*report*" | head -20
-          
+
           echo "=== Looking for image/trace files ==="
           find . -path "./node_modules" -prune -o -type f \( -name '*.png' -o -name '*.trace' \) -print | head -10
-          
+
           echo "=== Allure results content before copy ==="
           if [ -d "./allure-results" ]; then
             echo "Allure results directory exists"
@@ -646,31 +642,31 @@ jobs:
         run: |
           echo "Looking for artifacts to copy..."
           mkdir -p ./allure-results
-          
+
           if [ -d "test-results" ]; then
             echo "Copying from test-results directory..."
             find test-results -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-          
+
           if [ -d "playwright-report" ]; then
             echo "Copying from playwright-report directory..."
             find playwright-report -type f \( -name '*.png' -o -name '*.zip' \) -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
           fi
-          
+
           find . -path "./node_modules" -prune -o -path "./.git" -prune -o -type f \( -name '*.png' -o -name '*.zip' -o -name '*.trace' \) -print -exec cp -v {} ./allure-results/ \; 2>/dev/null || true
-          
+
           echo "Final artifacts in allure-results:"
           ls -lah ./allure-results/ || echo "No artifacts found."
-          
+
           echo "=== Final verification ==="
           echo "Allure results directory size:"
           du -sh ./allure-results/ 2>/dev/null || echo "Directory not found"
-          
+
           echo "Files by type:"
           find ./allure-results -name "*.png" | wc -l | xargs echo "PNG files:"
           find ./allure-results -name "*.json" | wc -l | xargs echo "JSON files:"
           find ./allure-results -name "*.trace" | wc -l | xargs echo "Trace files:"
-          
+
           chmod -R 755 ./allure-results/ 2>/dev/null || true
 
       - name: Upload Allure raw results (Desktop)
@@ -715,12 +711,12 @@ jobs:
           echo "=== Debug downloaded artifacts ==="
           echo "Structure of allure-results-merged:"
           find ./allure-results-merged -type f | head -20
-          
+
           echo "=== Files by type ==="
           echo "JSON files: $(find ./allure-results-merged -name "*.json" | wc -l)"
           echo "PNG files: $(find ./allure-results-merged -name "*.png" | wc -l)"
           echo "Trace files: $(find ./allure-results-merged -name "*.trace" | wc -l)"
-          
+
           echo "=== Sample files ==="
           find ./allure-results-merged -name "*.json" | head -3
           find ./allure-results-merged -name "*.png" | head -3
