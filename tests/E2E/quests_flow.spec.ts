@@ -274,7 +274,15 @@ test.describe("Quests complete test", () => {
 
         await page.waitForTimeout(2000);
 
-        expect(await rows.count()).toBeGreaterThanOrEqual(25);
+        try{
+            expect(await rows.count()).toBeGreaterThanOrEqual(25);
+        } catch {
+            await pm.questsTo().clickOn25LeadersPerPageButton();
+
+            await page.waitForTimeout(2000);
+
+            expect(await rows.count()).toBeGreaterThanOrEqual(25);
+        }
 
         await pm.questsTo().clickOn50LeadersPerPageButton();
 

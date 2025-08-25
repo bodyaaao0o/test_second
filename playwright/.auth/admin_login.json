@@ -2,20 +2,20 @@
   "cookies": [
     {
       "name": "AWSALBTGCORS",
-      "value": "0mCuxNls0bzNXCUvgtV1gKJZKXcR0c0ARH6pPYxZGdPn+AEQ//7qQS+7sUxe7svN8AjGUfY06fhaISdZ7E7SsL3whcGjgO5HYkhqbjZuuLzFtoUf0HvFtrmoLZkjptJA16CMPgViAgt937L3PHptsS82ZO7uWtIabTWGT3nthttI",
+      "value": "oMd+eNlv8K/vgVGnbxgpSHKVV1bRFGXa8NEN7gL20cO9p5wI6cPhBG2+eVpQ1IFadPlQrmbNjPsD2E1CrVaGWgPmggtCqGsWINrXnJZguTimwl79cT3/pPuIXZc5w+erZwrZCBqoXmGk32dk9qLQdU6h/2D/h8Vc6a511ARLC9Te",
       "domain": "session.web3auth.io",
       "path": "/",
-      "expires": 1756712960.962466,
+      "expires": 1756726644.837051,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": "AWSALBCORS",
-      "value": "pMaNrbV9wHUJXk5W+r2Jn1olt/Wh/GwrNL30F2iWuZaGrEYm2d2m71F5qeLIQptt7Q2HYzD969QXsaJxAEfZgyd4ezEYebM6SQ1rs5SewE9GXC8yShHo4pZ0HYHP",
+      "value": "fsZ3hqrFLF66PBTogBgoOz9DU3D6QTFDRgFyr093cYWRbK4NGIySAjkJnh13q+TIsQfxBDo2nRa1yD1gtahP+nP9HiPYzyJu1m5eAE4J8rR/EfLG5iVnsFyGH1hU",
       "domain": "session.web3auth.io",
       "path": "/",
-      "expires": 1756712960.962531,
+      "expires": 1756726644.8372,
       "httpOnly": false,
       "secure": true,
       "sameSite": "None"
@@ -25,7 +25,7 @@
       "value": "penomo-admin-at@sbmchbly.mailosaur.net",
       "domain": "www.staging.admin.penomo.com",
       "path": "/",
-      "expires": 1787644176,
+      "expires": 1787657857,
       "httpOnly": false,
       "secure": true,
       "sameSite": "Strict"
@@ -41,11 +41,11 @@
         },
         {
           "name": "web3AuthToken",
-          "value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRZT2dnXy01RU9FYmxhWS1WVlJZcVZhREFncHRuZktWNDUzNU1aUEMwdzAifQ.eyJpYXQiOjE3NTYxMDgxNzMsImF1ZCI6IkJJeG9pSDBYSDV6NkJDNGNVYTVlWVpNbGZ5d0hkLVUzZ3BZT1daTzJqaTRHNzVfbXlQamhSYTdGaTJUOWw5QW5sbkVnYnFPeTR6U2h1ZVNieTFGRlU3NCIsIm5vbmNlIjoiMDM3NzUwNzBhNDI0YjhlZWMxYzkyODU4ZDYzNDEyZGIwOTFmNzZjODliZTg2NjBmNWJmZTVjYWI2ZjdiNjVmYTM4IiwiaXNzIjoiaHR0cHM6Ly9hcGktYXV0aC53ZWIzYXV0aC5pbyIsIndhbGxldHMiOlt7InB1YmxpY19rZXkiOiIwMjQwYTRiNDJiZjU3NTQ1MTZmOGZjNGQ3ZjcxMTMzM2Q2ZTg5ZWUzOTI4MDUwYzI3MzYzMjU0ZTBkMzk4OWU1YTQiLCJ0eXBlIjoid2ViM2F1dGhfYXBwX2tleSIsImN1cnZlIjoic2VjcDI1NmsxIn0seyJwdWJsaWNfa2V5IjoiMDI4MjVjZGU4ZTRmN2VhZjJiOWZiMWU5Y2NjY2U3ZGZlNjM2MzQ4ZDNkNDg5ZDIwNDM1OWQ0MTU4MDRmZWRlZmNlIiwidHlwZSI6IndlYjNhdXRoX3RocmVzaG9sZF9rZXkiLCJjdXJ2ZSI6InNlY3AyNTZrMSJ9XSwiZW1haWwiOiJwZW5vbW8tYWRtaW4tYXRAc2JtY2hibHkubWFpbG9zYXVyLm5ldCIsIm5hbWUiOiJwZW5vbW8tYWRtaW4tYXRAc2JtY2hibHkubWFpbG9zYXVyLm5ldCIsInZlcmlmaWVyIjoibm9fbW9kYWxfb25seV9lbWFpbF92ZXJpZmllciIsImF1dGhDb25uZWN0aW9uSWQiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwidmVyaWZpZXJJZCI6InBlbm9tby1hZG1pbi1hdEBzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwidXNlcklkIjoicGVub21vLWFkbWluLWF0QHNibWNoYmx5Lm1haWxvc2F1ci5uZXQiLCJhZ2dyZWdhdGVWZXJpZmllciI6Im5vX21vZGFsX29ubHlfZW1haWxfdmVyaWZpZXIiLCJncm91cGVkQXV0aENvbm5lY3Rpb25JZCI6Im5vX21vZGFsX29ubHlfZW1haWxfdmVyaWZpZXIiLCJleHAiOjE3NTYxOTQ1NzN9.8nGVTd2yNVxcVzSfXlPyzpUAcITKdHbHPRQ6kz_71d9mfP8hhUlqhDbdUp7sFfpFMcOvHP3Qa0I0XcUnlknBCQ"
+          "value": "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlRZT2dnXy01RU9FYmxhWS1WVlJZcVZhREFncHRuZktWNDUzNU1aUEMwdzAifQ.eyJpYXQiOjE3NTYxMjE4NTQsImF1ZCI6IkJJeG9pSDBYSDV6NkJDNGNVYTVlWVpNbGZ5d0hkLVUzZ3BZT1daTzJqaTRHNzVfbXlQamhSYTdGaTJUOWw5QW5sbkVnYnFPeTR6U2h1ZVNieTFGRlU3NCIsIm5vbmNlIjoiMDMzNTE4MGY2MjQ0ZDJkNzVkMDQ0MWY0ZDAxNmVlZTU1ODg4N2FkMWUzY2Y0ZjZkYjU0MWY2NDdiNTAwODViMjFjIiwiaXNzIjoiaHR0cHM6Ly9hcGktYXV0aC53ZWIzYXV0aC5pbyIsIndhbGxldHMiOlt7InB1YmxpY19rZXkiOiIwMjQwYTRiNDJiZjU3NTQ1MTZmOGZjNGQ3ZjcxMTMzM2Q2ZTg5ZWUzOTI4MDUwYzI3MzYzMjU0ZTBkMzk4OWU1YTQiLCJ0eXBlIjoid2ViM2F1dGhfYXBwX2tleSIsImN1cnZlIjoic2VjcDI1NmsxIn0seyJwdWJsaWNfa2V5IjoiMDI4MjVjZGU4ZTRmN2VhZjJiOWZiMWU5Y2NjY2U3ZGZlNjM2MzQ4ZDNkNDg5ZDIwNDM1OWQ0MTU4MDRmZWRlZmNlIiwidHlwZSI6IndlYjNhdXRoX3RocmVzaG9sZF9rZXkiLCJjdXJ2ZSI6InNlY3AyNTZrMSJ9XSwiZW1haWwiOiJwZW5vbW8tYWRtaW4tYXRAc2JtY2hibHkubWFpbG9zYXVyLm5ldCIsIm5hbWUiOiJwZW5vbW8tYWRtaW4tYXRAc2JtY2hibHkubWFpbG9zYXVyLm5ldCIsInZlcmlmaWVyIjoibm9fbW9kYWxfb25seV9lbWFpbF92ZXJpZmllciIsImF1dGhDb25uZWN0aW9uSWQiOiJub19tb2RhbF9vbmx5X2VtYWlsX3ZlcmlmaWVyIiwidmVyaWZpZXJJZCI6InBlbm9tby1hZG1pbi1hdEBzYm1jaGJseS5tYWlsb3NhdXIubmV0IiwidXNlcklkIjoicGVub21vLWFkbWluLWF0QHNibWNoYmx5Lm1haWxvc2F1ci5uZXQiLCJhZ2dyZWdhdGVWZXJpZmllciI6Im5vX21vZGFsX29ubHlfZW1haWxfdmVyaWZpZXIiLCJncm91cGVkQXV0aENvbm5lY3Rpb25JZCI6Im5vX21vZGFsX29ubHlfZW1haWxfdmVyaWZpZXIiLCJleHAiOjE3NTYyMDgyNTR9.83PgVQgx4gSrqF9cxFea9Gw_UD7rAsYQW6Gbk3_bplDJefQtxYCN_l0rVR3rG5wF5OCpKWhx-ffBRmBG8Sl_WQ"
         },
         {
           "name": "auth_store",
-          "value": "{\"sessionId\":\"c9faad48f0c4c3f91fcb15fbf5c2a2db6e6cf2d45fdb8d6967f7ad512737353f\"}"
+          "value": "{\"sessionId\":\"f9d15f944543ddef5ae2f50d97f120bf0d4c9183497831b29f09c8be0c73fb5c\"}"
         },
         {
           "name": "Web3Auth-cachedAdapter",
@@ -53,11 +53,11 @@
         },
         {
           "name": "loginTime",
-          "value": "1756108176459"
+          "value": "1756121857233"
         },
         {
           "name": "authToken",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODExY2Y0ZTU3Mzk5ZGI2MGEwNDUxYmQiLCJ1c2VyRW1haWwiOiJwZW5vbW8tYWRtaW4tYXRAc2JtY2hibHkubWFpbG9zYXVyLm5ldCIsImFkbWluSWQiOiI2ODExY2Y0ZTU3Mzk5ZGI2MGEwNDUxYmYiLCJyb2xlIjoiYWRtaW4iLCJqdGkiOiJmZWU0NjEzMi00MGFhLTQ3YzYtODNmMS0xMWNjNTJiZjdkYjUiLCJpYXQiOjE3NTYxMDgxNzYsImV4cCI6MTc1NjExMTc3Nn0.WAsWpgJ6qCQOgtzm2LBgsFMNHREM-v3scPrVrbgteXk"
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODExY2Y0ZTU3Mzk5ZGI2MGEwNDUxYmQiLCJ1c2VyRW1haWwiOiJwZW5vbW8tYWRtaW4tYXRAc2JtY2hibHkubWFpbG9zYXVyLm5ldCIsImFkbWluSWQiOiI2ODExY2Y0ZTU3Mzk5ZGI2MGEwNDUxYmYiLCJyb2xlIjoiYWRtaW4iLCJqdGkiOiJkNDY2MjZmZi1kYjc0LTQ5MmEtYjUyNy1mODIwOTViZmM5YzkiLCJpYXQiOjE3NTYxMjE4NTcsImV4cCI6MTc1NjEyNTQ1N30.VioLSydU-c0fFoQ7ZFsZFMC4sIZYfRfmhxmq9sKmu6A"
         },
         {
           "name": "loglevel:auth",
@@ -73,7 +73,7 @@
         },
         {
           "name": "gbFeaturesCache",
-          "value": "[[\"https://cdn.growthbook.io||sdk-8PCWb1fqy5eBIAb\",{\"data\":{\"status\":200,\"features\":{\"show_quest_pages\":{\"defaultValue\":false,\"rules\":[{\"id\":\"fr_19g61wm7lunelx\",\"condition\":{\"id\":{\"$in\":[\"kubisch@penomo.com\",\"kubisch@penomo.io\",\"dhillon@penomo.com\",\"dhillon@penomo.io\",\"laia@penomo.com\",\"ttesrqueststtets@gmail.com\",\"kubisch+2508181@penomo.com\",\"kubisch+2508181@penomo.com\",\"kubisch+2508201@penomo.com\",\"testquests243+afterrelease2@gmail.com\",\"kubisch+2508211@penomo.com\"]}},\"force\":true}]},\"enable_presale_flow\":{\"defaultValue\":false}},\"experiments\":[],\"dateUpdated\":\"2025-08-21T10:25:51.950Z\"},\"version\":\"2025-08-21T10:25:51.950Z\",\"staleAt\":\"2025-08-25T07:50:20.200Z\",\"sse\":true}]]"
+          "value": "[[\"https://cdn.growthbook.io||sdk-8PCWb1fqy5eBIAb\",{\"data\":{\"status\":200,\"features\":{\"show_quest_pages\":{\"defaultValue\":false,\"rules\":[{\"id\":\"fr_19g61wm7lunelx\",\"condition\":{\"id\":{\"$in\":[\"kubisch@penomo.com\",\"kubisch@penomo.io\",\"dhillon@penomo.com\",\"dhillon@penomo.io\",\"laia@penomo.com\",\"ttesrqueststtets@gmail.com\",\"kubisch+2508181@penomo.com\",\"kubisch+2508181@penomo.com\",\"kubisch+2508201@penomo.com\",\"testquests243+afterrelease2@gmail.com\",\"kubisch+2508211@penomo.com\"]}},\"force\":true}]},\"enable_presale_flow\":{\"defaultValue\":false}},\"experiments\":[],\"dateUpdated\":\"2025-08-21T10:25:51.950Z\"},\"version\":\"2025-08-21T10:25:51.950Z\",\"staleAt\":\"2025-08-25T11:38:23.895Z\",\"sse\":true}]]"
         }
       ]
     },
