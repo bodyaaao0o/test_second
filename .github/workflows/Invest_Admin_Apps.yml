@@ -356,10 +356,10 @@ name: Run Playwright tests for IA and AA
 on:
   pull_request:
     branches:
-      - main
+      - test/test-all-tests
   push:
     branches:
-      - main
+      - test/test-all-tests
 
 jobs:
   setup:
