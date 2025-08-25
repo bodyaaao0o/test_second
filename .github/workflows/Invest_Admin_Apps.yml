@@ -349,8 +349,6 @@
 
 name: Run Playwright tests for IA and AA
 
-name: Run Playwright tests for IA and AA
-
 on:
   pull_request:
     branches:
