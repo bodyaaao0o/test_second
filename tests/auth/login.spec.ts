@@ -147,10 +147,10 @@ test.describe("Login as investor", () => {
             pm.profile().getNationalityTitle(),
             pm.profile().getSelectNationality()
         ])
+
+        await pm.profile().getEmailInput().waitFor();
         
-        const actualEmail = await pm.profile().getEmailInput().inputValue();
-        
-        await expect(actualEmail).toEqual(testEmail);
+        await expect(pm.profile().getEmailInput()).toHaveValue(testEmail);
         
         await pm.profile().SelectInvestorType();
         
