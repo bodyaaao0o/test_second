@@ -587,7 +587,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-results-accredited
-          path: ./allure-results
+          path: ./penomo_accredited/allure-results
           retention-days: 3
           if-no-files-found: warn
 

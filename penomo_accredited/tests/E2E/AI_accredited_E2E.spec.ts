@@ -180,7 +180,7 @@ test.describe("E2E test for accredited type of Investor", () => {
 
         await pm.project().clickOnInvestNowButton();
 
-        await checkVisibility("Checking box after click on Invest Now button",[
+        await checkVisibility("Checking box after clickk on Invest Now button",[
             pm.project().getComingSoonBox(),
             pm.project().getComingSoonBoxTitle(),
             pm.project().getCloseComingSoonBoxButton(),
