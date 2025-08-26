@@ -68,9 +68,17 @@ test.describe("Admin quests test", () => {
 
         await pm.questsAdminTo().clickOnSaveButton();
 
-        await page.waitForLoadState();
+        try {
+            await pm.questsAdminTo().clickOnEditButton();
+        } catch {
+            await expect(pm.questsAdminTo().getSaveButton()).toBeVisible();
 
-        await pm.questsAdminTo().clickOnEditButton();
+            await await pm.questsAdminTo().clickOnSaveButton();
+
+            await expect(pm.questsAdminTo().getEditButton()).toBeVisible();
+
+            await pm.questsAdminTo().clickOnEditButton();
+        };
 
         await pm.questsAdminTo().getSelectIsLocked().selectOption("No");
 

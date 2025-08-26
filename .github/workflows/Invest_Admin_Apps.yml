@@ -682,7 +682,7 @@ jobs:
   notify-on-failure:
     name: Generate Allure Report & Notify
     runs-on: ubuntu-latest
-    needs: [desktop-tests, mobile-tests, AI-accredited-tests]  # Чекає всі попередні джоби
+    needs: [desktop-tests, mobile-tests, AI-accredited-tests]
     if: always() && (needs.desktop-tests.result == 'failure' || needs.mobile-tests.result == 'failure' || needs.AI-accredited-tests.result == 'failure')
 
     steps:
@@ -783,7 +783,7 @@ jobs:
           if [ -z "$REASON" ] || [ "$REASON" = "null" ]; then
             if [ "${{ needs.desktop-tests.result }}" == "failure" ] && [ "${{ needs.mobile-tests.result }}" == "failure" ] && [ "${{ needs.AI-accredited-tests.result }}" == "failure" ]; then
               REASON="All test suites failed"
-            elif [ "${{ needs.desktop-tests.result }}" == "failure" ] && [ "${{ needs.mobile-tests.result }}" == "failure" ]; then
+            elif [ "${{ needs.desktop-tests.result }}" == "failure" ] && [ "${{ needs.mobile-tests.result }}" == "failure" ]; then  
               REASON="Desktop and mobile tests failed"
             elif [ "${{ needs.desktop-tests.result }}" == "failure" ] && [ "${{ needs.AI-accredited-tests.result }}" == "failure" ]; then
               REASON="Desktop and accredited tests failed"
