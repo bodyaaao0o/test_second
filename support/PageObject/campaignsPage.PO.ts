@@ -32,7 +32,8 @@ export class CampaignsPage {
     };
 
     clickOnLeaderboardPage() {
-        return this.getLeaderboardPage().click();
+        return this.getLeaderboardPage().scrollIntoViewIfNeeded()
+            .then(() => this.getLeaderboardPage().click());
     };
 
     //Info page
@@ -299,8 +300,15 @@ export class CampaignsPage {
     getPageNumber(): Locator {
         return this.page.locator('input.outline-none.rounded-lg');
     };
-
-
-
-
 }
+
+export async function waitForRowsCount(rows: Locator, expectedCount: number, timeout = 5000) {
+            const start = Date.now();
+            while ((Date.now() - start) < timeout) {
+                const count = await rows.count();
+                if (count >= expectedCount) return;
+                await new Promise(res => setTimeout(res, 200));
+            }
+            const finalCount = await rows.count();
+            throw new Error(`Expected at least ${expectedCount} rows, but got ${finalCount}`);
+        }

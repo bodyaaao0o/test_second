@@ -1,9 +1,10 @@
-import { test, expect, Page} from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 import { PageManager } from '../../support/PageObject/pageManager';
 import { env } from '../../support/data';
 import { checkVisibility } from '../../support/PageObject/pageManager';
 import { addUserToQuests, deleteUserFromQuests } from '../../support/growthbook';
 import { getGeneratedEmail } from '../../support/email';
+import { waitForRowsCount } from '../../support/PageObject/campaignsPage.PO';
 
 
 const { stageBaseUrl } = env;
@@ -24,18 +25,18 @@ test.describe("Quests complete test", () => {
     let pm: PageManager;
     let page: Page;
 
-    test.beforeAll(async ( {} ) => {
+    test.beforeAll(async ({ }) => {
         const email = getGeneratedEmail();
         await addUserToQuests(email);
     });
 
-    test.afterAll(async ({}) => {
+    test.afterAll(async ({ }) => {
         const email = getGeneratedEmail();
         await deleteUserFromQuests(email);
     })
 
 
-    test("Progressive challenges completion", async ({ page}, testInfo) => {
+    test("Progressive challenges completion", async ({ page }, testInfo) => {
         const isMobile = testInfo.project.use.isMobile;
         pm = new PageManager(page);
 
@@ -60,24 +61,24 @@ test.describe("Quests complete test", () => {
 
         await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=referral');
 
-        try{
-            if(isMobile) {
+        try {
+            if (isMobile) {
                 await pm.questsTo().clickOnQuestsPage();
             } else {
                 await pm.dashboardTo().clickOnQuests();
             };
-    
+
             await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
         }
         catch {
             await page.reload();
-            if(isMobile) {
+            if (isMobile) {
                 await pm.questsTo().clickOnQuestsPage();
             } else {
                 await pm.dashboardTo().clickOnQuests();
             }
 
-    
+
             await expect(page).toHaveURL('https://www.staging.invest.penomo.com/campaigns?section=quests');
         }
 
@@ -236,6 +237,8 @@ test.describe("Quests complete test", () => {
             }
         }
 
+
+
         await pm.questsTo().clickOnLeaderboardPage();
 
         await checkVisibility([
@@ -263,43 +266,24 @@ test.describe("Quests complete test", () => {
         await expect(pm.questsTo().getPageNumber()).toHaveValue('1');
 
         await pm.questsTo().getPageNumber().fill('5');
+        
 
         const rows = pm.questsTo().getLeadersLines();
 
-        const rowCount = await rows.count();
+        let rowsCount = await rows.count();
 
-        expect(rowCount).toBeGreaterThanOrEqual(10);
+        await waitForRowsCount(rows, 10);
 
         await pm.questsTo().clickOn25LeadersPerPageButton();
-
-        await page.waitForTimeout(2000);
-
-        try{
-            expect(await rows.count()).toBeGreaterThanOrEqual(25);
-        } catch {
-            await pm.questsTo().clickOn25LeadersPerPageButton();
-
-            await page.waitForTimeout(2000);
-
-            expect(await rows.count()).toBeGreaterThanOrEqual(25);
-        }
+        await waitForRowsCount(rows, 25);
 
         await pm.questsTo().clickOn50LeadersPerPageButton();
-
-        await page.waitForTimeout(2000);
-
-        expect(await rows.count()).toBeGreaterThanOrEqual(50);
+        await waitForRowsCount(rows, 50);
 
         await pm.questsTo().clickOn100LeadersPerPageButton();
-
-        await page.waitForTimeout(2000);
-
-        expect(await rows.count()).toBeGreaterThanOrEqual(100);
+        await waitForRowsCount(rows, 100);
 
         await pm.questsTo().clickOn10LeadersPerPageButton();
-
-        await page.waitForTimeout(2000);
-
-        expect(rowCount).toBeGreaterThanOrEqual(10);
+        await waitForRowsCount(rows, 10);
     });
 });
