@@ -206,7 +206,7 @@ test.describe("E2E test for accredited type of Investor", () => {
 
         await pm.dashboard().clickOnPortfolioNav();
 
-        await expect(page).toHaveURL('https://wwww.staging.invest.penomo.com/portfolio');
+        await expect(page).toHaveURL('https://www.staging.invest.penomo.com/portfolio');
 
         await checkVisibility("Portfolio checking", [
             pm.portfolio().getTotalInvested(),
