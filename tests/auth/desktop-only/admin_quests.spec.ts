@@ -40,6 +40,8 @@ test.describe("Admin quests test", () => {
             await expect(pm.questsAdminTo().getChallenge1()).toBeVisible({ timeout: 8000 });
         } catch {
             await page.reload();
+            await pm.questsAdminTo().clickOnQuestsNav();
+            await page.waitForLoadState();
             await pm.questsAdminTo().clickOnFlipCardsNav();
             await pm.questsAdminTo().clickOnChallengeNav();
             await pm.questsAdminTo().getSearchFiled().fill("Challenge 1");
