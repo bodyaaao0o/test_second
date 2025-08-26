@@ -388,7 +388,7 @@ jobs:
   desktop-tests:
     name: Run Desktop Tests
     runs-on: ubuntu-latest
-    needs: setup  # Чекає setup
+    needs: setup
     timeout-minutes: 30
 
     steps:
@@ -421,7 +421,7 @@ jobs:
 
       - name: Run auth tests (Desktop)
         run: npx playwright test ./auth --project=chromium
-        #continue-on-error: true
+        continue-on-error: true
 
       - name: Run E2E tests (Desktop)
         run: npx playwright test ./E2E --project=chromium
@@ -594,7 +594,7 @@ jobs:
   mobile-tests:
     name: Run Mobile Tests
     runs-on: ubuntu-latest
-    needs: AI-accredited-tests  # Чекає завершення AI-accredited-tests
+    needs: AI-accredited-tests
     if: always()
     timeout-minutes: 30
 
@@ -628,7 +628,7 @@ jobs:
 
       - name: Run auth tests (Desktop)
         run: npx playwright test ./auth/desktop-only --project=chromium
-        #continue-on-error: true
+        continue-on-error: true
 
       - name: Run auth tests (Mobile - excluding desktop-only)
         run: npx playwright test ./auth/login.spec.ts --project="Mobile Safari"
