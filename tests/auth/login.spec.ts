@@ -149,55 +149,57 @@ test.describe("Login as investor", () => {
         ])
 
         await pm.profile().getEmailInput().waitFor();
-        
+
         await expect(pm.profile().getEmailInput()).toHaveValue(testEmail);
-        
+
         await pm.profile().SelectInvestorType();
-        
+
         await expect(pm.profile().getInvestorTypesAfterSelect()).toBeVisible();
-        
+
         await pm.profile().SelectInvestorType();
-        
+
         await expect(pm.profile().getInvestorTypesAfterSelect()).not.toBeVisible();
-        
+
         await pm.profile().SelectNationality();
-        
+
         await expect(pm.profile().getCountryList()).toBeVisible();
-        
+
         await pm.profile().getInputCountryName().fill('Ukr');
-        
+
         await expect(pm.profile().getUkraineFromList()).toBeVisible();
-        
+
         await pm.profile().clickOnUkraine();
-        
+
         await checkVisibility([
             pm.profile().getReferalCodeTitle(),
             pm.profile().getInputReferalCode(),
             pm.profile().getSubmiteButton()
         ])
-        
+
         await expect(pm.profile().getSubmiteButton()).toBeDisabled();
-        
+
         await pm.profile().getFirstNameInput().fill(invalid_userName);
-        
-        await expect(pm.profile().getIncorectNameMessage()).toBeVisible();
-        
+
         await pm.profile().getLastNameInput().fill(invalid_sureName);
-        
-        await expect(pm.profile().getIncorectLastNameMessage()).toBeVisible();
-        
-        await pm.profile().getFirstNameInput().fill(valid_username);
-        
-        await pm.profile().getLastNameInput().fill(valid_surename);
-        
+
         await expect(pm.profile().getSubmiteButton()).toBeEnabled();
-        
-        await pm.profile().getInputReferalCode().fill(invalid_referal_code);
-        
+
         await pm.profile().clickOnSubmitButton();
-        
+
+        await expect(pm.profile().getIncorectNameMessage()).toBeVisible();
+
+        await expect(pm.profile().getIncorectLastNameMessage()).toBeVisible();
+
+        await pm.profile().getFirstNameInput().fill(valid_username);
+
+        await pm.profile().getLastNameInput().fill(valid_surename);
+
+        await pm.profile().getInputReferalCode().fill(invalid_referal_code);
+
+        await pm.profile().clickOnSubmitButton();
+
         await expect(pm.profile().getInvalidReferalCodeMessage()).toBeVisible();
-        
+
         await pm.profile().clearInputReferralCode();
         
         await pm.profile().clickOnSubmitButton();
